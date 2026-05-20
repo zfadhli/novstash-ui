@@ -490,9 +490,9 @@
     "semantic_hash": "a5f36ba78b37e2afbadecd27d1276456"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useUser.ts": {
-    "mtime": 1779279116.4925203,
-    "ast_hash": "c8fcdd13aa0228c29981eac553feafc2",
-    "semantic_hash": "c8fcdd13aa0228c29981eac553feafc2"
+    "mtime": 1779284745.3795233,
+    "ast_hash": "47e9190a24818ee724ee10ea52aea74a",
+    "semantic_hash": "47e9190a24818ee724ee10ea52aea74a"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/routes/auth/google.get.ts": {
     "mtime": 1779279113.32834,

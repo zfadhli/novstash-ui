@@ -60,7 +60,7 @@ const dropdownItems = computed(() => {
 					variant="outline"
 					size="sm"
 					icon="lucide:chrome"
-					@click="navigateTo('/auth/google')"
+					@click="window.location.href = '/auth/google'"
 				>
 					Sign in with Google
 				</UButton>
