@@ -155,9 +155,9 @@
     "semantic_hash": "f0f6d019e361ee0cfd39d0c645a6d075"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/meta/_journal.json": {
-    "mtime": 1779260453.1671133,
-    "ast_hash": "b98d71e54de752adb8a2e51dc6191814",
-    "semantic_hash": "b98d71e54de752adb8a2e51dc6191814"
+    "mtime": 1779282043.1844165,
+    "ast_hash": "204edaa039de12c1304fd7753074a540",
+    "semantic_hash": "204edaa039de12c1304fd7753074a540"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/meta/0000_snapshot.json": {
     "mtime": 1779260453.1711135,
@@ -498,5 +498,15 @@
     "mtime": 1779279113.32834,
     "ast_hash": "891da229f6f42f4c974ac3053dc2446d",
     "semantic_hash": "891da229f6f42f4c974ac3053dc2446d"
+  },
+  "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/0001_great_the_liberteens.sql": {
+    "mtime": 1779282043.1844165,
+    "ast_hash": "a2f81ddbf173b48b5391f104c2f2f8d8",
+    "semantic_hash": "a2f81ddbf173b48b5391f104c2f2f8d8"
+  },
+  "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/meta/0001_snapshot.json": {
+    "mtime": 1779282043.1844165,
+    "ast_hash": "20150eff0f85075bd98ad680e5d205f2",
+    "semantic_hash": "20150eff0f85075bd98ad680e5d205f2"
   }
 }

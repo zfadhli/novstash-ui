@@ -1,5 +1,3 @@
-import { $fetch } from "ofetch";
-
 interface ReadingHistoryEntry {
 	id: number;
 	novelSlug: string;

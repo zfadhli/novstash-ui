@@ -8,7 +8,7 @@ const serverProgress = ref<Awaited<ReturnType<typeof getProgress>> | null>(
 	null,
 );
 
-watchEffect(async () => {
+onMounted(async () => {
 	const slug = novel.value?.slug;
 	if (slug) {
 		try {
@@ -16,8 +16,6 @@ watchEffect(async () => {
 		} catch {
 			serverProgress.value = null;
 		}
-	} else {
-		serverProgress.value = null;
 	}
 });
 
