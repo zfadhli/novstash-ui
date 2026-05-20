@@ -26,6 +26,7 @@
 		"db:generate": "turbo -F @novstash-ui/db db:generate",
 		"db:migrate": "turbo -F @novstash-ui/db db:migrate",
 		"db:local": "turbo -F @novstash-ui/db db:local",
+		"db:view": "datasette local.db --port 8001 --cors",
 		"check": "biome check --write .",
 		"cli:lint": "cd apps/novstash-cli && UV_NO_SYNC=1 NOVSTASH_DB=../../local.db uv run ruff check src/",
 		"cli:format": "cd apps/novstash-cli && UV_NO_SYNC=1 NOVSTASH_DB=../../local.db uv run ruff format src/",
