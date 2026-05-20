@@ -3,6 +3,15 @@ const route = useRoute();
 const novelId = route.params.id as string;
 
 const { novel, chapters, pending, error } = useNovel(novelId);
+const { continueReading } = useReadingProgress(() => novel.value?.slug);
+
+const firstChapterIdx = computed(() => chapters.value[0]?.idx ?? 0);
+
+const showContinueReading = computed(() => {
+	if (!continueReading.value) return false;
+	// Only show "Continue Reading" if saved progress is NOT the first chapter
+	return continueReading.value.idx !== firstChapterIdx.value;
+});
 </script>
 
 <template>
@@ -95,7 +104,7 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 					<p
 						v-if="novel.author"
 						class="text-neutral-500 dark:text-neutral-400"
-					>
+		>
 						by <span class="font-medium text-neutral-700 dark:text-neutral-300">{{ novel.author }}</span>
 					</p>
 
@@ -136,8 +145,9 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 						</p>
 					</div>
 
-					<!-- Start reading button -->
-					<div class="mt-4">
+					<!-- Action buttons -->
+					<div class="mt-4 flex flex-wrap items-center gap-3">
+						<!-- Start Reading — always first chapter -->
 						<UButton
 							v-if="chapters.length > 0"
 							:to="`/read/${novel.slug}/${chapters[0].idx}`"
@@ -145,6 +155,21 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 						>
 							<Icon name="lucide:book-open" class="mr-2 size-5" />
 							Start Reading
+						</UButton>
+
+						<!-- Continue Reading — only if saved progress exists and isn't first chapter -->
+						<UButton
+							v-if="showContinueReading && continueReading"
+							:to="`/read/${novel.slug}/${continueReading.idx}`"
+							size="lg"
+							variant="outline"
+							color="primary"
+						>
+							<Icon name="lucide:bookmark" class="mr-2 size-5" />
+							Continue Reading
+							<span class="ml-1.5 text-xs opacity-60">
+								Ch. {{ continueReading.idx }}
+							</span>
 						</UButton>
 					</div>
 				</div>

@@ -6,9 +6,21 @@ const chapterIdx = Number(route.params.chapterId);
 const { chapter, pending, error } = useChapter(novelId, chapterIdx);
 const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
+const { saveProgress } = useReadingProgress();
 
 const showSettings = ref(false);
 const showChapterDrawer = ref(false);
+
+// 👇 Save reading progress whenever a chapter successfully loads
+watch(
+	chapter,
+	(c) => {
+		if (c) {
+			saveProgress(c.novelSlug, c.idx, c.title ?? undefined);
+		}
+	},
+	{ immediate: true },
+);
 
 // Keyboard navigation
 function onKeydown(e: KeyboardEvent) {
