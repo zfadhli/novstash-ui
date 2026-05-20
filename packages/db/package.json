@@ -29,5 +29,5 @@
 		"drizzle-kit": "^0.31.8",
 		"typescript": "catalog:"
 	},
-	"version": "0.1.0"
+	"version": "0.1.1"
 }
