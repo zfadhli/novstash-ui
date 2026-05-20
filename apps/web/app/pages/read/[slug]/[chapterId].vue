@@ -30,7 +30,7 @@ onUnmounted(() => {
 
 // Theme classes for the reader
 const readerThemeClass = computed(() => {
-	switch (settings.theme) {
+	switch (settings.value.theme) {
 		case "dark":
 			return "bg-neutral-900 text-neutral-100";
 		case "light":
@@ -41,7 +41,7 @@ const readerThemeClass = computed(() => {
 });
 
 const fontFamilyClass = computed(() => {
-	switch (settings.fontFamily) {
+	switch (settings.value.fontFamily) {
 		case "sans":
 			return "font-sans";
 		case "mono":
