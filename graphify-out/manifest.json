@@ -40,9 +40,9 @@
     "semantic_hash": "2a4e6f283182d70ef9cf0830b47e5abc"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/index.ts": {
-    "mtime": 1779260375.959082,
-    "ast_hash": "7f9ddddd8b4a6e58eca6a10b132a758e",
-    "semantic_hash": "7f9ddddd8b4a6e58eca6a10b132a758e"
+    "mtime": 1779279107.5800164,
+    "ast_hash": "bb8ef0cb42dc12dda8d9e713d12b5cf5",
+    "semantic_hash": "bb8ef0cb42dc12dda8d9e713d12b5cf5"
   },
   "/home/envs4/workspaces/novstash-ui/packages/config/package.json": {
     "mtime": 1779251319.4836836,
@@ -55,9 +55,9 @@
     "semantic_hash": "784778dc5845877c57323943e8b7c5e3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/package.json": {
-    "mtime": 1779269443.3151453,
-    "ast_hash": "dd5e2655017d40321624f43692d70964",
-    "semantic_hash": "dd5e2655017d40321624f43692d70964"
+    "mtime": 1779279101.2436712,
+    "ast_hash": "34578bcf97ebd1817227ae5564adc9c1",
+    "semantic_hash": "34578bcf97ebd1817227ae5564adc9c1"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/tsconfig.json": {
     "mtime": 1779251319.4796834,
@@ -65,9 +65,9 @@
     "semantic_hash": "2379b8a9638b5dd2b0a952321fb54ab8"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts": {
-    "mtime": 1779251319.4916837,
-    "ast_hash": "49ef0e5a5a64f7c9496c5b73036252d6",
-    "semantic_hash": "49ef0e5a5a64f7c9496c5b73036252d6"
+    "mtime": 1779279103.7878098,
+    "ast_hash": "1f8618f47f6e66c16d18f9d512f7907b",
+    "semantic_hash": "1f8618f47f6e66c16d18f9d512f7907b"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/app.config.ts": {
     "mtime": 1779251307.9517765,
@@ -483,5 +483,20 @@
     "mtime": 1779262717.0088432,
     "ast_hash": "29a991aec643bb209bc9142670a4f2b7",
     "semantic_hash": "29a991aec643bb209bc9142670a4f2b7"
+  },
+  "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/users.ts": {
+    "mtime": 1779279105.831921,
+    "ast_hash": "a5f36ba78b37e2afbadecd27d1276456",
+    "semantic_hash": "a5f36ba78b37e2afbadecd27d1276456"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useUser.ts": {
+    "mtime": 1779279116.4925203,
+    "ast_hash": "c8fcdd13aa0228c29981eac553feafc2",
+    "semantic_hash": "c8fcdd13aa0228c29981eac553feafc2"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/routes/auth/google.get.ts": {
+    "mtime": 1779279113.32834,
+    "ast_hash": "891da229f6f42f4c974ac3053dc2446d",
+    "semantic_hash": "891da229f6f42f4c974ac3053dc2446d"
   }
 }

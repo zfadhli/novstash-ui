@@ -2,12 +2,37 @@
 import type { NavigationMenuItem } from "@nuxt/ui";
 
 const route = useRoute();
+const { loggedIn, user, logout } = useUser();
 
 const items = computed<NavigationMenuItem[]>(() => [
 	{ label: "Home", to: "/", active: route.path === "/" },
 	{ label: "Search", to: "/search", active: route.path === "/search" },
 	{ label: "Library", to: "/library", active: route.path === "/library" },
 ]);
+
+const dropdownItems = computed(() => {
+	if (!user.value) return [];
+
+	return [
+		{
+			type: "label" as const,
+			label: user.value.name || "User",
+			description: user.value.email || "",
+			class: "font-semibold",
+		},
+		{ type: "separator" as const },
+		{
+			label: "Settings",
+			icon: "lucide:settings",
+			to: "/settings",
+		},
+		{
+			label: "Logout",
+			icon: "lucide:log-out",
+			onSelect: () => logout(),
+		},
+	];
+});
 </script>
 
 <template>
@@ -26,7 +51,33 @@ const items = computed<NavigationMenuItem[]>(() => [
 		</template>
 
 		<template #right>
-			<UColorModeButton />
+			<div class="flex items-center gap-2">
+				<UButton
+					v-if="!loggedIn"
+					variant="outline"
+					size="sm"
+					icon="lucide:chrome"
+					@click="navigateTo('/auth/google')"
+				>
+					Sign in with Google
+				</UButton>
+
+				<UDropdownMenu
+					v-else
+					:items="dropdownItems"
+					:content="{ align: 'end', sideOffset: 8 }"
+				>
+					<UAvatar
+						:src="user?.avatar || undefined"
+						:text="user?.name?.charAt(0)?.toUpperCase() || '?'"
+						size="sm"
+						class="cursor-pointer ring-2 ring-transparent transition-all duration-200 hover:ring-emerald-500/50"
+						:alt="user?.name || 'User avatar'"
+					/>
+				</UDropdownMenu>
+
+				<UColorModeButton />
+			</div>
 		</template>
 
 		<template #body>
