@@ -27,9 +27,12 @@
 		"db:migrate": "turbo -F @novstash-ui/db db:migrate",
 		"db:local": "turbo -F @novstash-ui/db db:local",
 		"check": "biome check --write .",
-		"cli:lint": "cd apps/novstash-cli && uv run ruff check src/",
-		"cli:format": "cd apps/novstash-cli && uv run ruff format src/",
-		"cli:test": "cd apps/novstash-cli && uv run pytest -v"
+		"cli:lint": "cd apps/novstash-cli && UV_NO_SYNC=1 NOVSTASH_DB=../../local.db uv run ruff check src/",
+		"cli:format": "cd apps/novstash-cli && UV_NO_SYNC=1 NOVSTASH_DB=../../local.db uv run ruff format src/",
+		"cli:test": "cd apps/novstash-cli && UV_NO_SYNC=1 NOVSTASH_DB=../../local.db uv run pytest -v",
+		"cli:download": "cd apps/novstash-cli && NOVSTASH_DB=../../local.db uv run python -m novstash scrape",
+		"cli:list": "cd apps/novstash-cli && NOVSTASH_DB=../../local.db uv run python -m novstash list-novels",
+		"cli:info": "cd apps/novstash-cli && NOVSTASH_DB=../../local.db uv run python -m novstash info"
 	},
 	"dependencies": {
 		"@novstash-ui/env": "workspace:*",
