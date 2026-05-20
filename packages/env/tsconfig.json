@@ -1,0 +1,3 @@
+{
+  "extends": "@novstash-ui/config/tsconfig.base.json"
+}

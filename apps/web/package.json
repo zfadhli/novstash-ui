@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@libsql/client": "catalog:",
+    "@novstash-ui/env": "workspace:*",
+    "@nuxt/ui": "^4.5.1",
+    "dotenv": "catalog:",
+    "libsql": "catalog:",
+    "nuxt": "^4.4.4",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.96",
+    "@novstash-ui/config": "workspace:*",
+    "tailwindcss": "^4.2.1",
+    "typescript": "catalog:"
+  }
+}
