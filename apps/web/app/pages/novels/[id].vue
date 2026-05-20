@@ -160,16 +160,12 @@ const showContinueReading = computed(() => {
 						<!-- Continue Reading — only if saved progress exists and isn't first chapter -->
 						<UButton
 							v-if="showContinueReading && continueReading"
-							:to="`/read/${novel.slug}/${continueReading.idx}`"
+							:to="`/read/${novel.slug}/${continueReading.idx}${continueReading.scrollPosition ? `?scroll=${continueReading.scrollPosition}` : ''}`"
 							size="lg"
-							variant="outline"
-							color="primary"
+							color="amber"
 						>
-							<Icon name="lucide:bookmark" class="mr-2 size-5" />
-							Continue Reading
-							<span class="ml-1.5 text-xs opacity-60">
-								Ch. {{ continueReading.idx }}
-							</span>
+							<Icon name="lucide:book-open-check" class="mr-2 size-5" />
+							Continue Reading (Ch. {{ continueReading.idx }})
 						</UButton>
 					</div>
 				</div>

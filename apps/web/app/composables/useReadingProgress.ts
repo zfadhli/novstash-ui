@@ -3,6 +3,7 @@ export interface ReadingProgress {
 	idx: number;
 	title: string;
 	timestamp: number;
+	scrollPosition?: number;
 }
 
 const STORAGE_KEY = "novstash-reading-progress";
@@ -52,7 +53,12 @@ export function useReadingProgress(novelSlug?: MaybeRefOrGetter<string>) {
 	 * Save progress for a given novel chapter.
 	 * Call this when a chapter loads successfully.
 	 */
-	function saveProgress(newSlug: string, idx: number, title?: string | null) {
+	function saveProgress(
+		newSlug: string,
+		idx: number,
+		title?: string | null,
+		scrollPosition?: number,
+	) {
 		allProgress.value = {
 			...allProgress.value,
 			[newSlug]: {
@@ -60,6 +66,8 @@ export function useReadingProgress(novelSlug?: MaybeRefOrGetter<string>) {
 				idx,
 				title: title ?? `Chapter ${idx}`,
 				timestamp: Date.now(),
+				scrollPosition:
+					scrollPosition ?? allProgress.value[newSlug]?.scrollPosition,
 			},
 		};
 		persist();

@@ -7,6 +7,7 @@ const { chapter, pending, error } = useChapter(novelId, chapterIdx);
 const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 const { saveProgress } = useReadingHistory();
+const { saveProgress: saveLocalProgress } = useReadingProgress();
 const { render: renderMd } = useMarkdown();
 useScrollMemory();
 const { prefetched } = useChapterPrefetch(novelId, chapterIdx);
@@ -104,6 +105,18 @@ onMounted(() => {
 onUnmounted(() => {
 	window.removeEventListener("keydown", onKeydown);
 	window.removeEventListener("scroll", onScroll);
+});
+
+// Save scroll position to localStorage on unmount for 'Continue Reading' on novel page
+onUnmounted(() => {
+	if (chapter.value) {
+		saveLocalProgress(
+			chapter.value.novelSlug,
+			chapter.value.idx,
+			chapter.value.title ?? undefined,
+			window.scrollY,
+		);
+	}
 });
 
 // Theme classes for the reader
