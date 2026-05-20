@@ -1,0 +1,3 @@
+[submodule "apps/novstash-cli"]
+	path = apps/novstash-cli
+	url = git@github.com:zfadhli/novstash-cli.git
