@@ -1,15 +1,19 @@
 import { useRoute, useRouter } from "vue-router";
 
-export function useScrollMemory() {
+export function useScrollMemory(when?: Ref<boolean>) {
 	const route = useRoute();
 	const router = useRouter();
 
-	// Restore scroll position on mount after content renders
-	onMounted(async () => {
+	// Restore scroll position only when the when signal is truthy
+	// (content has loaded). This prevents scrolling against a tiny
+	// loading-spinner DOM before async chapter data arrives.
+	watchEffect(() => {
+		if (when && !when.value) return;
 		const scroll = Number(route.query.scroll) || 0;
 		if (scroll > 0) {
-			await nextTick();
-			window.scrollTo({ top: scroll, behavior: "instant" });
+			nextTick(() => {
+				window.scrollTo({ top: scroll, behavior: "instant" });
+			});
 		}
 	});
 

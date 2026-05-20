@@ -9,7 +9,8 @@ const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 const { saveProgress } = useReadingHistory();
 const { saveProgress: saveLocalProgress } = useReadingProgress();
 const { render: renderMd } = useMarkdown();
-useScrollMemory();
+const chapterReady = computed(() => !pending.value && !!chapter.value);
+useScrollMemory(chapterReady);
 const { prefetched } = useChapterPrefetch(novelId, chapterIdx);
 
 const renderedContent = computed(() =>

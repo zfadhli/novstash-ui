@@ -85,9 +85,9 @@
     "semantic_hash": "54167ec17194a27daa6f62778c491803"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/novels/[id].vue": {
-    "mtime": 1779259000.3031926,
-    "ast_hash": "fab60133e0229e336957dcd5a268de8b",
-    "semantic_hash": "fab60133e0229e336957dcd5a268de8b"
+    "mtime": 1779264651.514169,
+    "ast_hash": "0c95faad557da077bd0ab6cb8b9d20f5",
+    "semantic_hash": "0c95faad557da077bd0ab6cb8b9d20f5"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/Header.vue": {
     "mtime": 1779261032.302566,
@@ -235,9 +235,9 @@
     "semantic_hash": "166b962dda732b452aa23264c8e8e395"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/read/[slug]/[chapterId].vue": {
-    "mtime": 1779264051.210413,
-    "ast_hash": "84776d464c070eecdf2cec3877e67509",
-    "semantic_hash": "84776d464c070eecdf2cec3877e67509"
+    "mtime": 1779264647.4098678,
+    "ast_hash": "be58304eb68184c1c72763560c2a5fc4",
+    "semantic_hash": "be58304eb68184c1c72763560c2a5fc4"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/NovelCard.vue": {
     "mtime": 1779253734.9969292,
@@ -265,9 +265,9 @@
     "semantic_hash": "4d822d8fc1ae37832945abe41aa9c7fb"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingProgress.ts": {
-    "mtime": 1779259002.5992706,
-    "ast_hash": "6a446c3f20c19cff6fc713afd8640fb8",
-    "semantic_hash": "6a446c3f20c19cff6fc713afd8640fb8"
+    "mtime": 1779264641.797457,
+    "ast_hash": "1068c5d085f0e386ab848bf3bbe2dd52",
+    "semantic_hash": "1068c5d085f0e386ab848bf3bbe2dd52"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterList.ts": {
     "mtime": 1779258112.9453485,
