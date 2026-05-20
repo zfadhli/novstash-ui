@@ -235,9 +235,9 @@
     "semantic_hash": "166b962dda732b452aa23264c8e8e395"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/read/[slug]/[chapterId].vue": {
-    "mtime": 1779262465.0471997,
-    "ast_hash": "83e7a261233c3b753bdd5025d8760c69",
-    "semantic_hash": "83e7a261233c3b753bdd5025d8760c69"
+    "mtime": 1779262709.5203464,
+    "ast_hash": "f26e8ecd9c1dbec43f7e250759f5061a",
+    "semantic_hash": "f26e8ecd9c1dbec43f7e250759f5061a"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/NovelCard.vue": {
     "mtime": 1779253734.9969292,
@@ -473,5 +473,20 @@
     "mtime": 1779262465.0471997,
     "ast_hash": "be153b9c9929fbd7f0763b4f4c421710",
     "semantic_hash": "be153b9c9929fbd7f0763b4f4c421710"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/components/KeyboardShortcutsModal.vue": {
+    "mtime": 1779262667.146633,
+    "ast_hash": "0001cb4ba43433db4a5b9f190ccc5d62",
+    "semantic_hash": "0001cb4ba43433db4a5b9f190ccc5d62"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterPrefetch.ts": {
+    "mtime": 1779262717.0088432,
+    "ast_hash": "29a991aec643bb209bc9142670a4f2b7",
+    "semantic_hash": "29a991aec643bb209bc9142670a4f2b7"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useScrollMemory.ts": {
+    "mtime": 1779262717.0088432,
+    "ast_hash": "0f6bc476523dc5f1e8b664fe0122d748",
+    "semantic_hash": "0f6bc476523dc5f1e8b664fe0122d748"
   }
 }

@@ -455,3 +455,45 @@ const fontFamilyClass = computed(() => {
 		<KeyboardShortcutsModal v-model:open="showShortcutsModal" />
 	</div>
 </template>
+
+<style scoped>
+/* Thin scrollbar for the chapter content area */
+article::-webkit-scrollbar {
+	width: 6px;
+}
+
+article::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+article::-webkit-scrollbar-thumb {
+	background: rgb(0 0 0 / 0.12);
+	border-radius: 999px;
+}
+
+article::-webkit-scrollbar-thumb:hover {
+	background: rgb(0 0 0 / 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+	article::-webkit-scrollbar-thumb {
+		background: rgb(255 255 255 / 0.15);
+	}
+
+	article::-webkit-scrollbar-thumb:hover {
+		background: rgb(255 255 255 / 0.25);
+	}
+}
+
+/* Firefox */
+article {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(0 0 0 / 0.12) transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+	article {
+		scrollbar-color: rgb(255 255 255 / 0.15) transparent;
+	}
+}
+</style>
