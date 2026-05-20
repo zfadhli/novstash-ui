@@ -1,8 +1,6 @@
 import { spawn } from "node:child_process";
 import { resolve } from "node:path";
-import { createInterface } from "node:readline";
 
-// Resolve paths relative to the Nuxt project root (process.cwd() is apps/web/)
 const CLI_DIR = resolve(process.cwd(), "../novstash-cli");
 const DB_PATH = resolve(process.cwd(), "../../local.db");
 
@@ -20,88 +18,68 @@ export default defineEventHandler(async (event) => {
 		throw createError({ statusCode: 400, statusMessage: "Invalid URL" });
 	}
 
-	// SSE headers for streaming progress
-	setHeaders(event, {
-		"content-type": "text/event-stream",
-		"cache-control": "no-cache",
-		connection: "keep-alive",
-		"x-accel-buffering": "no",
-	});
+	try {
+		const result = await new Promise<string>(
+			(resolvePromise, rejectPromise) => {
+				const stdout: Buffer[] = [];
+				const stderr: Buffer[] = [];
 
-	const child = spawn(
-		"uv",
-		[
-			"run",
-			"--directory",
-			CLI_DIR,
-			"python",
-			"scripts/scrape_novel.py",
-			url,
-			"--db",
-			DB_PATH,
-		],
-		{
-			timeout: 600_000,
-			stdio: ["ignore", "pipe", "pipe"],
-		},
-	);
-
-	return new Promise<void>((resolve) => {
-		let resolved = false;
-
-		const done = () => {
-			if (!resolved) {
-				resolved = true;
-				resolve();
-			}
-		};
-
-		const rl = createInterface({ input: child.stdout });
-
-		rl.on("line", (line: string) => {
-			try {
-				const parsed = JSON.parse(line);
-				event.node.res.write(`data: ${JSON.stringify(parsed)}\n\n`);
-
-				// Final result — has "success" key
-				if (parsed.success !== undefined) {
-					rl.close();
-					child.kill();
-					event.node.res.end();
-					done();
-				}
-			} catch {
-				// Non-JSON line → progress message
-				event.node.res.write(
-					`data: ${JSON.stringify({ type: "progress", message: line })}\n\n`,
+				const child = spawn(
+					"uv",
+					[
+						"run",
+						"--directory",
+						CLI_DIR,
+						"python",
+						"scripts/scrape_novel.py",
+						url,
+						"--db",
+						DB_PATH,
+					],
+					{
+						timeout: 600_000,
+						stdio: ["ignore", "pipe", "pipe"],
+					},
 				);
-			}
-		});
 
-		child.on("exit", (code) => {
-			if (!resolved) {
-				event.node.res.write(
-					`data: ${JSON.stringify({
-						success: false,
-						error: `Process exited with code ${code}`,
-					})}\n\n`,
-				);
-				event.node.res.end();
-				done();
-			}
-		});
+				child.stdout.on("data", (data: Buffer) => {
+					stdout.push(data);
+				});
 
-		child.on("error", (err) => {
-			if (!resolved) {
-				event.node.res.write(
-					`data: ${JSON.stringify({
-						success: false,
-						error: err.message,
-					})}\n\n`,
-				);
-				event.node.res.end();
-				done();
-			}
+				child.stderr.on("data", (data: Buffer) => {
+					stderr.push(data);
+				});
+
+				child.on("close", (code) => {
+					const stdoutStr = Buffer.concat(stdout).toString().trim();
+					const stderrStr = Buffer.concat(stderr).toString().trim();
+
+					if (code === 0 && stdoutStr) {
+						resolvePromise(stdoutStr);
+					} else if (code === 0 && !stdoutStr) {
+						rejectPromise(
+							new Error("Process exited with code 0 but produced no output"),
+						);
+					} else {
+						const msg = stderrStr
+							? `Process exited with code ${code}: ${stderrStr}`
+							: `Process exited with code ${code}`;
+						rejectPromise(new Error(msg));
+					}
+				});
+
+				child.on("error", (err) => {
+					rejectPromise(err);
+				});
+			},
+		);
+
+		return JSON.parse(result);
+	} catch (err: any) {
+		console.error("[scrape]", err.message);
+		throw createError({
+			statusCode: 500,
+			statusMessage: `Scrape failed: ${err.message}`,
 		});
-	});
+	}
 });
