@@ -6,7 +6,7 @@ const execFileAsync = promisify(execFile);
 
 // Resolve paths relative to the Nuxt project root (process.cwd() is apps/web/)
 const CLI_DIR = resolve(process.cwd(), "../novstash-cli");
-const DB_PATH = resolve(CLI_DIR, "novlove.db");
+const DB_PATH = resolve(process.cwd(), "../../local.db");
 
 interface ScrapeResult {
 	slug: string;
