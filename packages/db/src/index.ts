@@ -2,7 +2,13 @@ import { createClient } from "@libsql/client";
 import { env } from "@novstash-ui/env/server";
 import { drizzle } from "drizzle-orm/libsql";
 
-import * as schema from "./schema";
+import * as tables from "./schema";
+import * as relations from "./schema/relations";
+
+const schema = {
+	...tables,
+	...relations,
+};
 
 export { schema };
 
