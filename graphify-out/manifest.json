@@ -80,14 +80,14 @@
     "semantic_hash": "2ef8ecf58b01bf579c1d5714d3b46186"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/index.vue": {
-    "mtime": 1779292284.0401855,
-    "ast_hash": "60bf9f2ae22ce85230fa318113c0182f",
-    "semantic_hash": "60bf9f2ae22ce85230fa318113c0182f"
+    "mtime": 1779292723.7463431,
+    "ast_hash": "9ab15ea0e15b6b90395e95f167e6481e",
+    "semantic_hash": "9ab15ea0e15b6b90395e95f167e6481e"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/novels/[id].vue": {
-    "mtime": 1779292069.2811005,
-    "ast_hash": "0a7da8b4938d04099bb31e6580ba243a",
-    "semantic_hash": "0a7da8b4938d04099bb31e6580ba243a"
+    "mtime": 1779292723.7463431,
+    "ast_hash": "fc09756c0238978079aa54dcebb99046",
+    "semantic_hash": "fc09756c0238978079aa54dcebb99046"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/Header.vue": {
     "mtime": 1779287244.6244335,
@@ -235,9 +235,9 @@
     "semantic_hash": "166b962dda732b452aa23264c8e8e395"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/read/[slug]/[chapterId].vue": {
-    "mtime": 1779269385.3371172,
-    "ast_hash": "2f5c4a2db96fffbc548b0dde12210528",
-    "semantic_hash": "2f5c4a2db96fffbc548b0dde12210528"
+    "mtime": 1779292723.8103466,
+    "ast_hash": "b5267c57a2474e21824b4d5152017919",
+    "semantic_hash": "b5267c57a2474e21824b4d5152017919"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/NovelCard.vue": {
     "mtime": 1779253734.9969292,
@@ -435,9 +435,9 @@
     "semantic_hash": "243b03ecba82dde9612cd5163145a86d"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/library.vue": {
-    "mtime": 1779260835.386358,
-    "ast_hash": "94276e74f703f392f076e6eed0990514",
-    "semantic_hash": "94276e74f703f392f076e6eed0990514"
+    "mtime": 1779292723.7383428,
+    "ast_hash": "57234daa4a946672385a8266b525ff78",
+    "semantic_hash": "57234daa4a946672385a8266b525ff78"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/types/library.ts": {
     "mtime": 1779260814.3264458,
@@ -445,9 +445,9 @@
     "semantic_hash": "8a89d2f245df549b5374f1d1cec0c07e"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/search.vue": {
-    "mtime": 1779292284.0401855,
-    "ast_hash": "1ca9337130022de2b5ce9fc7eaf5c767",
-    "semantic_hash": "1ca9337130022de2b5ce9fc7eaf5c767"
+    "mtime": 1779292723.7783449,
+    "ast_hash": "11a4ac48b9e9093dd01012a5a7425197",
+    "semantic_hash": "11a4ac48b9e9093dd01012a5a7425197"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useGenres.ts": {
     "mtime": 1779292284.0401855,
@@ -480,9 +480,9 @@
     "semantic_hash": "0001cb4ba43433db4a5b9f190ccc5d62"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterPrefetch.ts": {
-    "mtime": 1779262717.0088432,
-    "ast_hash": "29a991aec643bb209bc9142670a4f2b7",
-    "semantic_hash": "29a991aec643bb209bc9142670a4f2b7"
+    "mtime": 1779292723.7383428,
+    "ast_hash": "dbe70de75a88d540afbf43aacbf7dadf",
+    "semantic_hash": "dbe70de75a88d540afbf43aacbf7dadf"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/users.ts": {
     "mtime": 1779279105.831921,
@@ -508,5 +508,15 @@
     "mtime": 1779282043.1844165,
     "ast_hash": "20150eff0f85075bd98ad680e5d205f2",
     "semantic_hash": "20150eff0f85075bd98ad680e5d205f2"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/components/Pagination.vue": {
+    "mtime": 1779292723.7543437,
+    "ast_hash": "950192e53225e52ccd891c819c4a1180",
+    "semantic_hash": "950192e53225e52ccd891c819c4a1180"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useDebouncedWatch.ts": {
+    "mtime": 1779292743.0233421,
+    "ast_hash": "f3ed1131be957a98340dea591b18ed3a",
+    "semantic_hash": "f3ed1131be957a98340dea591b18ed3a"
   }
 }
