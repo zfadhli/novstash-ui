@@ -260,9 +260,9 @@
     "semantic_hash": "3d255e563512f5263bd21027f5e3d6c3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingHistory.ts": {
-    "mtime": 1779292302.9123123,
-    "ast_hash": "3c98e279e443f516364d3917b802366e",
-    "semantic_hash": "3c98e279e443f516364d3917b802366e"
+    "mtime": 1779292313.5048761,
+    "ast_hash": "9b5f26c0ac572e182a51cf7e70bbd310",
+    "semantic_hash": "9b5f26c0ac572e182a51cf7e70bbd310"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingProgress.ts": {
     "mtime": 1779292284.0401855,
