@@ -8,16 +8,19 @@ const serverProgress = ref<Awaited<ReturnType<typeof getProgress>> | null>(
 	null,
 );
 
-onMounted(async () => {
-	const slug = novel.value?.slug;
-	if (slug) {
-		try {
-			serverProgress.value = await getProgress(slug);
-		} catch {
-			serverProgress.value = null;
+watch(
+	() => novel.value?.slug,
+	async (slug) => {
+		if (slug) {
+			try {
+				serverProgress.value = await getProgress(slug);
+			} catch {
+				serverProgress.value = null;
+			}
 		}
-	}
-});
+	},
+	{ immediate: true },
+);
 
 const firstChapterIdx = computed(() => chapters.value[0]?.idx ?? 0);
 
