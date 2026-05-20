@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import type { RecentlyRead } from "~/types/library";
 
-const search = ref("");
 const searchInput = ref("");
 
 const { novels, total, pending, page, totalPages } = useNovels({
-	search,
+	search: ref(""),
 	limit: 24,
 });
 
 // Debounce search input: wait 300ms after the user stops typing
-// before updating the search ref that triggers the API call
+// then navigate to the search page
 let searchTimer: ReturnType<typeof setTimeout> | null = null;
 watch(searchInput, (val) => {
 	if (searchTimer) clearTimeout(searchTimer);
 	searchTimer = setTimeout(() => {
-		search.value = val;
-		page.value = 1;
+		if (val.trim()) {
+			navigateTo({ path: "/search", query: { q: val.trim() } });
+		}
 	}, 300);
 });
 
