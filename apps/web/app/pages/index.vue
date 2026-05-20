@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { RecentlyRead } from "~/types/library";
+
 const search = ref("");
 const searchInput = ref("");
 
@@ -20,6 +22,21 @@ watch(searchInput, (val) => {
 
 onUnmounted(() => {
 	if (searchTimer) clearTimeout(searchTimer);
+});
+
+// Continue reading
+const recentReads = ref<RecentlyRead[]>([]);
+const recentPending = ref(true);
+
+onMounted(async () => {
+	const { getRecentReads } = useReadingHistory();
+	try {
+		recentReads.value = (await getRecentReads()) as unknown as RecentlyRead[];
+	} catch {
+		// API error — hide section
+	} finally {
+		recentPending.value = false;
+	}
 });
 </script>
 
@@ -48,6 +65,73 @@ onUnmounted(() => {
 						class="w-full rounded-xl border border-neutral-300 bg-white py-3 pr-4 pl-12 text-sm text-neutral-900 placeholder-neutral-400 shadow-sm transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-emerald-400"
 					/>
 				</div>
+			</div>
+		</section>
+
+		<!-- Continue Reading -->
+		<section
+			v-if="!recentPending && recentReads.length > 0"
+			class="mb-12"
+		>
+			<div class="mb-4 flex items-center gap-2">
+				<Icon
+					name="lucide:book-marked"
+					class="size-5 text-emerald-500"
+				/>
+				<h2 class="font-serif text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
+					Continue Reading
+				</h2>
+			</div>
+
+			<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700">
+				<NuxtLink
+					v-for="entry in recentReads"
+					:key="entry.slug"
+					:to="`/novels/${entry.novel.slug}`"
+					class="group flex-shrink-0 w-36 overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 dark:border-neutral-800 dark:bg-neutral-900"
+				>
+					<!-- Thumbnail -->
+					<div class="relative aspect-[3/4] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+						<img
+							v-if="entry.novel.coverUrl"
+							:src="entry.novel.coverUrl"
+							:alt="entry.novel.title"
+							class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+							loading="lazy"
+						/>
+						<div
+							v-else
+							class="flex size-full items-center justify-center"
+						>
+							<span class="text-2xl font-bold text-neutral-300 dark:text-neutral-600">
+								{{ entry.novel.title.charAt(0).toUpperCase() }}
+							</span>
+						</div>
+
+						<!-- Chapter badge -->
+						<span class="absolute right-2 bottom-2 rounded-full bg-emerald-500/90 px-2 py-0.5 text-xs font-semibold text-white shadow-sm backdrop-blur-sm">
+							Ch. {{ entry.chapterIdx }}
+						</span>
+					</div>
+
+					<!-- Info -->
+					<div class="p-3">
+						<h3 class="text-sm font-semibold leading-tight text-neutral-900 line-clamp-2 dark:text-neutral-100">
+							{{ entry.novel.title }}
+						</h3>
+					</div>
+				</NuxtLink>
+
+				<!-- View all link -->
+				<NuxtLink
+					to="/library"
+					class="group flex flex-shrink-0 w-36 items-center justify-center rounded-xl border border-dashed border-neutral-300 bg-neutral-50 transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-50/50 dark:border-neutral-700 dark:bg-neutral-800/50 dark:hover:border-emerald-500/50 dark:hover:bg-emerald-900/20"
+				>
+					<div class="flex flex-col items-center gap-1.5 text-neutral-400 group-hover:text-emerald-500 dark:text-neutral-500 dark:group-hover:text-emerald-400">
+						<Icon name="lucide:arrow-right" class="size-5" />
+						<span class="text-xs font-medium">View All</span>
+					</div>
+				</NuxtLink>
 			</div>
 		</section>
 

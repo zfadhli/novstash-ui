@@ -5,6 +5,7 @@ const route = useRoute();
 
 const items = computed<NavigationMenuItem[]>(() => [
 	{ label: "Home", to: "/", active: route.path === "/" },
+	{ label: "Library", to: "/library", active: route.path === "/library" },
 ]);
 </script>
 
