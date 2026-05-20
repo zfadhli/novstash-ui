@@ -11,8 +11,12 @@ export function useNovels(options: UseNovelsOptions = {}) {
 	const page = toRef(options.page ?? 1);
 	const limit = toRef(options.limit ?? 20);
 
+	const key = computed(
+		() => `novels-${search.value}-${page.value}-${limit.value}`,
+	);
+
 	const { data, pending, error, refresh } = useAsyncData(
-		`novels-${Date.now()}`,
+		key,
 		async () => {
 			const params = new URLSearchParams();
 			if (search.value) params.set("q", search.value);

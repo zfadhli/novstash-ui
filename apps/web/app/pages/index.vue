@@ -17,6 +17,10 @@ watch(searchInput, (val) => {
 		page.value = 1;
 	}, 300);
 });
+
+onUnmounted(() => {
+	if (searchTimer) clearTimeout(searchTimer);
+});
 </script>
 
 <template>
