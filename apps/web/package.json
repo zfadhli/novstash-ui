@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@libsql/client": "catalog:",
 		"@novstash-ui/env": "workspace:*",
+		"@novstash-ui/db": "workspace:*",
 		"@nuxt/ui": "^4.5.1",
 		"dotenv": "catalog:",
 		"libsql": "catalog:",
