@@ -147,26 +147,26 @@ async function handleDelete(slug: string) {
 			<template #title-cell="{ row }">
 				<div class="flex items-center gap-3">
 					<img
-						v-if="row.coverUrl"
-						:src="row.coverUrl"
-						:alt="row.title"
+						v-if="row.original.coverUrl"
+						:src="row.original.coverUrl"
+						:alt="row.original.title"
 						class="size-10 rounded object-cover"
 					/>
-					<div class="font-medium">{{ row.title }}</div>
+					<div class="font-medium">{{ row.original.title }}</div>
 				</div>
 			</template>
 
 			<template #actions-cell="{ row }">
 				<div class="flex items-center gap-1">
 					<UButton
-						:to="`/admin/novels/${row.slug}/edit`"
+						:to="`/admin/novels/${row.original.slug}/edit`"
 						variant="ghost"
 						size="sm"
 						icon="lucide:pencil"
 						title="Edit"
 					/>
 					<UButton
-						:to="`/admin/novels/${row.slug}/chapters`"
+						:to="`/admin/novels/${row.original.slug}/chapters`"
 						variant="ghost"
 						size="sm"
 						icon="lucide:list"
@@ -178,7 +178,7 @@ async function handleDelete(slug: string) {
 						icon="lucide:trash-2"
 						color="error"
 						title="Delete"
-						@click="handleDelete(row.slug)"
+						@click="handleDelete(row.original.slug)"
 					/>
 				</div>
 			</template>

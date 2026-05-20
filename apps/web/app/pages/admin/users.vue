@@ -48,23 +48,23 @@ onMounted(async () => {
 			<template #name-cell="{ row }">
 				<div class="flex items-center gap-2">
 					<UAvatar
-						:src="row.avatar || undefined"
-						:text="row.name?.charAt(0)?.toUpperCase() || '?'"
+						:src="row.original.avatar || undefined"
+						:text="row.original.name?.charAt(0)?.toUpperCase() || '?'"
 						size="sm"
 					/>
-					<span>{{ row.name || "Unknown" }}</span>
+					<span>{{ row.original.name || "Unknown" }}</span>
 				</div>
 			</template>
 
 			<template #role-cell="{ row }">
-				<UBadge :color="row.role === 'admin' ? 'amber' : 'neutral'" variant="soft">
-					{{ row.role }}
+				<UBadge :color="row.original.role === 'admin' ? 'amber' : 'neutral'" variant="soft">
+					{{ row.original.role }}
 				</UBadge>
 			</template>
 
 			<template #createdAt-cell="{ row }">
 				<span class="text-sm text-neutral-500">
-					{{ row.createdAt ? new Date(row.createdAt).toLocaleDateString() : "—" }}
+					{{ row.original.createdAt ? new Date(row.original.createdAt).toLocaleDateString() : "—" }}
 				</span>
 			</template>
 		</UTable>

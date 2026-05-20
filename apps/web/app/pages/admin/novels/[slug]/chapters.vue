@@ -77,13 +77,13 @@ async function handleDelete(idx: number) {
 		>
 			<template #url-cell="{ row }">
 				<a
-					v-if="row.url"
-					:href="row.url"
+					v-if="row.original.url"
+					:href="row.original.url"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-sm text-blue-500 hover:underline"
 				>
-					{{ row.url.length > 50 ? row.url.slice(0, 50) + "…" : row.url }}
+					{{ row.original.url.length > 50 ? row.original.url.slice(0, 50) + "…" : row.original.url }}
 				</a>
 				<span v-else class="text-sm text-neutral-400">—</span>
 			</template>
@@ -95,7 +95,7 @@ async function handleDelete(idx: number) {
 					icon="lucide:trash-2"
 					color="error"
 					title="Delete"
-					@click="handleDelete(row.idx)"
+					@click="handleDelete(row.original.idx)"
 				/>
 			</template>
 		</UTable>

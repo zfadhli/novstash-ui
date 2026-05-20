@@ -620,8 +620,8 @@
     "semantic_hash": "903f55085c413115ecd08035e64f6432"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/scrape.post.ts": {
-    "mtime": 1779300744.1477294,
-    "ast_hash": "62f36fc59875c226ae668912af2ea619",
-    "semantic_hash": "62f36fc59875c226ae668912af2ea619"
+    "mtime": 1779301159.8203723,
+    "ast_hash": "00b3d7fc593354b279ee3466c31bd81b",
+    "semantic_hash": "00b3d7fc593354b279ee3466c31bd81b"
   }
 }
