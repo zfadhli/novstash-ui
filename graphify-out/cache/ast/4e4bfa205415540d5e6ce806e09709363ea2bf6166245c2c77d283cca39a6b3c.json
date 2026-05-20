@@ -1,1 +1,24 @@
-{"nodes": [{"id": "home_envs4_workspaces_novstash_ui_apps_web_nuxt_config_ts", "label": "nuxt.config.ts", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts", "source_location": "L1"}], "edges": [{"source": "home_envs4_workspaces_novstash_ui_apps_web_nuxt_config_ts", "target": "web", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts", "source_location": "L1", "weight": 1.0}], "raw_calls": []}
+{
+	"nodes": [
+		{
+			"id": "home_envs4_workspaces_novstash_ui_apps_web_nuxt_config_ts",
+			"label": "nuxt.config.ts",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts",
+			"source_location": "L1"
+		}
+	],
+	"edges": [
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_nuxt_config_ts",
+			"target": "web",
+			"relation": "imports_from",
+			"context": "import",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts",
+			"source_location": "L1",
+			"weight": 1.0
+		}
+	],
+	"raw_calls": []
+}

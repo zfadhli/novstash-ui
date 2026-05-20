@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useNovels } from "~/composables/useNovels";
-
 const search = ref("");
 
 const { novels, total, pending, page, totalPages } = useNovels({

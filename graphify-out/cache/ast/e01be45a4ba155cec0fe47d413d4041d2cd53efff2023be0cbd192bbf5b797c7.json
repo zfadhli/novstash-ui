@@ -1,1 +1,50 @@
-{"nodes": [{"id": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts", "label": "[chapterId].get.ts", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts", "source_location": "L1"}, {"id": "chapters_chapterid_get_id_chapterid", "label": "{ id, chapterId }", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts", "source_location": "L5"}], "edges": [{"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts", "target": "db", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts", "source_location": "L1", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts", "target": "drizzle_orm", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts", "source_location": "L2", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts", "target": "chapters_chapterid_get_id_chapterid", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts", "source_location": "L5", "weight": 1.0}], "raw_calls": []}
+{
+	"nodes": [
+		{
+			"id": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts",
+			"label": "[chapterId].get.ts",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts",
+			"source_location": "L1"
+		},
+		{
+			"id": "chapters_chapterid_get_id_chapterid",
+			"label": "{ id, chapterId }",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts",
+			"source_location": "L5"
+		}
+	],
+	"edges": [
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts",
+			"target": "db",
+			"relation": "imports_from",
+			"context": "import",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts",
+			"source_location": "L1",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts",
+			"target": "drizzle_orm",
+			"relation": "imports_from",
+			"context": "import",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts",
+			"source_location": "L2",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_server_api_novels_id_chapters_chapterid_get_ts",
+			"target": "chapters_chapterid_get_id_chapterid",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/[id]/chapters/[chapterId].get.ts",
+			"source_location": "L5",
+			"weight": 1.0
+		}
+	],
+	"raw_calls": []
+}

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useNovel } from "~/composables/useNovel";
-
 const route = useRoute();
 const novelId = route.params.id as string;
 

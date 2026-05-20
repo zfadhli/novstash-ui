@@ -1,1 +1,211 @@
-{"nodes": [{"id": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "label": "models.py", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L1"}, {"id": "novstash_cli_models_novelmodel", "label": "NovelModel", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L6"}, {"id": "basemodel", "label": "BaseModel", "file_type": "code", "source_file": "", "source_location": ""}, {"id": "novstash_cli_models_chaptermodel", "label": "ChapterModel", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L24"}, {"id": "novstash_cli_models_scrapedchapter", "label": "ScrapedChapter", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L36"}, {"id": "novstash_cli_models_scrapednovel", "label": "ScrapedNovel", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L44"}, {"id": "novstash_cli_models_rationale_1", "label": "Pydantic v2 models for novstash data.", "file_type": "rationale", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L1"}, {"id": "novstash_cli_models_rationale_7", "label": "Mirrors the Drizzle novels table schema.", "file_type": "rationale", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L7"}, {"id": "novstash_cli_models_rationale_25", "label": "Mirrors the Drizzle chapters table schema.", "file_type": "rationale", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L25"}, {"id": "novstash_cli_models_rationale_37", "label": "A chapter as scraped from a web novel site, before DB insertion.", "file_type": "rationale", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L37"}, {"id": "novstash_cli_models_rationale_45", "label": "A novel as scraped from a web novel site, before DB insertion.", "file_type": "rationale", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L45"}], "edges": [{"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "target": "pydantic", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L3", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "target": "novstash_cli_models_novelmodel", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L6", "weight": 1.0}, {"source": "novstash_cli_models_novelmodel", "target": "basemodel", "relation": "inherits", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L6", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "target": "novstash_cli_models_chaptermodel", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L24", "weight": 1.0}, {"source": "novstash_cli_models_chaptermodel", "target": "basemodel", "relation": "inherits", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L24", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "target": "novstash_cli_models_scrapedchapter", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L36", "weight": 1.0}, {"source": "novstash_cli_models_scrapedchapter", "target": "basemodel", "relation": "inherits", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L36", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "target": "novstash_cli_models_scrapednovel", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L44", "weight": 1.0}, {"source": "novstash_cli_models_scrapednovel", "target": "basemodel", "relation": "inherits", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L44", "weight": 1.0}, {"source": "novstash_cli_models_rationale_1", "target": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py", "relation": "rationale_for", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L1", "weight": 1.0}, {"source": "novstash_cli_models_rationale_7", "target": "novstash_cli_models_novelmodel", "relation": "rationale_for", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L7", "weight": 1.0}, {"source": "novstash_cli_models_rationale_25", "target": "novstash_cli_models_chaptermodel", "relation": "rationale_for", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L25", "weight": 1.0}, {"source": "novstash_cli_models_rationale_37", "target": "novstash_cli_models_scrapedchapter", "relation": "rationale_for", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L37", "weight": 1.0}, {"source": "novstash_cli_models_rationale_45", "target": "novstash_cli_models_scrapednovel", "relation": "rationale_for", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py", "source_location": "L45", "weight": 1.0}], "raw_calls": []}
+{
+	"nodes": [
+		{
+			"id": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"label": "models.py",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L1"
+		},
+		{
+			"id": "novstash_cli_models_novelmodel",
+			"label": "NovelModel",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L6"
+		},
+		{
+			"id": "basemodel",
+			"label": "BaseModel",
+			"file_type": "code",
+			"source_file": "",
+			"source_location": ""
+		},
+		{
+			"id": "novstash_cli_models_chaptermodel",
+			"label": "ChapterModel",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L24"
+		},
+		{
+			"id": "novstash_cli_models_scrapedchapter",
+			"label": "ScrapedChapter",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L36"
+		},
+		{
+			"id": "novstash_cli_models_scrapednovel",
+			"label": "ScrapedNovel",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L44"
+		},
+		{
+			"id": "novstash_cli_models_rationale_1",
+			"label": "Pydantic v2 models for novstash data.",
+			"file_type": "rationale",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L1"
+		},
+		{
+			"id": "novstash_cli_models_rationale_7",
+			"label": "Mirrors the Drizzle novels table schema.",
+			"file_type": "rationale",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L7"
+		},
+		{
+			"id": "novstash_cli_models_rationale_25",
+			"label": "Mirrors the Drizzle chapters table schema.",
+			"file_type": "rationale",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L25"
+		},
+		{
+			"id": "novstash_cli_models_rationale_37",
+			"label": "A chapter as scraped from a web novel site, before DB insertion.",
+			"file_type": "rationale",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L37"
+		},
+		{
+			"id": "novstash_cli_models_rationale_45",
+			"label": "A novel as scraped from a web novel site, before DB insertion.",
+			"file_type": "rationale",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L45"
+		}
+	],
+	"edges": [
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"target": "pydantic",
+			"relation": "imports_from",
+			"context": "import",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L3",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"target": "novstash_cli_models_novelmodel",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L6",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_novelmodel",
+			"target": "basemodel",
+			"relation": "inherits",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L6",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"target": "novstash_cli_models_chaptermodel",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L24",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_chaptermodel",
+			"target": "basemodel",
+			"relation": "inherits",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L24",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"target": "novstash_cli_models_scrapedchapter",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L36",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_scrapedchapter",
+			"target": "basemodel",
+			"relation": "inherits",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L36",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"target": "novstash_cli_models_scrapednovel",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L44",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_scrapednovel",
+			"target": "basemodel",
+			"relation": "inherits",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L44",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_rationale_1",
+			"target": "home_envs4_workspaces_novstash_ui_apps_novstash_cli_src_novstash_cli_models_py",
+			"relation": "rationale_for",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L1",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_rationale_7",
+			"target": "novstash_cli_models_novelmodel",
+			"relation": "rationale_for",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L7",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_rationale_25",
+			"target": "novstash_cli_models_chaptermodel",
+			"relation": "rationale_for",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L25",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_rationale_37",
+			"target": "novstash_cli_models_scrapedchapter",
+			"relation": "rationale_for",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L37",
+			"weight": 1.0
+		},
+		{
+			"source": "novstash_cli_models_rationale_45",
+			"target": "novstash_cli_models_scrapednovel",
+			"relation": "rationale_for",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash_cli/models.py",
+			"source_location": "L45",
+			"weight": 1.0
+		}
+	],
+	"raw_calls": []
+}

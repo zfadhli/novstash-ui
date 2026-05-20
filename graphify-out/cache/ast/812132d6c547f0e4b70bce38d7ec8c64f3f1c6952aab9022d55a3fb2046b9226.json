@@ -1,1 +1,39 @@
-{"nodes": [{"id": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json", "label": "tsconfig.json", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json", "source_location": "L1"}, {"id": "server_tsconfig_extends", "label": "extends", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json", "source_location": "L2"}], "edges": [{"source": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json", "target": "server_tsconfig_extends", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json", "source_location": "L2", "weight": 1.0}, {"source": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json", "target": "ref_nuxt_tsconfig_server_json", "relation": "extends", "confidence": "EXTRACTED", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json", "source_location": "L2", "weight": 1.0, "context": "import"}]}
+{
+	"nodes": [
+		{
+			"id": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json",
+			"label": "tsconfig.json",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json",
+			"source_location": "L1"
+		},
+		{
+			"id": "server_tsconfig_extends",
+			"label": "extends",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json",
+			"source_location": "L2"
+		}
+	],
+	"edges": [
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json",
+			"target": "server_tsconfig_extends",
+			"relation": "contains",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json",
+			"source_location": "L2",
+			"weight": 1.0
+		},
+		{
+			"source": "home_envs4_workspaces_novstash_ui_apps_web_server_tsconfig_json",
+			"target": "ref_nuxt_tsconfig_server_json",
+			"relation": "extends",
+			"confidence": "EXTRACTED",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/server/tsconfig.json",
+			"source_location": "L2",
+			"weight": 1.0,
+			"context": "import"
+		}
+	]
+}

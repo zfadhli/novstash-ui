@@ -1,1 +1,13 @@
-{"nodes": [{"id": "home_envs4_workspaces_novstash_ui_apps_web_app_app_vue", "label": "app.vue", "file_type": "code", "source_file": "/home/envs4/workspaces/novstash-ui/apps/web/app/app.vue", "source_location": "L1"}], "edges": [], "raw_calls": []}
+{
+	"nodes": [
+		{
+			"id": "home_envs4_workspaces_novstash_ui_apps_web_app_app_vue",
+			"label": "app.vue",
+			"file_type": "code",
+			"source_file": "/home/envs4/workspaces/novstash-ui/apps/web/app/app.vue",
+			"source_location": "L1"
+		}
+	],
+	"edges": [],
+	"raw_calls": []
+}

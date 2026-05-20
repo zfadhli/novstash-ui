@@ -266,7 +266,7 @@ LEGEND.forEach(c => {
 const hyperedges = [];
 // afterDrawing passes ctx already transformed to network coordinate space.
 // Draw node positions raw — no manual pan/zoom/DPR math needed.
-network.on('afterDrawing', function(ctx) {
+network.on('afterDrawing', (ctx) => {
     hyperedges.forEach(h => {
         const positions = h.nodes
             .map(nid => network.getPositions([nid])[nid])

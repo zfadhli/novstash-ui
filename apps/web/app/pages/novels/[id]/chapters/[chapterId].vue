@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useChapter } from "~/composables/useChapter";
-import { useReaderSettings } from "~/composables/useReaderSettings";
-
 const route = useRoute();
 const novelId = route.params.id as string;
 const chapterId = route.params.chapterId as string;
