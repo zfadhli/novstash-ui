@@ -32,7 +32,7 @@ onUnmounted(() => {
 const readerThemeClass = computed(() => {
 	switch (settings.value.theme) {
 		case "dark":
-			return "bg-neutral-900 text-neutral-100";
+			return "bg-neutral-900 text-neutral-300";
 		case "light":
 			return "bg-white text-neutral-900";
 		default:
@@ -97,7 +97,7 @@ const fontFamilyClass = computed(() => {
 							<p class="text-xs text-neutral-500 dark:text-neutral-400">
 								Chapter {{ chapter.idx }}
 							</p>
-							<p class="text-sm font-medium leading-tight text-neutral-900 dark:text-neutral-100 line-clamp-1">
+							<p class="text-sm font-medium leading-tight text-neutral-900 dark:text-neutral-300 line-clamp-1">
 								{{ chapter.title || `Chapter ${chapter.idx}` }}
 							</p>
 						</div>
