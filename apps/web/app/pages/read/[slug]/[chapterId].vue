@@ -311,7 +311,6 @@ const fontFamilyClass = computed(() => {
 			v-model:open="showChapterDrawer"
 			:novel-slug="novelId"
 			:current-chapter-idx="chapter.idx"
-			@close="showChapterDrawer = false"
 		/>
 	</div>
 </template>
