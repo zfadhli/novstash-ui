@@ -525,14 +525,14 @@
     "semantic_hash": "c2642ab3ee826f8b8aad0ad5866dbdbc"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/users.vue": {
-    "mtime": 1779298162.5629752,
-    "ast_hash": "dbe9d4df9bab1441f0aa227810869157",
-    "semantic_hash": "dbe9d4df9bab1441f0aa227810869157"
+    "mtime": 1779299428.843844,
+    "ast_hash": "3bbe10577027b5b28c188819569984f3",
+    "semantic_hash": "3bbe10577027b5b28c188819569984f3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels.vue": {
-    "mtime": 1779298873.797734,
-    "ast_hash": "155ccd7c753f877a3ffb1d94adbf08a0",
-    "semantic_hash": "155ccd7c753f877a3ffb1d94adbf08a0"
+    "mtime": 1779299963.308376,
+    "ast_hash": "e65f041e042250a45804983ec218cc99",
+    "semantic_hash": "e65f041e042250a45804983ec218cc99"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/create.vue": {
     "mtime": 1779297678.4516132,
@@ -540,9 +540,9 @@
     "semantic_hash": "75600a3d9c98fafd65e88728bc351b1f"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/[slug]/chapters.vue": {
-    "mtime": 1779298162.5629752,
-    "ast_hash": "0e09e044b006109d6500d43ccec28c27",
-    "semantic_hash": "0e09e044b006109d6500d43ccec28c27"
+    "mtime": 1779299428.843844,
+    "ast_hash": "e2c6a05a39ff6a9aca371608016eed35",
+    "semantic_hash": "e2c6a05a39ff6a9aca371608016eed35"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/[slug]/edit.vue": {
     "mtime": 1779297678.4516132,
@@ -608,5 +608,20 @@
     "mtime": 1779297616.5827475,
     "ast_hash": "5fe6bab0b8d94743a88bad7601e9166a",
     "semantic_hash": "5fe6bab0b8d94743a88bad7601e9166a"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/scripts/scrape_novel.py": {
+    "mtime": 1779299926.299538,
+    "ast_hash": "fcfc1de1be3c535a6e247f83c3958293",
+    "semantic_hash": "fcfc1de1be3c535a6e247f83c3958293"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/novstash-cli/src/novstash/scraper.py": {
+    "mtime": 1779299922.6792917,
+    "ast_hash": "903f55085c413115ecd08035e64f6432",
+    "semantic_hash": "903f55085c413115ecd08035e64f6432"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/scrape.post.ts": {
+    "mtime": 1779299967.2326438,
+    "ast_hash": "0970b6a637727e6cde13cf3a392eb49f",
+    "semantic_hash": "0970b6a637727e6cde13cf3a392eb49f"
   }
 }
