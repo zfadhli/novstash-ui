@@ -8,6 +8,7 @@ const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 
 const showSettings = ref(false);
+const showChapterDrawer = ref(false);
 
 // Keyboard navigation
 function onKeydown(e: KeyboardEvent) {
@@ -111,6 +112,14 @@ const fontFamilyClass = computed(() => {
 							:to="chapter.prevChapter ? `/read/${novelId}/${chapter.prevChapter.idx}` : undefined"
 							icon="lucide:chevron-left"
 						/>
+						<UButton
+							variant="ghost"
+							size="sm"
+							@click="showChapterDrawer = true"
+							title="Chapters"
+						>
+							<Icon name="lucide:list" class="size-4" />
+						</UButton>
 						<UButton
 							variant="ghost"
 							size="sm"
@@ -295,5 +304,14 @@ const fontFamilyClass = computed(() => {
 				</article>
 			</div>
 		</template>
+
+		<!-- Chapter Drawer -->
+		<ChapterDrawer
+			v-if="chapter"
+			v-model:open="showChapterDrawer"
+			:novel-slug="novelId"
+			:current-chapter-idx="chapter.idx"
+			@close="showChapterDrawer = false"
+		/>
 	</div>
 </template>
