@@ -1,3 +1,5 @@
+import type { Ref } from "vue";
+
 export interface ReadingProgress {
 	slug: string;
 	idx: number;
@@ -17,7 +19,7 @@ function readStorage(): Record<string, ReadingProgress> {
 	return {};
 }
 
-export function useReadingProgress() {
+export function useReadingProgress(slugRef?: Ref<string | undefined | null>) {
 	// Always init with empty — useState never re-runs the init fn
 	// on client after SSR because Nuxt uses the serialized SSR value.
 	const allProgress = useState<Record<string, ReadingProgress>>(
@@ -71,8 +73,14 @@ export function useReadingProgress() {
 		return allProgress.value[slug] ?? null;
 	}
 
+	// Continue Reading returns the latest-read chapter.
+	// If slugRef is provided, filter to only that novel;
+	// otherwise returns global latest (used on home page).
 	const continueReading = computed(() => {
-		const entries = Object.values(allProgress.value).filter((p) => p.idx > 0);
+		const entries = Object.values(allProgress.value).filter((p) => {
+			if (slugRef?.value && p.slug !== slugRef.value) return false;
+			return p.idx > 0;
+		});
 		if (entries.length === 0) return null;
 		return entries.reduce((latest, current) =>
 			current.idx > latest.idx ? current : latest,

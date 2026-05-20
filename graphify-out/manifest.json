@@ -265,9 +265,9 @@
     "semantic_hash": "4d822d8fc1ae37832945abe41aa9c7fb"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingProgress.ts": {
-    "mtime": 1779264641.797457,
-    "ast_hash": "1068c5d085f0e386ab848bf3bbe2dd52",
-    "semantic_hash": "1068c5d085f0e386ab848bf3bbe2dd52"
+    "mtime": 1779266674.5548737,
+    "ast_hash": "47626b224fcb71cb4a44c2af0dc4386b",
+    "semantic_hash": "47626b224fcb71cb4a44c2af0dc4386b"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterList.ts": {
     "mtime": 1779258112.9453485,
@@ -485,8 +485,8 @@
     "semantic_hash": "29a991aec643bb209bc9142670a4f2b7"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useScrollMemory.ts": {
-    "mtime": 1779265052.751624,
-    "ast_hash": "b4ce5de38219954e1bf7de406c93c9b5",
-    "semantic_hash": "b4ce5de38219954e1bf7de406c93c9b5"
+    "mtime": 1779266674.5548737,
+    "ast_hash": "02a765eaee7394c5a0115a8e9e8c2eef",
+    "semantic_hash": "02a765eaee7394c5a0115a8e9e8c2eef"
   }
 }

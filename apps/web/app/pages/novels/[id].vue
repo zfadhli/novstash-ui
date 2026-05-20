@@ -3,7 +3,9 @@ const route = useRoute();
 const novelId = route.params.id as string;
 
 const { novel, chapters, pending, error } = useNovel(novelId);
-const { continueReading } = useReadingProgress(() => novel.value?.slug);
+const { continueReading } = useReadingProgress(
+	computed(() => novel.value?.slug),
+);
 
 const firstChapterIdx = computed(() => chapters.value[0]?.idx ?? 0);
 
