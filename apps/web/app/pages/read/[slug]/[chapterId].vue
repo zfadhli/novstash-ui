@@ -270,7 +270,7 @@ const fontFamilyClass = computed(() => {
 					</header>
 
 					<!-- Chapter content -->
-					<div class="whitespace-pre-wrap leading-relaxed">
+					<div class="whitespace-pre-wrap">
 						{{ chapter.contentMd }}
 					</div>
 

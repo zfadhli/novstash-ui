@@ -13,7 +13,7 @@ const defaults: ReaderSettings = {
 	fontSize: 18,
 	lineHeight: 1.8,
 	fontFamily: "serif",
-	theme: "sepia",
+	theme: "dark",
 	maxWidth: 720,
 };
 
