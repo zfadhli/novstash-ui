@@ -2,7 +2,7 @@
 import type { NavigationMenuItem } from "@nuxt/ui";
 
 const route = useRoute();
-const { loggedIn, user, logout } = useUser();
+const { loggedIn, user, isAdmin, logout } = useUser();
 
 const items = computed<NavigationMenuItem[]>(() => [
 	{ label: "Home", to: "/", active: route.path === "/" },
@@ -13,7 +13,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 const dropdownItems = computed(() => {
 	if (!user.value) return [];
 
-	return [
+	const items: NavigationMenuItem[] = [
 		{
 			type: "label" as const,
 			label: user.value.name || "User",
@@ -21,6 +21,17 @@ const dropdownItems = computed(() => {
 			class: "font-semibold",
 		},
 		{ type: "separator" as const },
+	];
+
+	if (isAdmin.value) {
+		items.push({
+			label: "Admin",
+			icon: "lucide:shield",
+			to: "/admin",
+		});
+	}
+
+	items.push(
 		{
 			label: "Settings",
 			icon: "lucide:settings",
@@ -34,7 +45,9 @@ const dropdownItems = computed(() => {
 				navigateTo("/");
 			},
 		},
-	];
+	);
+
+	return items;
 });
 </script>
 

@@ -9,9 +9,14 @@ export function useUser() {
 		callOnce("fetch-user-session", () => fetch());
 	}
 
+	const isAdmin = computed(
+		() => (user.value as { role?: string } | null)?.role === "admin",
+	);
+
 	return {
 		loggedIn,
 		user,
+		isAdmin,
 		refresh: fetch,
 		logout: clear,
 	};

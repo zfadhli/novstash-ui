@@ -1,4 +1,5 @@
 import { db, schema } from "@novstash-ui/db";
+import { eq } from "drizzle-orm";
 
 export default defineOAuthGoogleEventHandler({
 	async onSuccess(event, { user }) {
@@ -21,12 +22,19 @@ export default defineOAuthGoogleEventHandler({
 			})
 			.execute();
 
+		const created = await db
+			.select({ role: schema.users.role })
+			.from(schema.users)
+			.where(eq(schema.users.id, user.sub))
+			.limit(1);
+
 		await setUserSession(event, {
 			user: {
 				id: user.sub,
 				email: user.email,
 				name: user.name,
 				avatar: user.picture,
+				role: created[0]?.role ?? "user",
 			},
 		});
 
