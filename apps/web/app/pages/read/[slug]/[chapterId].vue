@@ -8,7 +8,7 @@ const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 const { saveProgress } = useReadingHistory();
 const { render: renderMd } = useMarkdown();
-const { containerRef: readerContentEl } = useScrollMemory(novelId, chapterIdx);
+useScrollMemory();
 const { prefetched } = useChapterPrefetch(novelId, chapterIdx);
 
 const renderedContent = computed(() =>
@@ -34,11 +34,8 @@ watch(
 const scrollProgress = ref(0);
 
 function onScroll() {
-	const el = readerContentEl.value;
-	if (!el) return;
-	const { scrollTop, scrollHeight, clientHeight } = el;
-	const maxScroll = scrollHeight - clientHeight;
-	scrollProgress.value = maxScroll > 0 ? scrollTop / maxScroll : 0;
+	const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+	scrollProgress.value = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 }
 
 const progressBarVisible = computed(() => scrollProgress.value > 0.005);
@@ -101,10 +98,12 @@ function onKeydown(e: KeyboardEvent) {
 
 onMounted(() => {
 	window.addEventListener("keydown", onKeydown);
+	window.addEventListener("scroll", onScroll, { passive: true });
 });
 
 onUnmounted(() => {
 	window.removeEventListener("keydown", onKeydown);
+	window.removeEventListener("scroll", onScroll);
 });
 
 // Theme classes for the reader
@@ -386,15 +385,12 @@ const fontFamilyClass = computed(() => {
 				</div>
 
 				<article
-					ref="readerContentEl"
-					class="mx-auto overflow-y-auto px-4 py-12"
-					:class="{ 'max-h-[calc(100vh-3.5rem)]': true }"
+					class="mx-auto px-4 py-12"
 					:style="{
 						maxWidth: `${settings.maxWidth}px`,
 						fontSize: `${settings.fontSize}px`,
 						lineHeight: settings.lineHeight,
 					}"
-					@scroll="onScroll"
 				>
 					<!-- Chapter heading -->
 					<header class="mb-10 text-center">
@@ -456,44 +452,3 @@ const fontFamilyClass = computed(() => {
 	</div>
 </template>
 
-<style scoped>
-/* Thin scrollbar for the chapter content area */
-article::-webkit-scrollbar {
-	width: 6px;
-}
-
-article::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-article::-webkit-scrollbar-thumb {
-	background: rgb(0 0 0 / 0.12);
-	border-radius: 999px;
-}
-
-article::-webkit-scrollbar-thumb:hover {
-	background: rgb(0 0 0 / 0.2);
-}
-
-@media (prefers-color-scheme: dark) {
-	article::-webkit-scrollbar-thumb {
-		background: rgb(255 255 255 / 0.15);
-	}
-
-	article::-webkit-scrollbar-thumb:hover {
-		background: rgb(255 255 255 / 0.25);
-	}
-}
-
-/* Firefox */
-article {
-	scrollbar-width: thin;
-	scrollbar-color: rgb(0 0 0 / 0.12) transparent;
-}
-
-@media (prefers-color-scheme: dark) {
-	article {
-		scrollbar-color: rgb(255 255 255 / 0.15) transparent;
-	}
-}
-</style>
