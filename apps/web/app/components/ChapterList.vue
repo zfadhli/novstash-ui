@@ -39,7 +39,7 @@ defineProps<{
 			<NuxtLink
 				v-for="chapter in chapters"
 				:key="chapter.id"
-				:to="`/novels/${novelSlug}/chapters/${chapter.idx}`"
+				:to="`/read/${novelSlug}/${chapter.idx}`"
 				class="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
 			>
 				<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-xs font-medium text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">

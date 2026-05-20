@@ -140,7 +140,7 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 					<div class="mt-4">
 						<UButton
 							v-if="chapters.length > 0"
-							:to="`/novels/${novel.slug}/chapters/${chapters[0].idx}`"
+							:to="`/read/${novel.slug}/${chapters[0].idx}`"
 							size="lg"
 						>
 							<Icon name="lucide:book-open" class="mr-2 size-5" />

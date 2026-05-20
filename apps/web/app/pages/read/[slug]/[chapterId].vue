@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-const novelId = route.params.id as string;
+const novelId = route.params.slug as string;
 const chapterIdx = Number(route.params.chapterId);
 
 const { chapter, pending, error } = useChapter(novelId, chapterIdx);
@@ -13,10 +13,10 @@ const showSettings = ref(false);
 function onKeydown(e: KeyboardEvent) {
 	if (!chapter.value) return;
 	if (e.key === "ArrowLeft" && chapter.value.prevChapter) {
-		navigateTo(`/novels/${novelId}/chapters/${chapter.value.prevChapter.idx}`);
+		navigateTo(`/read/${novelId}/${chapter.value.prevChapter.idx}`);
 	}
 	if (e.key === "ArrowRight" && chapter.value.nextChapter) {
-		navigateTo(`/novels/${novelId}/chapters/${chapter.value.nextChapter.idx}`);
+		navigateTo(`/read/${novelId}/${chapter.value.nextChapter.idx}`);
 	}
 }
 
@@ -108,7 +108,7 @@ const fontFamilyClass = computed(() => {
 							variant="ghost"
 							size="sm"
 							:disabled="!chapter.prevChapter"
-							:to="chapter.prevChapter ? `/novels/${novelId}/chapters/${chapter.prevChapter.idx}` : undefined"
+							:to="chapter.prevChapter ? `/read/${novelId}/${chapter.prevChapter.idx}` : undefined"
 							icon="lucide:chevron-left"
 						/>
 						<UButton
@@ -122,7 +122,7 @@ const fontFamilyClass = computed(() => {
 							variant="ghost"
 							size="sm"
 							:disabled="!chapter.nextChapter"
-							:to="chapter.nextChapter ? `/novels/${novelId}/chapters/${chapter.nextChapter.idx}` : undefined"
+							:to="chapter.nextChapter ? `/read/${novelId}/${chapter.nextChapter.idx}` : undefined"
 							icon="lucide:chevron-right"
 						/>
 					</div>
@@ -278,7 +278,7 @@ const fontFamilyClass = computed(() => {
 					<nav class="mt-16 flex items-center justify-between border-t border-current/10 pt-8">
 						<UButton
 							v-if="chapter.prevChapter"
-							:to="`/novels/${novelId}/chapters/${chapter.prevChapter.idx}`"
+							:to="`/read/${novelId}/${chapter.prevChapter.idx}`"
 							variant="ghost"
 							class="flex-col items-start"
 						>
@@ -289,7 +289,7 @@ const fontFamilyClass = computed(() => {
 
 						<UButton
 							v-if="chapter.nextChapter"
-							:to="`/novels/${novelId}/chapters/${chapter.nextChapter.idx}`"
+							:to="`/read/${novelId}/${chapter.nextChapter.idx}`"
 							variant="ghost"
 							class="flex-col items-end"
 						>
