@@ -29,7 +29,10 @@ const dropdownItems = computed(() => {
 		{
 			label: "Logout",
 			icon: "lucide:log-out",
-			onSelect: () => logout(),
+			onSelect: () => {
+				logout();
+				navigateTo("/");
+			},
 		},
 	];
 });
