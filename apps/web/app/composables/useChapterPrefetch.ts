@@ -1,6 +1,13 @@
 import type { ChapterWithNav } from "~/types/novel";
 
 /**
+ * Module-level prefetch cache that survives component navigation.
+ * Maps "slug/idx" keys to fetched chapter data so that navigating away
+ * and back doesn't re-fetch already-loaded chapters.
+ */
+const prefetchCache = new Map<string, ChapterWithNav>();
+
+/**
  * Composable to prefetch the next chapter's content in the background.
  *
  * Usage:
@@ -16,8 +23,6 @@ export function useChapterPrefetch(
 	const slug = toRef(novelSlug);
 	const idx = ref(toValue(currentChapterIdx));
 
-	const cache = new Map<string, ChapterWithNav>();
-
 	const prefetched = ref<ChapterWithNav | null>(null);
 
 	// Watch for chapter changes to prefetch the next one
@@ -31,8 +36,8 @@ export function useChapterPrefetch(
 			const cacheKey = `${newSlug}/${nextIdx}`;
 
 			// Already cached?
-			if (cache.has(cacheKey)) {
-				prefetched.value = cache.get(cacheKey) ?? null;
+			if (prefetchCache.has(cacheKey)) {
+				prefetched.value = prefetchCache.get(cacheKey) ?? null;
 				return;
 			}
 
@@ -40,7 +45,7 @@ export function useChapterPrefetch(
 				const data = await $fetch<ChapterWithNav>(
 					`/api/novels/${newSlug}/chapters/${nextIdx}`,
 				);
-				cache.set(cacheKey, data);
+				prefetchCache.set(cacheKey, data);
 				prefetched.value = data;
 			} catch {
 				// Next chapter may not exist — that's fine

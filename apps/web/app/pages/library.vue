@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+	title: "My Library - Novstash",
+});
+
 import type { RecentlyRead } from "~/types/library";
 
 const { getRecentReads } = useReadingHistory();

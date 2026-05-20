@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+	title: "Search Novels - Novstash",
+});
+
 const route = useRoute();
 const router = useRouter();
 
@@ -20,50 +24,6 @@ const {
 } = useNovelSearch();
 const { genres: allGenres, pending: genresPending } = useGenres();
 
-interface PaginationItem {
-	type: "page" | "ellipsis";
-	value: number;
-}
-
-function computedPaginationRange(
-	total: number,
-	current: number,
-): PaginationItem[] {
-	if (total <= 7) {
-		return Array.from({ length: total }, (_, i) => ({
-			type: "page" as const,
-			value: i + 1,
-		}));
-	}
-
-	const pages: PaginationItem[] = [];
-
-	// Always show first page
-	pages.push({ type: "page", value: 1 });
-
-	if (current > 4) {
-		pages.push({ type: "ellipsis", value: -1 });
-	}
-
-	const start = Math.max(2, current - 2);
-	const end = Math.min(total - 1, current + 2);
-
-	for (let i = start; i <= end; i++) {
-		pages.push({ type: "page", value: i });
-	}
-
-	if (current < total - 3) {
-		pages.push({ type: "ellipsis", value: -2 });
-	}
-
-	// Always show last page
-	if (total > 1) {
-		pages.push({ type: "page", value: total });
-	}
-
-	return pages;
-}
-
 const searchInput = ref("");
 
 // Sync initial query from URL
@@ -84,10 +44,9 @@ onMounted(() => {
 });
 
 // Debounce route sync to prevent oscillation between URL and state changes
-let routeSyncTimer: ReturnType<typeof setTimeout> | null = null;
-watch([query, genre, status, sort, page], () => {
-	if (routeSyncTimer) clearTimeout(routeSyncTimer);
-	routeSyncTimer = setTimeout(() => {
+useDebouncedWatch(
+	[query, genre, status, sort, page],
+	() => {
 		const params: Record<string, string> = {};
 		if (query.value) params.q = query.value;
 		if (genre.value.length > 0) params.genre = genre.value.join(",");
@@ -96,21 +55,13 @@ watch([query, genre, status, sort, page], () => {
 		if (page.value > 1) params.page = String(page.value);
 
 		router.push({ path: "/search", query: params });
-	}, 150);
-});
+	},
+	150,
+);
 
 // Debounced search
-let searchTimer: ReturnType<typeof setTimeout> | null = null;
-watch(searchInput, (val) => {
-	if (searchTimer) clearTimeout(searchTimer);
-	searchTimer = setTimeout(() => {
-		setQuery(val);
-	}, 300);
-});
-
-onUnmounted(() => {
-	if (searchTimer) clearTimeout(searchTimer);
-	if (routeSyncTimer) clearTimeout(routeSyncTimer);
+useDebouncedWatch(searchInput, (val) => {
+	setQuery(val);
 });
 
 const sortOptions = [
@@ -241,41 +192,7 @@ function selectGenre(g: string) {
 				:pending="pending"
 			/>
 
-			<!-- Pagination -->
-			<div
-				v-if="totalPages > 1"
-				class="mt-10 flex items-center justify-center gap-2"
-			>
-				<UButton
-					variant="soft"
-					:disabled="page <= 1"
-					@click="page--"
-				>
-					Previous
-				</UButton>
-
-				<div class="flex items-center gap-1">
-					<template v-for="p in computedPaginationRange(totalPages, page)" :key="p.value">
-						<span v-if="p.type === 'ellipsis'" class="px-2 text-neutral-400 dark:text-neutral-500">...</span>
-						<UButton
-							v-else
-							:variant="p.value === page ? 'solid' : 'soft'"
-							size="sm"
-							@click="page = p.value"
-						>
-							{{ p.value }}
-						</UButton>
-					</template>
-				</div>
-
-				<UButton
-					variant="soft"
-					:disabled="page >= totalPages"
-					@click="page++"
-				>
-					Next
-				</UButton>
-			</div>
+			<Pagination v-model="page" :total-pages="totalPages" />
 		</section>
 	</UContainer>
 </template>

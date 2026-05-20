@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+	title: "Novel - Novstash",
+});
+
 const route = useRoute();
 const novelId = route.params.id as string;
 

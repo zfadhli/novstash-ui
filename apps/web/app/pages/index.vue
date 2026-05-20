@@ -1,49 +1,9 @@
 <script setup lang="ts">
 import type { RecentlyRead } from "~/types/library";
 
-interface PaginationItem {
-	type: "page" | "ellipsis";
-	value: number;
-}
-
-function computedPaginationRange(
-	total: number,
-	current: number,
-): PaginationItem[] {
-	if (total <= 7) {
-		return Array.from({ length: total }, (_, i) => ({
-			type: "page" as const,
-			value: i + 1,
-		}));
-	}
-
-	const pages: PaginationItem[] = [];
-
-	// Always show first page
-	pages.push({ type: "page", value: 1 });
-
-	if (current > 4) {
-		pages.push({ type: "ellipsis", value: -1 });
-	}
-
-	const start = Math.max(2, current - 2);
-	const end = Math.min(total - 1, current + 2);
-
-	for (let i = start; i <= end; i++) {
-		pages.push({ type: "page", value: i });
-	}
-
-	if (current < total - 3) {
-		pages.push({ type: "ellipsis", value: -2 });
-	}
-
-	// Always show last page
-	if (total > 1) {
-		pages.push({ type: "page", value: total });
-	}
-
-	return pages;
-}
+definePageMeta({
+	title: "Novstash - Browse Novels",
+});
 
 const searchInput = ref("");
 
@@ -54,18 +14,10 @@ const { novels, total, pending, page, totalPages } = useNovels({
 
 // Debounce search input: wait 300ms after the user stops typing
 // then navigate to the search page
-let searchTimer: ReturnType<typeof setTimeout> | null = null;
-watch(searchInput, (val) => {
-	if (searchTimer) clearTimeout(searchTimer);
-	searchTimer = setTimeout(() => {
-		if (val.trim()) {
-			navigateTo({ path: "/search", query: { q: val.trim() } });
-		}
-	}, 300);
-});
-
-onUnmounted(() => {
-	if (searchTimer) clearTimeout(searchTimer);
+useDebouncedWatch(searchInput, (val) => {
+	if (val.trim()) {
+		navigateTo({ path: "/search", query: { q: val.trim() } });
+	}
 });
 
 // Continue reading
@@ -201,41 +153,7 @@ onMounted(async () => {
 				:pending="pending"
 			/>
 
-			<!-- Pagination -->
-			<div
-				v-if="totalPages > 1"
-				class="mt-10 flex items-center justify-center gap-2"
-			>
-				<UButton
-					variant="soft"
-					:disabled="page <= 1"
-					@click="page--"
-				>
-					Previous
-				</UButton>
-
-				<div class="flex items-center gap-1">
-					<template v-for="p in computedPaginationRange(totalPages, page)" :key="p.value">
-						<span v-if="p.type === 'ellipsis'" class="px-2 text-neutral-400 dark:text-neutral-500">...</span>
-						<UButton
-							v-else
-							:variant="p.value === page ? 'solid' : 'soft'"
-							size="sm"
-							@click="page = p.value"
-						>
-							{{ p.value }}
-						</UButton>
-					</template>
-				</div>
-
-				<UButton
-					variant="soft"
-					:disabled="page >= totalPages"
-					@click="page++"
-				>
-					Next
-				</UButton>
-			</div>
+			<Pagination v-model="page" :total-pages="totalPages" />
 		</section>
 
 		<!-- Empty state when no novels in DB -->
