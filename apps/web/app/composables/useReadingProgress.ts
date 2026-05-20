@@ -1,97 +1,87 @@
 export interface ReadingProgress {
 	slug: string;
 	idx: number;
-	title: string;
-	timestamp: number;
+	title?: string;
 	scrollPosition?: number;
 }
 
-const STORAGE_KEY = "novstash-reading-progress";
-
 function readStorage(): Record<string, ReadingProgress> {
-	if (!import.meta.client) return {};
-	try {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		return stored ? JSON.parse(stored) : {};
-	} catch {
-		return {};
-	}
-}
-
-function writeStorage(data: Record<string, ReadingProgress>) {
 	if (import.meta.client) {
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+		try {
+			const raw = localStorage.getItem("novstash-reading-progress");
+			if (raw) return JSON.parse(raw);
+		} catch {
+			// corrupt or inaccessible storage
+		}
 	}
+	return {};
 }
 
-/**
- * Composable for tracking and retrieving reading progress per novel.
- *
- * Usage (reader page — save progress):
- *   const { saveProgress } = useReadingProgress()
- *   watch(chapter, (c) => { if (c) saveProgress(c.novelSlug, c.idx, c.title) })
- *
- * Usage (novel detail page — check progress):
- *   const { continueReading } = useReadingProgress(() => novel.value?.slug)
- *   // continueReading is a computed<ReadingProgress | null>
- */
-export function useReadingProgress(novelSlug?: MaybeRefOrGetter<string>) {
-	const slug = toRef(novelSlug ?? "");
-
-	// Reactive store — initialized from localStorage, updated on save
+export function useReadingProgress() {
+	// Always init with empty — useState never re-runs the init fn
+	// on client after SSR because Nuxt uses the serialized SSR value.
 	const allProgress = useState<Record<string, ReadingProgress>>(
 		"novstash-reading-progress",
-		() => readStorage(),
+		() => ({}),
 	);
 
-	/** Persist the current in-memory state to localStorage. */
-	function persist() {
-		writeStorage(allProgress.value);
+	// Hydrate from localStorage on client
+	if (import.meta.client && Object.keys(allProgress.value).length === 0) {
+		const stored = readStorage();
+		if (Object.keys(stored).length > 0) {
+			allProgress.value = stored;
+		}
 	}
 
-	/**
-	 * Save progress for a given novel chapter.
-	 * Call this when a chapter loads successfully.
-	 */
+	function persist() {
+		if (import.meta.client) {
+			try {
+				localStorage.setItem(
+					"novstash-reading-progress",
+					JSON.stringify(allProgress.value),
+				);
+			} catch {
+				// storage full or unavailable
+			}
+		}
+	}
+
 	function saveProgress(
-		newSlug: string,
+		slug: string,
 		idx: number,
 		title?: string | null,
 		scrollPosition?: number,
 	) {
 		allProgress.value = {
 			...allProgress.value,
-			[newSlug]: {
-				slug: newSlug,
+			[slug]: {
+				slug,
 				idx,
-				title: title ?? `Chapter ${idx}`,
-				timestamp: Date.now(),
+				title: title ?? undefined,
 				scrollPosition:
-					scrollPosition ?? allProgress.value[newSlug]?.scrollPosition,
+					scrollPosition !== undefined
+						? scrollPosition
+						: allProgress.value[slug]?.scrollPosition,
 			},
 		};
 		persist();
 	}
 
-	/**
-	 * Manually retrieve saved progress for a novel slug.
-	 */
-	function getProgress(slugToCheck: string): ReadingProgress | null {
-		return allProgress.value[slugToCheck] ?? null;
+	function getProgress(slug: string): ReadingProgress | null {
+		return allProgress.value[slug] ?? null;
 	}
 
-	/**
-	 * Reactive computed that resolves to saved progress for the novel slug
-	 * passed to the composable (or null if none).
-	 */
-	const continueReading = computed((): ReadingProgress | null => {
-		if (!slug.value) return null;
-		return allProgress.value[slug.value] ?? null;
+	const continueReading = computed(() => {
+		const entries = Object.values(allProgress.value).filter((p) => p.idx > 0);
+		if (entries.length === 0) return null;
+		return entries.reduce((latest, current) =>
+			current.idx > latest.idx ? current : latest,
+		);
 	});
 
 	return {
+		continueReading,
 		saveProgress,
 		getProgress,
-		continueReading,
 	};
 }

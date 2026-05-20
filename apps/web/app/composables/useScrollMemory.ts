@@ -1,21 +1,24 @@
-import { useRoute, useRouter } from "vue-router";
-
 export function useScrollMemory(when?: Ref<boolean>) {
 	const route = useRoute();
 	const router = useRouter();
 
-	// Restore scroll position only when the when signal is truthy
-	// (content has loaded). This prevents scrolling against a tiny
-	// loading-spinner DOM before async chapter data arrives.
-	watchEffect(() => {
-		if (when && !when.value) return;
-		const scroll = Number(route.query.scroll) || 0;
-		if (scroll > 0) {
-			nextTick(() => {
-				window.scrollTo({ top: scroll, behavior: "instant" });
-			});
-		}
-	});
+	// Restore scroll position only once when content is ready
+	const restored = ref(false);
+
+	watch(
+		() => (when ? when.value : true),
+		(ready) => {
+			if (!ready || restored.value) return;
+			const scroll = Number(route.query.scroll) || 0;
+			if (scroll > 0) {
+				nextTick(() => {
+					window.scrollTo({ top: scroll, behavior: "instant" });
+					restored.value = true;
+				});
+			}
+		},
+		{ immediate: true },
+	);
 
 	// Debounced scroll handler to save position to URL
 	let saveTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -24,9 +27,10 @@ export function useScrollMemory(when?: Ref<boolean>) {
 		saveTimeout = setTimeout(() => {
 			const scrollY = window.scrollY;
 			if (scrollY > 0) {
-				router.replace({ query: { ...route.query, scroll: String(scrollY) } });
+				router.replace({
+					query: { ...route.query, scroll: String(scrollY) },
+				});
 			} else {
-				// Remove scroll param if at top
 				const { scroll: _, ...rest } = route.query;
 				router.replace({ query: rest });
 			}
@@ -39,14 +43,6 @@ export function useScrollMemory(when?: Ref<boolean>) {
 
 	onUnmounted(() => {
 		window.removeEventListener("scroll", onScroll);
-		// Save final position before leaving
-		const scrollY = window.scrollY;
-		if (scrollY > 0) {
-			router.replace({ query: { ...route.query, scroll: String(scrollY) } });
-		} else {
-			const { scroll: _, ...rest } = route.query;
-			router.replace({ query: rest });
-		}
 	});
 
 	return {
