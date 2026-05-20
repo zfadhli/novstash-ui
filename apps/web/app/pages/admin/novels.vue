@@ -43,11 +43,11 @@ async function handleDelete(slug: string) {
 			v-else
 			:rows="novels"
 			:columns="[
-				{ key: 'title', label: 'Title' },
-				{ key: 'author', label: 'Author' },
-				{ key: 'status', label: 'Status' },
-				{ key: 'chapterCount', label: 'Chapters' },
-				{ key: 'actions', label: '' },
+				{ accessorKey: 'title', header: 'Title' },
+				{ accessorKey: 'author', header: 'Author' },
+				{ accessorKey: 'status', header: 'Status' },
+				{ accessorKey: 'chapterCount', header: 'Chapters' },
+				{ accessorKey: 'actions', header: '' },
 			]"
 		>
 			<template #title-cell="{ row }">

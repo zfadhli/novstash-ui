@@ -39,10 +39,10 @@ onMounted(async () => {
 			v-else
 			:rows="users"
 			:columns="[
-				{ key: 'name', label: 'Name' },
-				{ key: 'email', label: 'Email' },
-				{ key: 'role', label: 'Role' },
-				{ key: 'createdAt', label: 'Joined' },
+				{ accessorKey: 'name', header: 'Name' },
+				{ accessorKey: 'email', header: 'Email' },
+				{ accessorKey: 'role', header: 'Role' },
+				{ accessorKey: 'createdAt', header: 'Joined' },
 			]"
 		>
 			<template #name-cell="{ row }">

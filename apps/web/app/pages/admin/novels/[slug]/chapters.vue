@@ -69,10 +69,10 @@ async function handleDelete(idx: number) {
 			v-else
 			:rows="chapters"
 			:columns="[
-				{ key: 'idx', label: '#' },
-				{ key: 'title', label: 'Title' },
-				{ key: 'url', label: 'URL' },
-				{ key: 'actions', label: '' },
+				{ accessorKey: 'idx', header: '#' },
+				{ accessorKey: 'title', header: 'Title' },
+				{ accessorKey: 'url', header: 'URL' },
+				{ accessorKey: 'actions', header: '' },
 			]"
 		>
 			<template #url-cell="{ row }">
