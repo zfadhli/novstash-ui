@@ -85,9 +85,9 @@
     "semantic_hash": "54167ec17194a27daa6f62778c491803"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/novels/[id].vue": {
-    "mtime": 1779264651.514169,
-    "ast_hash": "0c95faad557da077bd0ab6cb8b9d20f5",
-    "semantic_hash": "0c95faad557da077bd0ab6cb8b9d20f5"
+    "mtime": 1779267470.7758923,
+    "ast_hash": "36e7baa176dd273c72096646f874596c",
+    "semantic_hash": "36e7baa176dd273c72096646f874596c"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/Header.vue": {
     "mtime": 1779261032.302566,
@@ -235,9 +235,9 @@
     "semantic_hash": "166b962dda732b452aa23264c8e8e395"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/read/[slug]/[chapterId].vue": {
-    "mtime": 1779265052.751624,
-    "ast_hash": "528a626d3f7f932fb847a4fa7ea53251",
-    "semantic_hash": "528a626d3f7f932fb847a4fa7ea53251"
+    "mtime": 1779268384.3593798,
+    "ast_hash": "ae392b7b565d19539db9d3879e9b2e26",
+    "semantic_hash": "ae392b7b565d19539db9d3879e9b2e26"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/NovelCard.vue": {
     "mtime": 1779253734.9969292,
@@ -260,14 +260,14 @@
     "semantic_hash": "3d255e563512f5263bd21027f5e3d6c3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingHistory.ts": {
-    "mtime": 1779260389.9436648,
-    "ast_hash": "4d822d8fc1ae37832945abe41aa9c7fb",
-    "semantic_hash": "4d822d8fc1ae37832945abe41aa9c7fb"
+    "mtime": 1779268387.0156703,
+    "ast_hash": "d53757ec5cf0b0f314fbaff5e590df5b",
+    "semantic_hash": "d53757ec5cf0b0f314fbaff5e590df5b"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingProgress.ts": {
-    "mtime": 1779266674.5548737,
-    "ast_hash": "47626b224fcb71cb4a44c2af0dc4386b",
-    "semantic_hash": "47626b224fcb71cb4a44c2af0dc4386b"
+    "mtime": 1779267474.072047,
+    "ast_hash": "04c5f9d7ec1f2cc9016745e42c367e1c",
+    "semantic_hash": "04c5f9d7ec1f2cc9016745e42c367e1c"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterList.ts": {
     "mtime": 1779258112.9453485,

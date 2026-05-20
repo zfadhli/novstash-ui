@@ -1,11 +1,11 @@
 # Graph Report - .  (2026-05-20)
 
 ## Corpus Check
-- 98 files · ~220,545 words
+- 98 files · ~220,668 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2176 nodes · 4205 edges · 155 communities (133 shown, 22 thin omitted)
+- 2176 nodes · 4205 edges · 156 communities (134 shown, 22 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 138 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
@@ -137,13 +137,14 @@
 - [[_COMMUNITY_Community 124|Community 124]]
 - [[_COMMUNITY_Community 125|Community 125]]
 - [[_COMMUNITY_Community 126|Community 126]]
-- [[_COMMUNITY_Community 130|Community 130]]
+- [[_COMMUNITY_Community 127|Community 127]]
 - [[_COMMUNITY_Community 131|Community 131]]
 - [[_COMMUNITY_Community 132|Community 132]]
 - [[_COMMUNITY_Community 133|Community 133]]
 - [[_COMMUNITY_Community 134|Community 134]]
-- [[_COMMUNITY_Community 136|Community 136]]
+- [[_COMMUNITY_Community 135|Community 135]]
 - [[_COMMUNITY_Community 137|Community 137]]
+- [[_COMMUNITY_Community 138|Community 138]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `setup()` - 46 edges
@@ -169,7 +170,7 @@
 - `_get_db()` --calls--> `Settings`  [INFERRED]
   apps/novstash-cli/src/novstash/cli.py → apps/novstash-cli/src/novstash/config.py
 
-## Communities (155 total, 22 thin omitted)
+## Communities (156 total, 22 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.01
@@ -229,147 +230,147 @@ Nodes (30): at, bt, ct, dt, et, F, ft, gt (+22 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.08
-Nodes (32): At(), C0(), callHook(), callHookParallel(), callHookWith(), Es(), Fa(), hf() (+24 more)
-
-### Community 15 - "Community 15"
-Cohesion: 0.08
-Nodes (31): _b(), bb(), bm(), bv, dd(), fb(), gm(), hg (+23 more)
-
-### Community 16 - "Community 16"
-Cohesion: 0.08
 Nodes (29): ds, bk(), ck(), dk(), Ea, [ek], ep(), gk() (+21 more)
 
-### Community 17 - "Community 17"
+### Community 15 - "Community 15"
+Cohesion: 0.09
+Nodes (31): At(), _b(), C0(), callHook(), callHookParallel(), callHookWith(), Fa(), hf() (+23 more)
+
+### Community 16 - "Community 16"
 Cohesion: 0.07
 Nodes (29): at, ct, dt, E, et, F, G, H() (+21 more)
 
-### Community 18 - "Community 18"
+### Community 17 - "Community 17"
 Cohesion: 0.07
 Nodes (29): dependsOn, inputs, outputs, dependsOn, cache, cache, cache, persistent (+21 more)
 
-### Community 19 - "Community 19"
+### Community 18 - "Community 18"
 Cohesion: 0.08
 Nodes (29): applyEnv(), baseURL(), buildAssetsDir(), buildAssetsURL(), cachedFn(), createApp(), createAppEventHandler(), createHooks() (+21 more)
 
-### Community 20 - "Community 20"
+### Community 19 - "Community 19"
 Cohesion: 0.17
 Nodes (29): Ae(), ea(), et(), Fe(), fr, Ge(), gr, ha() (+21 more)
 
-### Community 21 - "Community 21"
+### Community 20 - "Community 20"
 Cohesion: 0.07
 Nodes (26): dependencies, dompurify, dotenv, libsql, @libsql/client, marked, @novstash-ui/db, @novstash-ui/env (+18 more)
 
-### Community 22 - "Community 22"
+### Community 21 - "Community 21"
 Cohesion: 0.08
 Nodes (25): ae(), de, E, ee, F, H, ie, J (+17 more)
 
-### Community 23 - "Community 23"
+### Community 22 - "Community 22"
 Cohesion: 0.11
 Nodes (11): _24KHqXtgL0wNd91I4OkxQhazDIHGyiCHRNfvNAiEeU(), callEachWith(), _callHandler(), callHooks(), errorHandler(), executeAsync(), flatHooks(), Hookable (+3 more)
 
-### Community 24 - "Community 24"
+### Community 23 - "Community 23"
 Cohesion: 0.09
 Nodes (25): decode(), decodePath(), decodeQueryKey(), decodeQueryValue(), getQuery(), getQuery$1(), getRouterParams(), hasProtocol() (+17 more)
 
-### Community 25 - "Community 25"
+### Community 24 - "Community 24"
 Cohesion: 0.09
 Nodes (14): createFetch(), createFetchError(), _defu(), detectResponseType(), H3Event, isJSONSerializable(), isPayloadMethod(), isPlainObject() (+6 more)
 
-### Community 26 - "Community 26"
+### Community 25 - "Community 25"
 Cohesion: 0.10
 Nodes (12): fetch_html(), Abstract base class for site adapters., Fetch and parse a single chapter page., Scrape chapters concurrently.          Each worker gets its own adapter instance, Base class for novel site scrapers.      Subclasses should set ``base_url`` as a, Fetch a JSON endpoint with a shorter delay than HTML pages., Convert HTML to clean Markdown., Fetch novel metadata from its info page. (+4 more)
 
-### Community 27 - "Community 27"
+### Community 26 - "Community 26"
 Cohesion: 0.11
 Nodes (17): _lazy_ETAr12(), appHead, appRootAttrs, appSpaLoaderAttrs, appTeleportAttrs, clientUseHead(), entryIds, getRenderer() (+9 more)
 
-### Community 28 - "Community 28"
+### Community 27 - "Community 27"
 Cohesion: 0.09
 Nodes (21): default, dependencies, dotenv, drizzle-orm, libsql, @libsql/client, @novstash-ui/env, zod (+13 more)
 
-### Community 29 - "Community 29"
+### Community 28 - "Community 28"
 Cohesion: 0.13
 Nodes (22): _r(), ak(), by, dn(), Fn, fx(), gg(), ha() (+14 more)
 
-### Community 30 - "Community 30"
+### Community 29 - "Community 29"
 Cohesion: 0.14
 Nodes (20): _display_novel(), export(), _export_markdown(), _export_text(), _get_db(), info(), list_novels(), main() (+12 more)
 
-### Community 31 - "Community 31"
+### Community 30 - "Community 30"
 Cohesion: 0.19
 Nodes (18): bs(), Cn(), Cs(), Dt(), _e(), gu(), Kt(), _l() (+10 more)
 
-### Community 32 - "Community 32"
+### Community 31 - "Community 31"
 Cohesion: 0.18
 Nodes (21): bl(), df(), dm(), eg, Ei(), Et(), ga(), gl() (+13 more)
 
-### Community 33 - "Community 33"
+### Community 32 - "Community 32"
 Cohesion: 0.10
 Nodes (7): Ai(), bu, Ns(), ol(), ux(), vu, wa()
 
-### Community 34 - "Community 34"
+### Community 33 - "Community 33"
 Cohesion: 0.13
 Nodes (11): BaseModel, Chapter, Novel, Pydantic models for novels and chapters., Represents a novel's metadata., Represents a single chapter., Tests for novstash models., Title without prefix should be unchanged. (+3 more)
 
-### Community 35 - "Community 35"
+### Community 34 - "Community 34"
 Cohesion: 0.10
 Nodes (19): compilerOptions, allowSyntheticDefaultImports, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, lib, module, moduleResolution (+11 more)
 
-### Community 36 - "Community 36"
+### Community 35 - "Community 35"
 Cohesion: 0.12
 Nodes (20): CC(), fc(), fd(), ft(), fv(), gd, gp(), gw() (+12 more)
 
-### Community 37 - "Community 37"
+### Community 36 - "Community 36"
 Cohesion: 0.13
 Nodes (17): c, f, g, l, p, u, ac, al() (+9 more)
 
-### Community 38 - "Community 38"
+### Community 37 - "Community 37"
 Cohesion: 0.22
 Nodes (19): bt(), Ce(), ct(), cu(), _e(), Er(), Fa(), Gn() (+11 more)
 
+### Community 38 - "Community 38"
+Cohesion: 0.12
+Nodes (12): Es(), im(), jb, jc, kb, kC(), Os(), Tl() (+4 more)
+
 ### Community 39 - "Community 39"
+Cohesion: 0.13
+Nodes (18): bb(), bv, dd(), fb(), hg, jd(), ld(), Li() (+10 more)
+
+### Community 40 - "Community 40"
 Cohesion: 0.14
 Nodes (17): createError(), createRequiredError(), encodeQueryItem(), encodeQueryKey(), encodeQueryValue(), getGracefulShutdownConfig(), GracefulShutdown(), isUppercase() (+9 more)
 
-### Community 40 - "Community 40"
+### Community 41 - "Community 41"
 Cohesion: 0.16
 Nodes (17): ba(), Be(), cn(), ft(), Ia(), Ie(), kr(), Na() (+9 more)
 
-### Community 41 - "Community 41"
+### Community 42 - "Community 42"
 Cohesion: 0.14
 Nodes (16): $(), aw(), $d, dc(), Do(), j_(), Kx(), mh (+8 more)
 
-### Community 42 - "Community 42"
+### Community 43 - "Community 43"
 Cohesion: 0.13
 Nodes (16): assertMethod(), fetchWithEvent(), filter(), _getFetch(), getProxyRequestHeaders(), getRequestHeader(), getRequestHeaders(), getRequestWebStream() (+8 more)
 
-### Community 43 - "Community 43"
+### Community 44 - "Community 44"
 Cohesion: 0.13
 Nodes (16): cd(), D0(), e0, ed(), F0(), hc(), ib(), ic() (+8 more)
 
-### Community 44 - "Community 44"
+### Community 45 - "Community 45"
 Cohesion: 0.14
 Nodes (7): FreeWebNovelAdapter, Adapter for freewebnovel.com — no Cloudflare, paginated chapter list., Adapter for https://freewebnovel.com — inline metadata, paginated chapters., NovelGardenAdapter, Adapter for novelgarden.us — Next.js app, server-rendered chapters., Adapter for https://novelgarden.us — Next.js SPA with server-rendered content., SiteAdapter
 
-### Community 45 - "Community 45"
+### Community 46 - "Community 46"
 Cohesion: 0.15
 Nodes (15): da(), ee(), Ey(), ge(), kf(), La(), my(), Ne (+7 more)
 
-### Community 46 - "Community 46"
+### Community 47 - "Community 47"
 Cohesion: 0.14
 Nodes (15): _1(), b1(), er(), g1(), _i(), i1(), ip(), k1() (+7 more)
 
-### Community 47 - "Community 47"
+### Community 48 - "Community 48"
 Cohesion: 0.13
 Nodes (14): addHooks(), gv(), hd(), Hv(), Iv(), kv, mi(), mv() (+6 more)
 
-### Community 48 - "Community 48"
+### Community 49 - "Community 49"
 Cohesion: 0.14
 Nodes (14): asIndexedPairs(), drop(), every(), find(), findIndex(), iterator(), lookup(), o() (+6 more)
-
-### Community 49 - "Community 49"
-Cohesion: 0.15
-Nodes (8): im(), jb, jc, kb, kC(), Tl(), tw(), yb()
 
 ### Community 50 - "Community 50"
 Cohesion: 0.16
@@ -389,7 +390,7 @@ Nodes (13): autoincrement, name, notNull, primaryKey, type, chapter_idx, updated
 
 ### Community 55 - "Community 55"
 Cohesion: 0.15
-Nodes (13): columns, content_md, idx, autoincrement, name, notNull, primaryKey, type (+5 more)
+Nodes (13): columns, idx, url, autoincrement, name, notNull, primaryKey, type (+5 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.17
@@ -441,181 +442,185 @@ Nodes (9): b, g, h, m, p, v, x, y (+1 more)
 
 ### Community 68 - "Community 68"
 Cohesion: 0.22
-Nodes (9): foreignKeys, columnsFrom, columnsTo, name, onDelete, onUpdate, tableFrom, tableTo (+1 more)
+Nodes (10): bm(), gm(), hm(), Ii(), jl(), mm(), qf(), vm() (+2 more)
 
 ### Community 69 - "Community 69"
 Cohesion: 0.22
-Nodes (8): dialect, enums, id, internal, indexes, prevId, version, views
+Nodes (9): foreignKeys, columnsFrom, columnsTo, name, onDelete, onUpdate, tableFrom, tableTo (+1 more)
 
 ### Community 70 - "Community 70"
+Cohesion: 0.22
+Nodes (8): dialect, enums, id, internal, indexes, prevId, version, views
+
+### Community 71 - "Community 71"
 Cohesion: 0.33
 Nodes (9): an(), ar(), bh(), du(), ho(), mu(), uu(), wr() (+1 more)
 
-### Community 71 - "Community 71"
+### Community 72 - "Community 72"
 Cohesion: 0.32
 Nodes (7): get_schema_version(), Database migration support for novstash.  Schema version tracking table plus ide, Return the current schema version (0 if tracking table absent)., Record that schema version `version` has been applied., Run any pending migrations, returning descriptions of applied ones.      Safe to, run_migrations(), set_schema_version()
 
-### Community 72 - "Community 72"
+### Community 73 - "Community 73"
 Cohesion: 0.29
 Nodes (6): RecentlyRead, Chapter, ChapterNavigation, ChapterWithNav, Novel, PaginatedResponse
 
-### Community 74 - "Community 74"
+### Community 75 - "Community 75"
 Cohesion: 0.25
 Nodes (7): compilerOptions, composite, declaration, declarationMap, outDir, sourceMap, extends
 
-### Community 75 - "Community 75"
+### Community 76 - "Community 76"
 Cohesion: 0.25
 Nodes (8): reading_history_novel_slug_novels_slug_fk, columnsFrom, columnsTo, name, onDelete, onUpdate, tableFrom, tableTo
 
-### Community 76 - "Community 76"
+### Community 77 - "Community 77"
 Cohesion: 0.33
 Nodes (3): NovellunarAdapter, Adapter for novellunar.com — Next.js app, API chapter list, server-rendered cont, Adapter for https://novellunar.com — Next.js SPA with API-driven chapters.
 
-### Community 77 - "Community 77"
+### Community 78 - "Community 78"
 Cohesion: 0.29
 Nodes (6): _, g, ad(), lm, _m(), p_()
 
-### Community 78 - "Community 78"
+### Community 79 - "Community 79"
 Cohesion: 0.29
 Nodes (7): status, columns, autoincrement, name, notNull, primaryKey, type
 
-### Community 79 - "Community 79"
+### Community 80 - "Community 80"
 Cohesion: 0.29
 Nodes (7): checkConstraints, compositePrimaryKeys, foreignKeys, indexes, name, uniqueConstraints, novels
 
-### Community 80 - "Community 80"
+### Community 81 - "Community 81"
 Cohesion: 0.33
 Nodes (4): defaults, ReaderFont, ReaderSettings, ReaderTheme
 
-### Community 81 - "Community 81"
+### Community 82 - "Community 82"
 Cohesion: 0.33
 Nodes (6): encode(), encodePath(), createHead(), createSSRContext(), encodeEventPath(), vueInstall()
 
-### Community 82 - "Community 82"
+### Community 83 - "Community 83"
 Cohesion: 0.33
 Nodes (6): autoincrement, name, notNull, primaryKey, type, author
 
-### Community 83 - "Community 83"
+### Community 84 - "Community 84"
 Cohesion: 0.33
 Nodes (6): autoincrement, name, notNull, primaryKey, type, chapter_count
 
-### Community 84 - "Community 84"
+### Community 85 - "Community 85"
 Cohesion: 0.33
 Nodes (6): autoincrement, name, notNull, primaryKey, type, chapter_title
 
-### Community 85 - "Community 85"
-Cohesion: 0.33
-Nodes (6): created_at, autoincrement, name, notNull, primaryKey, type
-
 ### Community 86 - "Community 86"
 Cohesion: 0.33
-Nodes (6): description, autoincrement, name, notNull, primaryKey, type
+Nodes (6): content_md, autoincrement, name, notNull, primaryKey, type
 
 ### Community 87 - "Community 87"
 Cohesion: 0.33
-Nodes (6): genres, autoincrement, name, notNull, primaryKey, type
+Nodes (6): created_at, autoincrement, name, notNull, primaryKey, type
 
 ### Community 88 - "Community 88"
 Cohesion: 0.33
-Nodes (6): id, autoincrement, name, notNull, primaryKey, type
+Nodes (6): description, autoincrement, name, notNull, primaryKey, type
 
 ### Community 89 - "Community 89"
 Cohesion: 0.33
-Nodes (6): novel_slug, autoincrement, name, notNull, primaryKey, type
+Nodes (6): genres, autoincrement, name, notNull, primaryKey, type
 
 ### Community 90 - "Community 90"
 Cohesion: 0.33
-Nodes (6): slug, autoincrement, name, notNull, primaryKey, type
+Nodes (6): id, autoincrement, name, notNull, primaryKey, type
 
 ### Community 91 - "Community 91"
 Cohesion: 0.33
-Nodes (6): title, autoincrement, name, notNull, primaryKey, type
+Nodes (6): novel_slug, autoincrement, name, notNull, primaryKey, type
 
 ### Community 92 - "Community 92"
 Cohesion: 0.33
-Nodes (6): cover_url, autoincrement, name, notNull, primaryKey, type
+Nodes (6): slug, autoincrement, name, notNull, primaryKey, type
 
 ### Community 93 - "Community 93"
 Cohesion: 0.33
-Nodes (6): url, autoincrement, name, notNull, primaryKey, type
+Nodes (6): title, autoincrement, name, notNull, primaryKey, type
 
 ### Community 94 - "Community 94"
 Cohesion: 0.33
-Nodes (6): checkConstraints, compositePrimaryKeys, name, uniqueConstraints, tables, chapters
+Nodes (6): cover_url, autoincrement, name, notNull, primaryKey, type
 
 ### Community 95 - "Community 95"
 Cohesion: 0.33
-Nodes (6): checkConstraints, compositePrimaryKeys, foreignKeys, name, uniqueConstraints, reading_history
+Nodes (6): checkConstraints, compositePrimaryKeys, name, uniqueConstraints, tables, chapters
 
 ### Community 96 - "Community 96"
 Cohesion: 0.33
-Nodes (6): bp(), bt(), d1(), f1(), Jx(), p1()
+Nodes (6): checkConstraints, compositePrimaryKeys, foreignKeys, name, uniqueConstraints, reading_history
 
 ### Community 97 - "Community 97"
-Cohesion: 0.40
-Nodes (4): { id }, limit, page, query
+Cohesion: 0.33
+Nodes (6): bp(), bt(), d1(), f1(), Jx(), p1()
 
 ### Community 98 - "Community 98"
 Cohesion: 0.40
-Nodes (4): conditions, limit, page, query
+Nodes (4): { id }, limit, page, query
 
 ### Community 99 - "Community 99"
 Cohesion: 0.40
-Nodes (5): indexes, uq_chapters_novel_idx, columns, isUnique, name
+Nodes (4): conditions, limit, page, query
 
 ### Community 100 - "Community 100"
 Cohesion: 0.40
-Nodes (5): uq_reading_history_novel, indexes, columns, isUnique, name
+Nodes (5): indexes, uq_chapters_novel_idx, columns, isUnique, name
 
 ### Community 101 - "Community 101"
-Cohesion: 0.50
-Nodes (3): _load_dotenv(), Configuration defaults for novstash, with .env support., Load a .env file into os.environ if it exists.      Looks for .env in the curren
+Cohesion: 0.40
+Nodes (5): uq_reading_history_novel, indexes, columns, isUnique, name
 
 ### Community 102 - "Community 102"
 Cohesion: 0.50
-Nodes (3): genres, genreSet, parsed
+Nodes (3): _load_dotenv(), Configuration defaults for novstash, with .env support., Load a .env file into os.environ if it exists.      Looks for .env in the curren
 
 ### Community 103 - "Community 103"
 Cohesion: 0.50
-Nodes (3): limit, page, query
+Nodes (3): genres, genreSet, parsed
 
 ### Community 104 - "Community 104"
+Cohesion: 0.50
+Nodes (3): limit, page, query
+
+### Community 105 - "Community 105"
 Cohesion: 0.67
 Nodes (3): ReadingProgress, readStorage(), useReadingProgress()
 
-### Community 105 - "Community 105"
+### Community 106 - "Community 106"
 Cohesion: 0.50
 Nodes (3): name, private, version
 
-### Community 106 - "Community 106"
+### Community 107 - "Community 107"
 Cohesion: 0.50
 Nodes (4): _meta, columns, schemas, tables
 
-### Community 107 - "Community 107"
+### Community 108 - "Community 108"
 Cohesion: 0.50
 Nodes (3): id, prerendered, timestamp
 
-### Community 108 - "Community 108"
+### Community 109 - "Community 109"
 Cohesion: 0.50
 Nodes (3): dialect, entries, version
 
-### Community 109 - "Community 109"
+### Community 110 - "Community 110"
 Cohesion: 0.67
 Nodes (4): joinHeaders(), normalizeCookieHeader(), normalizeCookieHeaders(), normalizeFetchResponse()
 
-### Community 110 - "Community 110"
+### Community 111 - "Community 111"
 Cohesion: 0.50
 Nodes (4): bc(), mc(), v0(), y0()
 
-### Community 111 - "Community 111"
+### Community 112 - "Community 112"
 Cohesion: 0.67
 Nodes (4): Fu(), jh(), ka(), to()
 
-### Community 112 - "Community 112"
+### Community 113 - "Community 113"
 Cohesion: 0.50
 Nodes (4): dp(), ie(), nx(), vc()
 
-### Community 115 - "Community 115"
+### Community 116 - "Community 116"
 Cohesion: 0.67
 Nodes (3): I, P(), Yd()
 
@@ -627,11 +632,11 @@ Nodes (3): I, P(), Yd()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `A` connect `Community 53` to `Community 64`, `Community 1`, `Community 2`, `Community 3`, `Community 38`, `Community 7`, `Community 10`, `Community 14`, `Community 17`, `Community 58`, `Community 27`, `Community 29`?**
+- **Why does `A` connect `Community 53` to `Community 64`, `Community 1`, `Community 2`, `Community 3`, `Community 58`, `Community 37`, `Community 7`, `Community 10`, `Community 15`, `Community 16`, `Community 26`, `Community 28`?**
   _High betweenness centrality (0.168) - this node is a cross-community bridge._
-- **Why does `H3Event` connect `Community 25` to `Community 1`, `Community 9`?**
+- **Why does `H3Event` connect `Community 24` to `Community 1`, `Community 9`?**
   _High betweenness centrality (0.123) - this node is a cross-community bridge._
-- **Why does `Database` connect `Community 9` to `Community 34`, `Community 66`, `Community 30`?**
+- **Why does `Database` connect `Community 9` to `Community 33`, `Community 66`, `Community 29`?**
   _High betweenness centrality (0.122) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `setup()` (e.g. with `A` and `d`) actually correct?**
   _`setup()` has 2 INFERRED edges - model-reasoned connections that need verification._
