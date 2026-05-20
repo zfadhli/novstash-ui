@@ -1,8 +1,14 @@
 import { db, schema } from "@novstash-ui/db";
-import { desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
+	const session = await getUserSession(event);
+	if (!session?.user?.id) {
+		throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+	}
+
 	const recent = await db.query.readingHistory.findMany({
+		where: eq(schema.readingHistory.userId, session.user.id),
 		orderBy: [desc(schema.readingHistory.updatedAt)],
 		limit: 10,
 		with: {

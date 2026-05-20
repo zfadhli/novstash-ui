@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { chapters, novels } from "./index";
+import { chapters, novels, users } from "./index";
 import { readingHistory } from "./reading_history";
 
 export const novelsRelations = relations(novels, ({ many, one }) => ({
@@ -21,5 +21,9 @@ export const readingHistoryRelations = relations(readingHistory, ({ one }) => ({
 	novel: one(novels, {
 		fields: [readingHistory.novelSlug],
 		references: [novels.slug],
+	}),
+	user: one(users, {
+		fields: [readingHistory.userId],
+		references: [users.id],
 	}),
 }));
