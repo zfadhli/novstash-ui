@@ -32,3 +32,5 @@ export const chapters = sqliteTable(
 		),
 	}),
 );
+
+export { readingHistory } from "./reading_history";

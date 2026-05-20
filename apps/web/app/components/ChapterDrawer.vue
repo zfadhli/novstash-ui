@@ -4,8 +4,8 @@ import { useChapterList } from "~/composables/useChapterList";
 import type { Chapter } from "~/types/novel";
 
 const props = defineProps<{
-  novelSlug: string;
-  currentChapterIdx: number;
+	novelSlug: string;
+	currentChapterIdx: number;
 }>();
 
 const open = defineModel<boolean>("open", { required: true });
@@ -14,21 +14,21 @@ const { chapters, pending } = useChapterList(props.novelSlug);
 
 // Scroll to the current chapter as soon as the slideover content renders
 watch(open, async (isOpen) => {
-  if (isOpen && chapters.value.length > 0) {
-    await nextTick();
-    const activeEl = document.querySelector("[data-active-chapter]");
-    activeEl?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+	if (isOpen && chapters.value.length > 0) {
+		await nextTick();
+		const activeEl = document.querySelector("[data-active-chapter]");
+		activeEl?.scrollIntoView({ behavior: "smooth", block: "center" });
+	}
 });
 
 function isActive(chapter: Chapter) {
-  return chapter.idx === props.currentChapterIdx;
+	return chapter.idx === props.currentChapterIdx;
 }
 
 function handleNavigate(chapter: Chapter) {
-  if (isActive(chapter)) {
-    open.value = false;
-  }
+	if (isActive(chapter)) {
+		open.value = false;
+	}
 }
 </script>
 
