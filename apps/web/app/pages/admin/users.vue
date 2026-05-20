@@ -37,7 +37,7 @@ onMounted(async () => {
 
 		<UTable
 			v-else
-			:rows="users"
+			:data="users"
 			:columns="[
 				{ accessorKey: 'name', header: 'Name' },
 				{ accessorKey: 'email', header: 'Email' },

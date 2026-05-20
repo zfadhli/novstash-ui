@@ -67,7 +67,7 @@ async function handleDelete(idx: number) {
 
 		<UTable
 			v-else
-			:rows="chapters"
+			:data="chapters"
 			:columns="[
 				{ accessorKey: 'idx', header: '#' },
 				{ accessorKey: 'title', header: 'Title' },

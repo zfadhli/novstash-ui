@@ -50,7 +50,7 @@ async function handleDelete(slug: string) {
 
 		<UTable
 			v-else-if="novels.length > 0"
-			:rows="novels"
+			:data="novels"
 			:columns="[
 				{ accessorKey: 'title', header: 'Title' },
 				{ accessorKey: 'author', header: 'Author' },
