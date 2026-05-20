@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/novstash_cli/__init__.py
+src/novstash_cli/__main__.py
+src/novstash_cli/cli.py
+src/novstash_cli/db.py
+src/novstash_cli/models.py
+src/novstash_cli/utils.py
+src/novstash_cli.egg-info/PKG-INFO
+src/novstash_cli.egg-info/SOURCES.txt
+src/novstash_cli.egg-info/dependency_links.txt
+src/novstash_cli.egg-info/entry_points.txt
+src/novstash_cli.egg-info/requires.txt
+src/novstash_cli.egg-info/top_level.txt
+src/novstash_cli/scrapers/__init__.py
+src/novstash_cli/scrapers/royalroad.py
+tests/test_db.py

@@ -1,0 +1,5 @@
+httpx<1,>=0.28
+beautifulsoup4<5,>=4.13
+typer<1,>=0.15
+pydantic<3,>=2.11
+rich<14,>=13.9

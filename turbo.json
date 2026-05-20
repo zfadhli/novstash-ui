@@ -33,6 +33,10 @@
 		},
 		"db:local": {
 			"cache": false
+		},
+		"novstash-cli#lint": {
+			"inputs": ["apps/novstash-cli/src/**"],
+			"outputs": []
 		}
 	}
 }

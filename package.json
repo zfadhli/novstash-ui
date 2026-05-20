@@ -26,7 +26,10 @@
 		"db:generate": "turbo -F @novstash-ui/db db:generate",
 		"db:migrate": "turbo -F @novstash-ui/db db:migrate",
 		"db:local": "turbo -F @novstash-ui/db db:local",
-		"check": "biome check --write ."
+		"check": "biome check --write .",
+		"cli:lint": "cd apps/novstash-cli && uv run ruff check src/",
+		"cli:format": "cd apps/novstash-cli && uv run ruff format src/",
+		"cli:test": "cd apps/novstash-cli && uv run pytest -v"
 	},
 	"dependencies": {
 		"@novstash-ui/env": "workspace:*",
