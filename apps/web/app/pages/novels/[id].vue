@@ -3,16 +3,30 @@ const route = useRoute();
 const novelId = route.params.id as string;
 
 const { novel, chapters, pending, error } = useNovel(novelId);
-const { continueReading } = useReadingProgress(
-	computed(() => novel.value?.slug),
+const { getProgress } = useReadingHistory();
+const serverProgress = ref<Awaited<ReturnType<typeof getProgress>> | null>(
+	null,
 );
+
+watchEffect(async () => {
+	const slug = novel.value?.slug;
+	if (slug) {
+		try {
+			serverProgress.value = await getProgress(slug);
+		} catch {
+			serverProgress.value = null;
+		}
+	} else {
+		serverProgress.value = null;
+	}
+});
 
 const firstChapterIdx = computed(() => chapters.value[0]?.idx ?? 0);
 
 const showContinueReading = computed(() => {
-	if (!continueReading.value) return false;
+	if (!serverProgress.value) return false;
 	// Only show "Continue Reading" if saved progress is NOT the first chapter
-	return continueReading.value.idx !== firstChapterIdx.value;
+	return serverProgress.value.chapterIdx !== firstChapterIdx.value;
 });
 </script>
 
@@ -161,13 +175,12 @@ const showContinueReading = computed(() => {
 
 						<!-- Continue Reading — only if saved progress exists and isn't first chapter -->
 						<UButton
-							v-if="showContinueReading && continueReading"
-							:to="`/read/${novel.slug}/${continueReading.idx}${continueReading.scrollPosition ? `?scroll=${continueReading.scrollPosition}` : ''}`"
+							v-if="showContinueReading"
+							:to="`/read/${novel.slug}/${serverProgress.value!.chapterIdx}`"
 							size="lg"
-							color="amber"
 						>
-							<Icon name="lucide:book-open-check" class="mr-2 size-5" />
-							Continue Reading (Ch. {{ continueReading.idx }})
+							<Icon name="lucide:book-open" class="mr-2 size-5" />
+							Continue Reading (Ch. {{ serverProgress.value!.chapterIdx }})
 						</UButton>
 					</div>
 				</div>

@@ -140,14 +140,14 @@
     "semantic_hash": "243b03ecba82dde9612cd5163145a86d"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/reading_history.ts": {
-    "mtime": 1779260363.8588834,
-    "ast_hash": "93ddd52c97634dda83327650822ba411",
-    "semantic_hash": "93ddd52c97634dda83327650822ba411"
+    "mtime": 1779281161.2472591,
+    "ast_hash": "c8ef579d965ad7ec35f34a376032b461",
+    "semantic_hash": "c8ef579d965ad7ec35f34a376032b461"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/relations.ts": {
-    "mtime": 1779260453.1511128,
-    "ast_hash": "f5f0d44ceb71264585912d10306bde10",
-    "semantic_hash": "f5f0d44ceb71264585912d10306bde10"
+    "mtime": 1779281144.9944015,
+    "ast_hash": "ad75b08138b70e944416ff8861213003",
+    "semantic_hash": "ad75b08138b70e944416ff8861213003"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/0000_wealthy_northstar.sql": {
     "mtime": 1779260444.434748,
@@ -300,19 +300,19 @@
     "semantic_hash": "8a840ab51d920a8a3b8ab5460fa32947"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/reading/progress.post.ts": {
-    "mtime": 1779260386.2515094,
-    "ast_hash": "208570b8eae9e32526b8904aff335748",
-    "semantic_hash": "208570b8eae9e32526b8904aff335748"
+    "mtime": 1779281161.2472591,
+    "ast_hash": "dcdbff6d24164f74a530e5d8fc1b5648",
+    "semantic_hash": "dcdbff6d24164f74a530e5d8fc1b5648"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/reading/recent.get.ts": {
-    "mtime": 1779260819.8546793,
-    "ast_hash": "2d6872975495693aa65c7e61da8579fc",
-    "semantic_hash": "2d6872975495693aa65c7e61da8579fc"
+    "mtime": 1779281153.0948384,
+    "ast_hash": "82a3bd33d3af81e42eaa4757d96cd5cf",
+    "semantic_hash": "82a3bd33d3af81e42eaa4757d96cd5cf"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/reading/progress/[slug].get.ts": {
-    "mtime": 1779260386.2515094,
-    "ast_hash": "aa62c47395d997bd37d3a2457130df7d",
-    "semantic_hash": "aa62c47395d997bd37d3a2457130df7d"
+    "mtime": 1779281150.4786978,
+    "ast_hash": "f58fb4ef616b73dea0ff0e76190b9e79",
+    "semantic_hash": "f58fb4ef616b73dea0ff0e76190b9e79"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/.output/nitro.json": {
     "mtime": 1779260453.683135,
