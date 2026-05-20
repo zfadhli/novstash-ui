@@ -9,6 +9,13 @@ export default defineEventHandler(async (event) => {
 		with: {
 			chapters: {
 				orderBy: [asc(schema.chapters.idx)],
+				columns: {
+					id: true,
+					idx: true,
+					title: true,
+					url: true,
+					createdAt: true,
+				},
 			},
 		},
 	});

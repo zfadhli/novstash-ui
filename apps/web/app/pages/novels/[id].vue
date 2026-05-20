@@ -30,6 +30,15 @@ const continueReadingChapter = computed(() => {
 	const idx = serverProgress.value.chapterIdx;
 	return idx !== firstChapterIdx.value ? idx : null;
 });
+
+const parsedGenres = computed(() => {
+	try {
+		const g = novel.value?.genres;
+		return g ? JSON.parse(g) : [];
+	} catch {
+		return [];
+	}
+});
 </script>
 
 <template>
@@ -142,7 +151,7 @@ const continueReadingChapter = computed(() => {
 						class="flex flex-wrap gap-1.5"
 					>
 						<span
-							v-for="genre in JSON.parse(novel.genres)"
+							v-for="genre in parsedGenres"
 							:key="genre"
 							class="rounded-md bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
 						>

@@ -1,6 +1,50 @@
 <script setup lang="ts">
 import type { RecentlyRead } from "~/types/library";
 
+interface PaginationItem {
+	type: "page" | "ellipsis";
+	value: number;
+}
+
+function computedPaginationRange(
+	total: number,
+	current: number,
+): PaginationItem[] {
+	if (total <= 7) {
+		return Array.from({ length: total }, (_, i) => ({
+			type: "page" as const,
+			value: i + 1,
+		}));
+	}
+
+	const pages: PaginationItem[] = [];
+
+	// Always show first page
+	pages.push({ type: "page", value: 1 });
+
+	if (current > 4) {
+		pages.push({ type: "ellipsis", value: -1 });
+	}
+
+	const start = Math.max(2, current - 2);
+	const end = Math.min(total - 1, current + 2);
+
+	for (let i = start; i <= end; i++) {
+		pages.push({ type: "page", value: i });
+	}
+
+	if (current < total - 3) {
+		pages.push({ type: "ellipsis", value: -2 });
+	}
+
+	// Always show last page
+	if (total > 1) {
+		pages.push({ type: "page", value: total });
+	}
+
+	return pages;
+}
+
 const searchInput = ref("");
 
 const { novels, total, pending, page, totalPages } = useNovels({
@@ -168,15 +212,17 @@ onMounted(async () => {
 				</UButton>
 
 				<div class="flex items-center gap-1">
-					<UButton
-						v-for="p in totalPages"
-						:key="p"
-						:variant="p === page ? 'solid' : 'soft'"
-						size="sm"
-						@click="page = p"
-					>
-						{{ p }}
-					</UButton>
+					<template v-for="p in computedPaginationRange(totalPages, page)" :key="p.value">
+						<span v-if="p.type === 'ellipsis'" class="px-2 text-neutral-400 dark:text-neutral-500">...</span>
+						<UButton
+							v-else
+							:variant="p.value === page ? 'solid' : 'soft'"
+							size="sm"
+							@click="page = p.value"
+						>
+							{{ p.value }}
+						</UButton>
+					</template>
 				</div>
 
 				<UButton

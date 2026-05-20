@@ -14,9 +14,9 @@
 		"@novstash-ui/db": "workspace:*",
 		"@novstash-ui/env": "workspace:*",
 		"@nuxt/ui": "^4.5.1",
-		"dompurify": "^3.2.4",
 		"dotenv": "catalog:",
 		"drizzle-orm": "^0.45.2",
+		"isomorphic-dompurify": "^3.14.0",
 		"libsql": "catalog:",
 		"marked": "^15.0.11",
 		"nuxt": "^4.4.4",
@@ -26,7 +26,6 @@
 	"devDependencies": {
 		"@iconify-json/lucide": "^1.2.96",
 		"@novstash-ui/config": "workspace:*",
-		"@types/dompurify": "^3.2.0",
 		"tailwindcss": "^4.2.1",
 		"typescript": "catalog:"
 	},
