@@ -183,25 +183,22 @@ const fontFamilyClass = computed(() => {
 							<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">Font</span>
 							<div class="flex gap-1">
 								<UButton
-									variant="ghost"
+									:variant="settings.fontFamily === 'serif' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.fontFamily === 'serif' }"
 									@click="setFontFamily('serif')"
 								>
 									Serif
 								</UButton>
 								<UButton
-									variant="ghost"
+									:variant="settings.fontFamily === 'sans' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.fontFamily === 'sans' }"
 									@click="setFontFamily('sans')"
 								>
 									Sans
 								</UButton>
 								<UButton
-									variant="ghost"
+									:variant="settings.fontFamily === 'mono' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.fontFamily === 'mono' }"
 									@click="setFontFamily('mono')"
 								>
 									Mono
@@ -214,25 +211,22 @@ const fontFamilyClass = computed(() => {
 							<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">Theme</span>
 							<div class="flex gap-1">
 								<UButton
-									variant="ghost"
+									:variant="settings.theme === 'sepia' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.theme === 'sepia' }"
 									@click="setTheme('sepia')"
 								>
 									Sepia
 								</UButton>
 								<UButton
-									variant="ghost"
+									:variant="settings.theme === 'light' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.theme === 'light' }"
 									@click="setTheme('light')"
 								>
 									Light
 								</UButton>
 								<UButton
-									variant="ghost"
+									:variant="settings.theme === 'dark' ? 'solid' : 'ghost'"
 									size="xs"
-									:class="{ 'text-emerald-500': settings.theme === 'dark' }"
 									@click="setTheme('dark')"
 								>
 									Dark
