@@ -24,9 +24,13 @@ const showShortcutsModal = ref(false);
 // 👇 Save reading progress whenever a chapter successfully loads
 watch(
 	chapter,
-	(c) => {
+	async (c) => {
 		if (c) {
-			saveProgress(c.novelSlug, c.idx, c.title ?? undefined);
+			try {
+				await saveProgress(c.novelSlug, c.idx, c.title ?? undefined);
+			} catch (e) {
+				console.error("Failed to save reading progress:", e);
+			}
 		}
 	},
 	{ immediate: true },

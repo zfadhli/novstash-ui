@@ -1,3 +1,5 @@
+import { $fetch } from "ofetch";
+
 interface ReadingHistoryEntry {
 	id: number;
 	novelSlug: string;
@@ -18,18 +20,34 @@ export function useReadingHistory() {
 		chapterIdx: number,
 		chapterTitle?: string | null,
 	) {
-		await $fetch("/api/reading/progress", {
-			method: "POST",
-			body: { novelSlug, chapterIdx, chapterTitle },
-		});
+		try {
+			await $fetch("/api/reading/progress", {
+				method: "POST",
+				body: { novelSlug, chapterIdx, chapterTitle: chapterTitle ?? null },
+			});
+		} catch (e) {
+			console.error("Failed to save reading progress:", e);
+		}
 	}
 
 	async function getRecentReads(): Promise<ReadingHistoryEntry[]> {
-		return $fetch<ReadingHistoryEntry[]>("/api/reading/recent");
+		try {
+			return await $fetch<ReadingHistoryEntry[]>("/api/reading/recent");
+		} catch (e) {
+			console.error("Failed to fetch recent reads:", e);
+			return [];
+		}
 	}
 
-	async function getProgress(slug: string): Promise<ReadingHistoryEntry> {
-		return $fetch<ReadingHistoryEntry>(`/api/reading/progress/${slug}`);
+	async function getProgress(
+		slug: string,
+	): Promise<ReadingHistoryEntry | null> {
+		try {
+			return await $fetch<ReadingHistoryEntry>(`/api/reading/progress/${slug}`);
+		} catch (e) {
+			console.error("Failed to fetch progress:", e);
+			return null;
+		}
 	}
 
 	return {
