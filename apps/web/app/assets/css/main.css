@@ -17,3 +17,37 @@
 	--reader-line-height: 1.8;
 	--reader-max-width: 720px;
 }
+
+/* Markdown prose styles for chapter content */
+.prose-custom {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+.prose-custom p {
+	margin-bottom: 1.25em;
+	line-height: inherit;
+}
+
+.prose-custom em {
+	font-style: italic;
+}
+
+.prose-custom strong {
+	font-weight: 700;
+}
+
+.prose-custom blockquote {
+	border-left: 3px solid currentColor;
+	opacity: 0.8;
+	padding-left: 1em;
+	margin: 1em 0;
+	font-style: italic;
+}
+
+.prose-custom hr {
+	border: none;
+	border-top: 1px solid currentColor;
+	opacity: 0.2;
+	margin: 2em 0;
+}

@@ -14,14 +14,17 @@
 		"@novstash-ui/env": "workspace:*",
 		"@novstash-ui/db": "workspace:*",
 		"@nuxt/ui": "^4.5.1",
+		"dompurify": "^3.2.4",
 		"dotenv": "catalog:",
 		"libsql": "catalog:",
+		"marked": "^15.0.11",
 		"nuxt": "^4.4.4",
 		"zod": "catalog:"
 	},
 	"devDependencies": {
 		"@iconify-json/lucide": "^1.2.96",
 		"@novstash-ui/config": "workspace:*",
+		"@types/dompurify": "^3.2.0",
 		"tailwindcss": "^4.2.1",
 		"typescript": "catalog:"
 	}

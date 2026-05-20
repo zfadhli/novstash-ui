@@ -7,6 +7,11 @@ const { chapter, pending, error } = useChapter(novelId, chapterIdx);
 const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 const { saveProgress } = useReadingHistory();
+const { render: renderMd } = useMarkdown();
+
+const renderedContent = computed(() =>
+	renderMd(chapter.value?.contentMd ?? ""),
+);
 
 const showSettings = ref(false);
 const showChapterDrawer = ref(false);
@@ -285,9 +290,10 @@ const fontFamilyClass = computed(() => {
 					</header>
 
 					<!-- Chapter content -->
-					<div class="whitespace-pre-wrap">
-						{{ chapter.contentMd }}
-					</div>
+					<div
+						class="prose-custom"
+						v-html="renderedContent"
+					/>
 
 					<!-- Chapter navigation footer -->
 					<nav class="mt-16 flex items-center justify-between border-t border-current/10 pt-8">
