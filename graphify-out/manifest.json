@@ -1,8 +1,8 @@
 {
   "/home/envs4/workspaces/novstash-ui/package.json": {
-    "mtime": 1779289347.7555845,
-    "ast_hash": "a12d7dab94aa8166c743ef4994224553",
-    "semantic_hash": "a12d7dab94aa8166c743ef4994224553"
+    "mtime": 1779292171.392536,
+    "ast_hash": "47fcb513fdd2f4dd863315a90ec948f0",
+    "semantic_hash": "47fcb513fdd2f4dd863315a90ec948f0"
   },
   "/home/envs4/workspaces/novstash-ui/turbo.json": {
     "mtime": 1779251763.1094844,
@@ -25,9 +25,9 @@
     "semantic_hash": "3ed357d6eb4fb3ed5bb3d37cc378c523"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/package.json": {
-    "mtime": 1779287350.1282377,
-    "ast_hash": "dc21a3a429f7e5b5ab7ba33592e972f6",
-    "semantic_hash": "dc21a3a429f7e5b5ab7ba33592e972f6"
+    "mtime": 1779292171.4045367,
+    "ast_hash": "397563949e9121124a60864069f7ef3f",
+    "semantic_hash": "397563949e9121124a60864069f7ef3f"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/tsconfig.json": {
     "mtime": 1779251319.4796834,
@@ -55,9 +55,9 @@
     "semantic_hash": "784778dc5845877c57323943e8b7c5e3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/package.json": {
-    "mtime": 1779292053.8242617,
-    "ast_hash": "b40f2c03fd6bdb3edc217df9ad1ba21f",
-    "semantic_hash": "b40f2c03fd6bdb3edc217df9ad1ba21f"
+    "mtime": 1779292171.4045367,
+    "ast_hash": "6aab5e91374b1b766601979600b72c53",
+    "semantic_hash": "6aab5e91374b1b766601979600b72c53"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/tsconfig.json": {
     "mtime": 1779251319.4796834,
@@ -75,14 +75,14 @@
     "semantic_hash": "e5c80a9f139fbf61bb1e1c2eba3e6b37"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/app.vue": {
-    "mtime": 1779250158.4851604,
-    "ast_hash": "75841877f860b528b9515528e276ba60",
-    "semantic_hash": "75841877f860b528b9515528e276ba60"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "2ef8ecf58b01bf579c1d5714d3b46186",
+    "semantic_hash": "2ef8ecf58b01bf579c1d5714d3b46186"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/index.vue": {
-    "mtime": 1779292069.2971013,
-    "ast_hash": "b4d072e5304d979c626aad6ce367924d",
-    "semantic_hash": "b4d072e5304d979c626aad6ce367924d"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "60bf9f2ae22ce85230fa318113c0182f",
+    "semantic_hash": "60bf9f2ae22ce85230fa318113c0182f"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/novels/[id].vue": {
     "mtime": 1779292069.2811005,
@@ -260,14 +260,14 @@
     "semantic_hash": "3d255e563512f5263bd21027f5e3d6c3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingHistory.ts": {
-    "mtime": 1779283013.0125217,
-    "ast_hash": "cebfebfc22151bfbcc2f2afb328042c4",
-    "semantic_hash": "cebfebfc22151bfbcc2f2afb328042c4"
+    "mtime": 1779292302.9123123,
+    "ast_hash": "3c98e279e443f516364d3917b802366e",
+    "semantic_hash": "3c98e279e443f516364d3917b802366e"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useReadingProgress.ts": {
-    "mtime": 1779267474.072047,
-    "ast_hash": "04c5f9d7ec1f2cc9016745e42c367e1c",
-    "semantic_hash": "04c5f9d7ec1f2cc9016745e42c367e1c"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "f5ef741347b6ee2bf4ed28ba62410fb5",
+    "semantic_hash": "f5ef741347b6ee2bf4ed28ba62410fb5"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useChapterList.ts": {
     "mtime": 1779258112.9453485,
@@ -445,14 +445,14 @@
     "semantic_hash": "8a89d2f245df549b5374f1d1cec0c07e"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/search.vue": {
-    "mtime": 1779292069.2971013,
-    "ast_hash": "e56f7f7eafb91a74187638e1d3da421a",
-    "semantic_hash": "e56f7f7eafb91a74187638e1d3da421a"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "1ca9337130022de2b5ce9fc7eaf5c767",
+    "semantic_hash": "1ca9337130022de2b5ce9fc7eaf5c767"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useGenres.ts": {
-    "mtime": 1779261045.9591317,
-    "ast_hash": "0774d9ed0a645f6a3824d36ee6ff2c80",
-    "semantic_hash": "0774d9ed0a645f6a3824d36ee6ff2c80"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "9c03b88c679cc645291973f0c13b7b6b",
+    "semantic_hash": "9c03b88c679cc645291973f0c13b7b6b"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useNovelSearch.ts": {
     "mtime": 1779260998.0534577,
@@ -465,9 +465,9 @@
     "semantic_hash": "370020b4d5f843a424147ef75435013f"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/novels/search.get.ts": {
-    "mtime": 1779261041.2349403,
-    "ast_hash": "90eb062428a8c2ea2c15bc3fc433b9ac",
-    "semantic_hash": "90eb062428a8c2ea2c15bc3fc433b9ac"
+    "mtime": 1779292284.0401855,
+    "ast_hash": "23dd8a124a161c452e739f8af4a1d57a",
+    "semantic_hash": "23dd8a124a161c452e739f8af4a1d57a"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useMarkdown.ts": {
     "mtime": 1779292069.2731001,

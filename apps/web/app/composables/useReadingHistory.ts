@@ -13,6 +13,11 @@ interface ReadingHistoryEntry {
 }
 
 export function useReadingHistory() {
+	const recentReads = useState<ReadingHistoryEntry[]>(
+		"novstash-recent-reads",
+		() => [],
+	);
+
 	async function saveProgress(
 		novelSlug: string,
 		chapterIdx: number,
@@ -28,9 +33,11 @@ export function useReadingHistory() {
 		}
 	}
 
-	async function getRecentReads(): Promise<ReadingHistoryEntry[]> {
+	async function getRecentReads() {
 		try {
-			return await $fetch<ReadingHistoryEntry[]>("/api/reading/recent");
+			const data = await $fetch("/api/reading/recent");
+			recentReads.value = data;
+			return data;
 		} catch (e) {
 			console.error("Failed to fetch recent reads:", e);
 			return [];
@@ -52,5 +59,6 @@ export function useReadingHistory() {
 		saveProgress,
 		getRecentReads,
 		getProgress,
+		recentReads,
 	};
 }

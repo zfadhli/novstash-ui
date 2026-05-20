@@ -83,16 +83,20 @@ onMounted(() => {
 	}
 });
 
-// When query/page changes, update URL
+// Debounce route sync to prevent oscillation between URL and state changes
+let routeSyncTimer: ReturnType<typeof setTimeout> | null = null;
 watch([query, genre, status, sort, page], () => {
-	const params: Record<string, string> = {};
-	if (query.value) params.q = query.value;
-	if (genre.value.length > 0) params.genre = genre.value.join(",");
-	if (status.value) params.status = status.value;
-	if (sort.value !== "newest") params.sort = sort.value;
-	if (page.value > 1) params.page = String(page.value);
+	if (routeSyncTimer) clearTimeout(routeSyncTimer);
+	routeSyncTimer = setTimeout(() => {
+		const params: Record<string, string> = {};
+		if (query.value) params.q = query.value;
+		if (genre.value.length > 0) params.genre = genre.value.join(",");
+		if (status.value) params.status = status.value;
+		if (sort.value !== "newest") params.sort = sort.value;
+		if (page.value > 1) params.page = String(page.value);
 
-	router.push({ path: "/search", query: params });
+		router.push({ path: "/search", query: params });
+	}, 150);
 });
 
 // Debounced search
@@ -106,6 +110,7 @@ watch(searchInput, (val) => {
 
 onUnmounted(() => {
 	if (searchTimer) clearTimeout(searchTimer);
+	if (routeSyncTimer) clearTimeout(routeSyncTimer);
 });
 
 const sortOptions = [

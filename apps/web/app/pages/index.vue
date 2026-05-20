@@ -72,6 +72,9 @@ onUnmounted(() => {
 const recentReads = ref<RecentlyRead[]>([]);
 const recentPending = ref(true);
 
+// Intentional client-only fetch: the session cookie isn't available during SSR
+// for unauthenticated users, so Continue Reading must be hydrated on the client.
+// This is acceptable since it's a dynamic user-specific section.
 onMounted(async () => {
 	const { getRecentReads } = useReadingHistory();
 	try {

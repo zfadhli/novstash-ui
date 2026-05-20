@@ -1,5 +1,5 @@
 import { db, schema } from "@novstash-ui/db";
-import { and, desc, like, sql } from "drizzle-orm";
+import { and, desc, eq, like, sql } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
 	const query = getQuery(event);
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
 	}
 
 	if (status) {
-		conditions.push(like(schema.novels.status, status));
+		conditions.push(eq(schema.novels.status, status));
 	}
 
 	// Genre filtering: use LIKE for each genre string inside the JSON array

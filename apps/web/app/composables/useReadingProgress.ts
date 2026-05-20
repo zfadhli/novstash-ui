@@ -20,20 +20,13 @@ function readStorage(): Record<string, ReadingProgress> {
 }
 
 export function useReadingProgress(slugRef?: Ref<string | undefined | null>) {
-	// Always init with empty — useState never re-runs the init fn
-	// on client after SSR because Nuxt uses the serialized SSR value.
 	const allProgress = useState<Record<string, ReadingProgress>>(
 		"novstash-reading-progress",
-		() => ({}),
+		() => {
+			if (import.meta.client) return readStorage();
+			return {};
+		},
 	);
-
-	// Hydrate from localStorage on client
-	if (import.meta.client && Object.keys(allProgress.value).length === 0) {
-		const stored = readStorage();
-		if (Object.keys(stored).length > 0) {
-			allProgress.value = stored;
-		}
-	}
 
 	function persist() {
 		if (import.meta.client) {
