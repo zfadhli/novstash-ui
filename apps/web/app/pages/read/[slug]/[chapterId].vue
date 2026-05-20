@@ -8,6 +8,8 @@ const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 const { saveProgress } = useReadingHistory();
 const { render: renderMd } = useMarkdown();
+const { containerRef: readerContentEl } = useScrollMemory(novelId, chapterIdx);
+const { prefetched } = useChapterPrefetch(novelId, chapterIdx);
 
 const renderedContent = computed(() =>
 	renderMd(chapter.value?.contentMd ?? ""),
@@ -15,6 +17,7 @@ const renderedContent = computed(() =>
 
 const showSettings = ref(false);
 const showChapterDrawer = ref(false);
+const showShortcutsModal = ref(false);
 
 // 👇 Save reading progress whenever a chapter successfully loads
 watch(
@@ -27,14 +30,72 @@ watch(
 	{ immediate: true },
 );
 
-// Keyboard navigation
+// ---- C1e: Reading progress bar ----
+const scrollProgress = ref(0);
+
+function onScroll() {
+	const el = readerContentEl.value;
+	if (!el) return;
+	const { scrollTop, scrollHeight, clientHeight } = el;
+	const maxScroll = scrollHeight - clientHeight;
+	scrollProgress.value = maxScroll > 0 ? scrollTop / maxScroll : 0;
+}
+
+const progressBarVisible = computed(() => scrollProgress.value > 0.005);
+
+// ---- C1c: Fullscreen toggle ----
+function toggleFullscreen() {
+	if (document.fullscreenElement) {
+		document.exitFullscreen();
+	} else {
+		document.documentElement.requestFullscreen();
+	}
+}
+
+// ---- C1c: Theme cycling ----
+const themeCycle: Array<"sepia" | "light" | "dark"> = [
+	"sepia",
+	"light",
+	"dark",
+];
+
+function cycleTheme() {
+	const current = settings.value.theme;
+	const idx = themeCycle.indexOf(current);
+	const next = themeCycle[(idx + 1) % themeCycle.length];
+	setTheme(next);
+}
+
+// ---- Keyboard navigation ----
 function onKeydown(e: KeyboardEvent) {
 	if (!chapter.value) return;
-	if (e.key === "ArrowLeft" && chapter.value.prevChapter) {
-		navigateTo(`/read/${novelId}/${chapter.value.prevChapter.idx}`);
-	}
-	if (e.key === "ArrowRight" && chapter.value.nextChapter) {
-		navigateTo(`/read/${novelId}/${chapter.value.nextChapter.idx}`);
+
+	switch (e.key) {
+		case "ArrowLeft":
+			if (chapter.value.prevChapter) {
+				navigateTo(`/read/${novelId}/${chapter.value.prevChapter.idx}`);
+			}
+			break;
+		case "ArrowRight":
+			if (chapter.value.nextChapter) {
+				navigateTo(`/read/${novelId}/${chapter.value.nextChapter.idx}`);
+			}
+			break;
+		case "s":
+			showSettings.value = !showSettings.value;
+			break;
+		case "c":
+			showChapterDrawer.value = !showChapterDrawer.value;
+			break;
+		case "t":
+			cycleTheme();
+			break;
+		case "?":
+			showShortcutsModal.value = !showShortcutsModal.value;
+			break;
+		case "f":
+			toggleFullscreen();
+			break;
 	}
 }
 
@@ -141,8 +202,18 @@ const fontFamilyClass = computed(() => {
 							variant="ghost"
 							size="sm"
 							@click="showSettings = !showSettings"
+							title="Settings"
 						>
 							<Icon name="lucide:type" class="size-4" />
+						</UButton>
+						<!-- C1c: Help button -->
+						<UButton
+							variant="ghost"
+							size="sm"
+							@click="showShortcutsModal = true"
+							title="Keyboard shortcuts"
+						>
+							<Icon name="lucide:circle-help" class="size-4" />
 						</UButton>
 						<UButton
 							variant="ghost"
@@ -179,6 +250,41 @@ const fontFamilyClass = computed(() => {
 									icon="lucide:plus"
 									@click="setFontSize(settings.fontSize + 1)"
 								/>
+							</div>
+						</div>
+
+						<!-- C1b: Font size presets -->
+						<div class="flex items-center gap-2">
+							<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">Presets</span>
+							<div class="flex gap-1">
+								<UButton
+									:variant="settings.fontSize === 14 ? 'solid' : 'ghost'"
+									size="xs"
+									@click="setFontSize(14)"
+								>
+									Small
+								</UButton>
+								<UButton
+									:variant="settings.fontSize === 18 ? 'solid' : 'ghost'"
+									size="xs"
+									@click="setFontSize(18)"
+								>
+									Medium
+								</UButton>
+								<UButton
+									:variant="settings.fontSize === 22 ? 'solid' : 'ghost'"
+									size="xs"
+									@click="setFontSize(22)"
+								>
+									Large
+								</UButton>
+								<UButton
+									:variant="settings.fontSize === 26 ? 'solid' : 'ghost'"
+									size="xs"
+									@click="setFontSize(26)"
+								>
+									XL
+								</UButton>
 							</div>
 						</div>
 
@@ -268,13 +374,27 @@ const fontFamilyClass = computed(() => {
 				:class="[readerThemeClass, fontFamilyClass]"
 				class="min-h-[calc(100vh-3.5rem)] transition-colors duration-200"
 			>
+				<!-- C1e: Reading progress bar -->
+				<div
+					class="pointer-events-none fixed right-0 left-0 top-14 z-30 mx-auto max-w-4xl transition-opacity duration-300"
+					:class="progressBarVisible ? 'opacity-100' : 'opacity-0'"
+				>
+					<div
+						class="h-[3px] rounded-r-full bg-gradient-to-r from-emerald-400 to-emerald-600 transition-all duration-150"
+						:style="{ width: `${scrollProgress * 100}%` }"
+					/>
+				</div>
+
 				<article
-					class="mx-auto px-4 py-12"
+					ref="readerContentEl"
+					class="mx-auto overflow-y-auto px-4 py-12"
+					:class="{ 'max-h-[calc(100vh-3.5rem)]': true }"
 					:style="{
 						maxWidth: `${settings.maxWidth}px`,
 						fontSize: `${settings.fontSize}px`,
 						lineHeight: settings.lineHeight,
 					}"
+					@scroll="onScroll"
 				>
 					<!-- Chapter heading -->
 					<header class="mb-10 text-center">
@@ -330,5 +450,8 @@ const fontFamilyClass = computed(() => {
 			:novel-slug="novelId"
 			:current-chapter-idx="chapter.idx"
 		/>
+
+		<!-- C1c: Keyboard Shortcuts Modal -->
+		<KeyboardShortcutsModal v-model:open="showShortcutsModal" />
 	</div>
 </template>

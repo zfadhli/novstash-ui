@@ -55,9 +55,9 @@
     "semantic_hash": "784778dc5845877c57323943e8b7c5e3"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/package.json": {
-    "mtime": 1779252132.6520896,
-    "ast_hash": "f522f331d88d9f69dd1bf9b048f04e66",
-    "semantic_hash": "f522f331d88d9f69dd1bf9b048f04e66"
+    "mtime": 1779262425.7934682,
+    "ast_hash": "212b8b9021aa612b939de8e7c85aba2e",
+    "semantic_hash": "212b8b9021aa612b939de8e7c85aba2e"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/tsconfig.json": {
     "mtime": 1779251319.4796834,
@@ -235,9 +235,9 @@
     "semantic_hash": "166b962dda732b452aa23264c8e8e395"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/read/[slug]/[chapterId].vue": {
-    "mtime": 1779260391.6757386,
-    "ast_hash": "95876fe51732da3d6859b162d719ec28",
-    "semantic_hash": "95876fe51732da3d6859b162d719ec28"
+    "mtime": 1779262465.0471997,
+    "ast_hash": "83e7a261233c3b753bdd5025d8760c69",
+    "semantic_hash": "83e7a261233c3b753bdd5025d8760c69"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/NovelCard.vue": {
     "mtime": 1779253734.9969292,
@@ -468,5 +468,10 @@
     "mtime": 1779261041.2349403,
     "ast_hash": "90eb062428a8c2ea2c15bc3fc433b9ac",
     "semantic_hash": "90eb062428a8c2ea2c15bc3fc433b9ac"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useMarkdown.ts": {
+    "mtime": 1779262465.0471997,
+    "ast_hash": "be153b9c9929fbd7f0763b4f4c421710",
+    "semantic_hash": "be153b9c9929fbd7f0763b4f4c421710"
   }
 }
