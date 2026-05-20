@@ -1,14 +1,22 @@
 <script setup lang="ts">
 const search = ref("");
+const searchInput = ref("");
 
 const { novels, total, pending, page, totalPages } = useNovels({
 	search,
 	limit: 24,
 });
 
-function onSearch() {
-	page.value = 1;
-}
+// Debounce search input: wait 300ms after the user stops typing
+// before updating the search ref that triggers the API call
+let searchTimer: ReturnType<typeof setTimeout> | null = null;
+watch(searchInput, (val) => {
+	if (searchTimer) clearTimeout(searchTimer);
+	searchTimer = setTimeout(() => {
+		search.value = val;
+		page.value = 1;
+	}, 300);
+});
 </script>
 
 <template>
@@ -30,11 +38,10 @@ function onSearch() {
 						class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 size-5 text-neutral-400"
 					/>
 					<input
-						v-model="search"
+						v-model="searchInput"
 						type="text"
 						placeholder="Search novels..."
 						class="w-full rounded-xl border border-neutral-300 bg-white py-3 pr-4 pl-12 text-sm text-neutral-900 placeholder-neutral-400 shadow-sm transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-emerald-400"
-						@input="onSearch"
 					/>
 				</div>
 			</div>
