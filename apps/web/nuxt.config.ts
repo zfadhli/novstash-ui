@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 	experimental: {
 		payloadExtraction: "client",
 	},
-	modules: ["@nuxt/ui"],
+	modules: ["@nuxt/ui", "nuxt-auth-utils"],
 	css: ["~/assets/css/main.css"],
 	devServer: {
 		port: 3001,

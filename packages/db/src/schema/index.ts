@@ -34,3 +34,4 @@ export const chapters = sqliteTable(
 );
 
 export { readingHistory } from "./reading_history";
+export { users } from "./users";
