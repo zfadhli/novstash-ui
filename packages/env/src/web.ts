@@ -1,5 +1,4 @@
 import { createEnv } from "@t3-oss/env-nuxt";
-import { z } from "zod";
 
 /**
  * Nuxt env validation - validates at build time when imported in nuxt.config.ts
@@ -8,6 +7,6 @@ import { z } from "zod";
  *   config.public.serverUrl (NUXT_PUBLIC_SERVER_URL maps to serverUrl)
  */
 export const env = createEnv({
-  client: {},
-  emptyStringAsUndefined: true,
+	client: {},
+	emptyStringAsUndefined: true,
 });
