@@ -3,8 +3,7 @@ import { db, schema } from "@novstash-ui/db";
 export default defineEventHandler(async () => {
 	const rows = await db
 		.select({ genres: schema.novels.genres })
-		.from(schema.novels)
-		.where(schema.novels.genres.isNotNull());
+		.from(schema.novels);
 
 	const genreSet = new Set<string>();
 
