@@ -12,9 +12,9 @@ interface ReaderSettings {
 const defaults: ReaderSettings = {
 	fontSize: 18,
 	lineHeight: 1.8,
-	fontFamily: "serif",
+	fontFamily: "sans",
 	theme: "dark",
-	maxWidth: 720,
+	maxWidth: 540,
 };
 
 export function useReaderSettings() {

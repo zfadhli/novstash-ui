@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 	const { id } = getRouterParams(event);
 	const query = getQuery(event);
 	const page = Math.max(1, Number(query.page) || 1);
-	const limit = Math.min(100, Math.max(1, Number(query.limit) || 50));
+	const limit = Math.min(1000, Math.max(1, Number(query.limit) || 50));
 	const offset = (page - 1) * limit;
 
 	const [items, totalResult] = await Promise.all([
