@@ -1,22 +1,10 @@
-import { execFile } from "node:child_process";
+import { spawn } from "node:child_process";
 import { resolve } from "node:path";
-import { promisify } from "node:util";
-
-const execFileAsync = promisify(execFile);
+import { createInterface } from "node:readline";
 
 // Resolve paths relative to the Nuxt project root (process.cwd() is apps/web/)
 const CLI_DIR = resolve(process.cwd(), "../novstash-cli");
 const DB_PATH = resolve(process.cwd(), "../../local.db");
-
-interface ScrapeResult {
-	slug: string;
-	title?: string;
-	author?: string | null;
-	chapter_count?: number;
-	success: boolean;
-	error?: string;
-	message?: string;
-}
 
 export default defineEventHandler(async (event) => {
 	await ensureAdmin(event);
@@ -32,38 +20,88 @@ export default defineEventHandler(async (event) => {
 		throw createError({ statusCode: 400, statusMessage: "Invalid URL" });
 	}
 
-	try {
-		const { stdout } = await execFileAsync(
-			"uv",
-			[
-				"run",
-				"--directory",
-				CLI_DIR,
-				"python",
-				"scripts/scrape_novel.py",
-				url,
-				"--db",
-				DB_PATH,
-			],
-			{ timeout: 180_000 },
-		);
+	// SSE headers for streaming progress
+	setHeaders(event, {
+		"content-type": "text/event-stream",
+		"cache-control": "no-cache",
+		connection: "keep-alive",
+		"x-accel-buffering": "no",
+	});
 
-		const result: ScrapeResult = JSON.parse(stdout);
-		if (!result.success) {
-			throw createError({
-				statusCode: 500,
-				statusMessage: result.error || "Scrape failed",
-			});
-		}
+	const child = spawn(
+		"uv",
+		[
+			"run",
+			"--directory",
+			CLI_DIR,
+			"python",
+			"scripts/scrape_novel.py",
+			url,
+			"--db",
+			DB_PATH,
+		],
+		{
+			timeout: 600_000,
+			stdio: ["ignore", "pipe", "pipe"],
+		},
+	);
 
-		return result;
-	} catch (err: unknown) {
-		if (err instanceof Error && "statusCode" in err) throw err;
-		const msg = err instanceof Error ? err.message : String(err);
-		console.error("[scrape]", msg);
-		throw createError({
-			statusCode: 500,
-			statusMessage: `Scrape failed: ${msg}`,
+	return new Promise<void>((resolve) => {
+		let resolved = false;
+
+		const done = () => {
+			if (!resolved) {
+				resolved = true;
+				resolve();
+			}
+		};
+
+		const rl = createInterface({ input: child.stdout });
+
+		rl.on("line", (line: string) => {
+			try {
+				const parsed = JSON.parse(line);
+				event.node.res.write(`data: ${JSON.stringify(parsed)}\n\n`);
+
+				// Final result — has "success" key
+				if (parsed.success !== undefined) {
+					rl.close();
+					child.kill();
+					event.node.res.end();
+					done();
+				}
+			} catch {
+				// Non-JSON line → progress message
+				event.node.res.write(
+					`data: ${JSON.stringify({ type: "progress", message: line })}\n\n`,
+				);
+			}
 		});
-	}
+
+		child.on("exit", (code) => {
+			if (!resolved) {
+				event.node.res.write(
+					`data: ${JSON.stringify({
+						success: false,
+						error: `Process exited with code ${code}`,
+					})}\n\n`,
+				);
+				event.node.res.end();
+				done();
+			}
+		});
+
+		child.on("error", (err) => {
+			if (!resolved) {
+				event.node.res.write(
+					`data: ${JSON.stringify({
+						success: false,
+						error: err.message,
+					})}\n\n`,
+				);
+				event.node.res.end();
+				done();
+			}
+		});
+	});
 });
