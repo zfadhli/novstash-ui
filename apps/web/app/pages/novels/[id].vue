@@ -21,10 +21,11 @@ onMounted(async () => {
 
 const firstChapterIdx = computed(() => chapters.value[0]?.idx ?? 0);
 
-const showContinueReading = computed(() => {
-	if (!serverProgress.value) return false;
+const continueReadingChapter = computed(() => {
+	if (!serverProgress.value) return null;
 	// Only show "Continue Reading" if saved progress is NOT the first chapter
-	return serverProgress.value.chapterIdx !== firstChapterIdx.value;
+	const idx = serverProgress.value.chapterIdx;
+	return idx !== firstChapterIdx.value ? idx : null;
 });
 </script>
 
@@ -173,12 +174,12 @@ const showContinueReading = computed(() => {
 
 						<!-- Continue Reading — only if saved progress exists and isn't first chapter -->
 						<UButton
-							v-if="showContinueReading"
-							:to="`/read/${novel.slug}/${serverProgress.value!.chapterIdx}`"
+							v-if="continueReadingChapter !== null"
+							:to="`/read/${novel.slug}/${continueReadingChapter}`"
 							size="lg"
 						>
 							<Icon name="lucide:book-open" class="mr-2 size-5" />
-							Continue Reading (Ch. {{ serverProgress.value!.chapterIdx }})
+							Continue Reading (Ch. {{ continueReadingChapter }})
 						</UButton>
 					</div>
 				</div>
