@@ -1,7 +1,7 @@
 <script setup lang="ts">
-definePageMeta({ middleware: "admin-auth", layout: "admin" });
+definePageMeta({ middleware: "admin-auth", layout: "admin", ssr: false });
 
-const { novels, total, page, pending, refresh } = useAdminNovels();
+const { novels, total, pending, error, refresh } = useAdminNovels();
 const toast = useToast();
 
 async function handleDelete(slug: string) {
@@ -39,8 +39,17 @@ async function handleDelete(slug: string) {
 			</div>
 		</UCard>
 
+		<UCard v-else-if="error">
+			<div class="flex flex-col items-center gap-2 py-8 text-center">
+				<Icon name="lucide:alert-circle" class="size-8 text-red-500" />
+				<p class="text-sm font-medium">Failed to load novels</p>
+				<p class="text-xs text-neutral-500">{{ error.message }}</p>
+				<UButton size="sm" variant="outline" @click="refresh()">Retry</UButton>
+			</div>
+		</UCard>
+
 		<UTable
-			v-else
+			v-else-if="novels.length > 0"
 			:rows="novels"
 			:columns="[
 				{ accessorKey: 'title', header: 'Title' },
@@ -89,6 +98,16 @@ async function handleDelete(slug: string) {
 				</div>
 			</template>
 		</UTable>
+
+		<UCard v-else>
+			<div class="flex flex-col items-center gap-2 py-8 text-center">
+				<Icon name="lucide:book-open" class="size-8 text-neutral-400" />
+				<p class="text-sm text-neutral-500">No novels found</p>
+				<UButton to="/admin/novels/create" size="sm" icon="lucide:plus">
+					Add your first novel
+				</UButton>
+			</div>
+		</UCard>
 
 		<div class="mt-4 text-sm text-neutral-500">
 			Total: {{ total }} novels

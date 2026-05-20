@@ -90,9 +90,9 @@
     "semantic_hash": "fc09756c0238978079aa54dcebb99046"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/components/Header.vue": {
-    "mtime": 1779287244.6244335,
-    "ast_hash": "a297af31503e194b6d8e58a08fc20ac7",
-    "semantic_hash": "a297af31503e194b6d8e58a08fc20ac7"
+    "mtime": 1779297675.3554595,
+    "ast_hash": "d659fa4a5bbee88074b9c996e2cebd7d",
+    "semantic_hash": "d659fa4a5bbee88074b9c996e2cebd7d"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/layouts/default.vue": {
     "mtime": 1779250158.2771516,
@@ -485,19 +485,19 @@
     "semantic_hash": "dbe70de75a88d540afbf43aacbf7dadf"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/schema/users.ts": {
-    "mtime": 1779279105.831921,
-    "ast_hash": "a5f36ba78b37e2afbadecd27d1276456",
-    "semantic_hash": "a5f36ba78b37e2afbadecd27d1276456"
+    "mtime": 1779297602.3215191,
+    "ast_hash": "cc52e9fcb7e2a157d508588fb2f91eb7",
+    "semantic_hash": "cc52e9fcb7e2a157d508588fb2f91eb7"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useUser.ts": {
-    "mtime": 1779284745.3795233,
-    "ast_hash": "47e9190a24818ee724ee10ea52aea74a",
-    "semantic_hash": "47e9190a24818ee724ee10ea52aea74a"
+    "mtime": 1779297678.4516132,
+    "ast_hash": "b050be01f2458286ade37b68c4dc6ecf",
+    "semantic_hash": "b050be01f2458286ade37b68c4dc6ecf"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/routes/auth/google.get.ts": {
-    "mtime": 1779279113.32834,
-    "ast_hash": "891da229f6f42f4c974ac3053dc2446d",
-    "semantic_hash": "891da229f6f42f4c974ac3053dc2446d"
+    "mtime": 1779297620.8829827,
+    "ast_hash": "abc1454bfe65fff8db9f7cd3d8b6d344",
+    "semantic_hash": "abc1454bfe65fff8db9f7cd3d8b6d344"
   },
   "/home/envs4/workspaces/novstash-ui/packages/db/src/migrations/0001_great_the_liberteens.sql": {
     "mtime": 1779282043.1844165,
@@ -518,5 +518,95 @@
     "mtime": 1779292743.0233421,
     "ast_hash": "f3ed1131be957a98340dea591b18ed3a",
     "semantic_hash": "f3ed1131be957a98340dea591b18ed3a"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/index.vue": {
+    "mtime": 1779297657.730173,
+    "ast_hash": "c2642ab3ee826f8b8aad0ad5866dbdbc",
+    "semantic_hash": "c2642ab3ee826f8b8aad0ad5866dbdbc"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/users.vue": {
+    "mtime": 1779298162.5629752,
+    "ast_hash": "dbe9d4df9bab1441f0aa227810869157",
+    "semantic_hash": "dbe9d4df9bab1441f0aa227810869157"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels.vue": {
+    "mtime": 1779298162.5629752,
+    "ast_hash": "6d1042dbe8d5169a53a4e84cbaf511bc",
+    "semantic_hash": "6d1042dbe8d5169a53a4e84cbaf511bc"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/create.vue": {
+    "mtime": 1779297678.4516132,
+    "ast_hash": "75600a3d9c98fafd65e88728bc351b1f",
+    "semantic_hash": "75600a3d9c98fafd65e88728bc351b1f"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/[slug]/chapters.vue": {
+    "mtime": 1779298162.5629752,
+    "ast_hash": "0e09e044b006109d6500d43ccec28c27",
+    "semantic_hash": "0e09e044b006109d6500d43ccec28c27"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/pages/admin/novels/[slug]/edit.vue": {
+    "mtime": 1779297678.4516132,
+    "ast_hash": "c28ae2fdfed2d77ac09bc33e02b41052",
+    "semantic_hash": "c28ae2fdfed2d77ac09bc33e02b41052"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/composables/useAdminNovels.ts": {
+    "mtime": 1779297671.0472455,
+    "ast_hash": "509bccfcbd68bea20de0afb61c49b61c",
+    "semantic_hash": "509bccfcbd68bea20de0afb61c49b61c"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/layouts/admin.vue": {
+    "mtime": 1779297630.3475935,
+    "ast_hash": "b98ac7d364f51b51accbedd34c4c8edd",
+    "semantic_hash": "b98ac7d364f51b51accbedd34c4c8edd"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/app/middleware/admin.auth.ts": {
+    "mtime": 1779297630.3475935,
+    "ast_hash": "3ebe31000b93e9ead3e2e90266b3e26f",
+    "semantic_hash": "3ebe31000b93e9ead3e2e90266b3e26f"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels.get.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "d5991017361ea576390ad72e81deadca",
+    "semantic_hash": "d5991017361ea576390ad72e81deadca"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/users.get.ts": {
+    "mtime": 1779297668.795132,
+    "ast_hash": "38e677be0e84a4a3f0514801e7f02a53",
+    "semantic_hash": "38e677be0e84a4a3f0514801e7f02a53"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels.post.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "c84b240c7e1b0d85864201aa91733b99",
+    "semantic_hash": "c84b240c7e1b0d85864201aa91733b99"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/[slug].delete.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "5bd07661215e6c0806c0a74230bc602a",
+    "semantic_hash": "5bd07661215e6c0806c0a74230bc602a"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/[slug].put.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "262aa12b4c6462cf44e862ec1755a68d",
+    "semantic_hash": "262aa12b4c6462cf44e862ec1755a68d"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/[slug]/chapters.get.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "95fb6338b73b6febf457bd557fe6f169",
+    "semantic_hash": "95fb6338b73b6febf457bd557fe6f169"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/[slug]/chapters/[idx].put.ts": {
+    "mtime": 1779297668.7911317,
+    "ast_hash": "0362efe0822701e2971b0b018fe672c9",
+    "semantic_hash": "0362efe0822701e2971b0b018fe672c9"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/[slug]/chapters/[idx].delete.ts": {
+    "mtime": 1779297668.795132,
+    "ast_hash": "777e196f6ee6fe421ba8dc4588490cea",
+    "semantic_hash": "777e196f6ee6fe421ba8dc4588490cea"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/web/server/utils/admin.ts": {
+    "mtime": 1779297616.5827475,
+    "ast_hash": "5fe6bab0b8d94743a88bad7601e9166a",
+    "semantic_hash": "5fe6bab0b8d94743a88bad7601e9166a"
   }
 }
