@@ -19,8 +19,9 @@
     },
     "apps/web": {
       "name": "web",
-      "version": "0.2.0",
+      "version": "0.2.4",
       "dependencies": {
+        "@fontsource-variable/inter": "^5.2.8",
         "@libsql/client": "catalog:",
         "@novstash-ui/db": "workspace:*",
         "@novstash-ui/env": "workspace:*",
@@ -47,7 +48,7 @@
     },
     "packages/db": {
       "name": "@novstash-ui/db",
-      "version": "0.2.0",
+      "version": "0.2.4",
       "dependencies": {
         "@libsql/client": "catalog:",
         "@novstash-ui/env": "workspace:*",
@@ -274,6 +275,8 @@
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
 
     "@floating-ui/vue": ["@floating-ui/vue@1.1.11", "", { "dependencies": { "@floating-ui/dom": "^1.7.6", "@floating-ui/utils": "^0.2.11", "vue-demi": ">=0.13.0" } }, "sha512-HzHKCNVxnGS35r9fCHBc3+uCnjw9IWIlCPL683cGgM9Kgj2BiAl8x1mS7vtvP6F9S/e/q4O6MApwSHj8hNLGfw=="],
+
+    "@fontsource-variable/inter": ["@fontsource-variable/inter@5.2.8", "", {}, "sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ=="],
 
     "@iconify-json/lucide": ["@iconify-json/lucide@1.2.108", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-jnmMx7xxShfsKeNNJhn47IKj3gD/AbRz+poKLIPn4rSIXw+yVbXCfUBXza/Jo9YIEEFajBk6Zayet8DqGCvX6w=="],
 

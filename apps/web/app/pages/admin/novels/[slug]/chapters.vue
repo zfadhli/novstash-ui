@@ -10,6 +10,10 @@ const chapters = ref<
 >([]);
 const loading = ref(true);
 
+const deleteModalOpen = ref(false);
+const deletingIdx = ref<number | null>(null);
+const deleting = ref(false);
+
 async function fetchChapters() {
 	loading.value = true;
 	try {
@@ -28,15 +32,22 @@ async function fetchChapters() {
 
 onMounted(fetchChapters);
 
-async function handleDelete(idx: number) {
-	const confirmed = confirm("Delete this chapter?");
-	if (!confirmed) return;
+function promptDelete(idx: number) {
+	deletingIdx.value = idx;
+	deleteModalOpen.value = true;
+}
 
+async function confirmDelete() {
+	if (deletingIdx.value === null) return;
+
+	deleting.value = true;
 	try {
-		await $fetch(`/api/admin/novels/${slug}/chapters/${idx}`, {
+		await $fetch(`/api/admin/novels/${slug}/chapters/${deletingIdx.value}`, {
 			method: "DELETE",
 		});
 		toast.add({ title: "Chapter deleted", color: "success" });
+		deleteModalOpen.value = false;
+		deletingIdx.value = null;
 		fetchChapters();
 	} catch (err) {
 		toast.add({
@@ -44,7 +55,14 @@ async function handleDelete(idx: number) {
 			color: "error",
 			description: String(err),
 		});
+	} finally {
+		deleting.value = false;
 	}
+}
+
+function cancelDelete() {
+	deleteModalOpen.value = false;
+	deletingIdx.value = null;
 }
 </script>
 
@@ -95,9 +113,31 @@ async function handleDelete(idx: number) {
 					icon="lucide:trash-2"
 					color="error"
 					title="Delete"
-					@click="handleDelete(row.original.idx)"
+					@click="promptDelete(row.original.idx)"
 				/>
 			</template>
 		</UTable>
 	</div>
+
+	<!-- ── Delete Confirmation Modal ─────────────────────────── -->
+
+	<UModal :open="deleteModalOpen" title="Delete Chapter" @close="cancelDelete()">
+		<template #body>
+			<div class="p-4">
+				<p class="text-sm text-neutral-600 dark:text-neutral-400">
+					Are you sure you want to delete this chapter? This action cannot be undone.
+				</p>
+			</div>
+		</template>
+		<template #footer>
+			<div class="flex justify-end gap-2 p-4">
+				<UButton variant="outline" @click="cancelDelete()" :disabled="deleting">
+					Cancel
+				</UButton>
+				<UButton color="error" :loading="deleting" @click="confirmDelete()">
+					Delete
+				</UButton>
+			</div>
+		</template>
+	</UModal>
 </template>

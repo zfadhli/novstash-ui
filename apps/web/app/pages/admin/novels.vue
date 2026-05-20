@@ -78,17 +78,28 @@ function resetImport() {
 	showImportSlideover.value = false;
 }
 
-// ── Delete ────────────────────────────────────────────────────────
+// ── Delete (modal-based) ──────────────────────────────────────────
 
-async function handleDelete(slug: string) {
-	const confirmed = confirm(
-		"Are you sure you want to delete this novel? This action cannot be undone.",
-	);
-	if (!confirmed) return;
+const deleteModalOpen = ref(false);
+const deletingSlug = ref<string | null>(null);
+const deleting = ref(false);
 
+function promptDelete(slug: string) {
+	deletingSlug.value = slug;
+	deleteModalOpen.value = true;
+}
+
+async function confirmDelete() {
+	if (!deletingSlug.value) return;
+
+	deleting.value = true;
 	try {
-		await $fetch(`/api/admin/novels/${slug}`, { method: "DELETE" });
+		await $fetch(`/api/admin/novels/${deletingSlug.value}`, {
+			method: "DELETE",
+		});
 		toast.add({ title: "Novel deleted", color: "success" });
+		deleteModalOpen.value = false;
+		deletingSlug.value = null;
 		refresh();
 	} catch (err) {
 		toast.add({
@@ -96,7 +107,14 @@ async function handleDelete(slug: string) {
 			color: "error",
 			description: String(err),
 		});
+	} finally {
+		deleting.value = false;
 	}
+}
+
+function cancelDelete() {
+	deleteModalOpen.value = false;
+	deletingSlug.value = null;
 }
 </script>
 
@@ -126,7 +144,7 @@ async function handleDelete(slug: string) {
 
 		<UCard v-else-if="error">
 			<div class="flex flex-col items-center gap-2 py-8 text-center">
-				<Icon name="lucide:alert-circle" class="size-8 text-red-500" />
+				<UIcon name="lucide:alert-circle" class="size-8 text-red-500" />
 				<p class="text-sm font-medium">Failed to load novels</p>
 				<p class="text-xs text-neutral-500">{{ error.message }}</p>
 				<UButton size="sm" variant="outline" @click="refresh()">Retry</UButton>
@@ -178,7 +196,7 @@ async function handleDelete(slug: string) {
 						icon="lucide:trash-2"
 						color="error"
 						title="Delete"
-						@click="handleDelete(row.original.slug)"
+						@click="promptDelete(row.original.slug)"
 					/>
 				</div>
 			</template>
@@ -186,7 +204,7 @@ async function handleDelete(slug: string) {
 
 		<UCard v-else>
 			<div class="flex flex-col items-center gap-2 py-8 text-center">
-				<Icon name="lucide:book-open" class="size-8 text-neutral-400" />
+				<UIcon name="lucide:book-open" class="size-8 text-neutral-400" />
 				<p class="text-sm text-neutral-500">No novels found</p>
 				<UButton to="/admin/novels/create" size="sm" icon="lucide:plus">
 					Add your first novel
@@ -333,4 +351,26 @@ async function handleDelete(slug: string) {
 			</div>
 		</template>
 	</USlideover>
+
+	<!-- ── Delete Confirmation Modal ─────────────────────────── -->
+
+	<UModal :open="deleteModalOpen" title="Delete Novel" @close="cancelDelete()">
+		<template #body>
+			<div class="p-4">
+				<p class="text-sm text-neutral-600 dark:text-neutral-400">
+					Are you sure you want to delete this novel? This action cannot be undone.
+				</p>
+			</div>
+		</template>
+		<template #footer>
+			<div class="flex justify-end gap-2 p-4">
+				<UButton variant="outline" @click="cancelDelete()" :disabled="deleting">
+					Cancel
+				</UButton>
+				<UButton color="error" :loading="deleting" @click="confirmDelete()">
+					Delete
+				</UButton>
+			</div>
+		</template>
+	</UModal>
 </template>

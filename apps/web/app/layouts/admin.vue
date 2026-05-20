@@ -16,7 +16,7 @@ const sidebarItems: NavigationMenuItem[] = [
 			class="w-60 shrink-0 border-r border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950"
 		>
 			<div class="mb-6 flex items-center gap-2 px-2">
-				<Icon name="lucide:book-heart" class="size-5 text-emerald-500" />
+				<UIcon name="lucide:book-heart" class="size-5 text-emerald-500" />
 				<span class="text-sm font-bold">Admin</span>
 			</div>
 			<UNavigationMenu :items="sidebarItems" orientation="vertical" />

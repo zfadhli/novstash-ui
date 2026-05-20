@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import "@fontsource-variable/inter";
+</script>
 
 <template>
 	<NuxtAnnouncer />
@@ -10,7 +12,7 @@
 				<NuxtPage />
 				<template #error="{ error }">
 					<UContainer class="py-20 text-center">
-						<Icon name="lucide:alert-triangle" class="mx-auto mb-4 size-12 text-amber-500" />
+						<UIcon name="lucide:alert-triangle" class="mx-auto mb-4 size-12 text-amber-500" />
 						<p class="mb-2 text-lg font-medium text-neutral-700 dark:text-neutral-300">
 							Something went wrong
 						</p>
