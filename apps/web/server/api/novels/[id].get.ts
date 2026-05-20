@@ -1,14 +1,14 @@
 import { db, schema } from "@novstash-ui/db";
-import { eq } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
 	const { id } = getRouterParams(event);
 
 	const novel = await db.query.novels.findFirst({
-		where: eq(schema.novels.id, id),
+		where: eq(schema.novels.slug, id),
 		with: {
 			chapters: {
-				orderBy: (chapters, { asc }) => [asc(chapters.number)],
+				orderBy: [asc(schema.chapters.idx)],
 			},
 		},
 	});

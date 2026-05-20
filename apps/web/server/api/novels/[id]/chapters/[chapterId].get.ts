@@ -3,12 +3,17 @@ import { and, asc, desc, eq, gt, lt } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
 	const { id, chapterId } = getRouterParams(event);
+	const idx = Number(chapterId);
+
+	if (Number.isNaN(idx)) {
+		throw createError({
+			statusCode: 400,
+			statusMessage: "Invalid chapter index",
+		});
+	}
 
 	const chapter = await db.query.chapters.findFirst({
-		where: and(
-			eq(schema.chapters.id, chapterId),
-			eq(schema.chapters.novelId, id),
-		),
+		where: and(eq(schema.chapters.idx, idx), eq(schema.chapters.novelSlug, id)),
 	});
 
 	if (!chapter) {
@@ -21,19 +26,19 @@ export default defineEventHandler(async (event) => {
 	const [prevChapter, nextChapter] = await Promise.all([
 		db.query.chapters.findFirst({
 			where: and(
-				eq(schema.chapters.novelId, id),
-				lt(schema.chapters.number, chapter.number),
+				eq(schema.chapters.novelSlug, id),
+				lt(schema.chapters.idx, idx),
 			),
-			orderBy: [desc(schema.chapters.number)],
-			columns: { id: true, number: true, title: true },
+			orderBy: [desc(schema.chapters.idx)],
+			columns: { id: true, idx: true, title: true },
 		}),
 		db.query.chapters.findFirst({
 			where: and(
-				eq(schema.chapters.novelId, id),
-				gt(schema.chapters.number, chapter.number),
+				eq(schema.chapters.novelSlug, id),
+				gt(schema.chapters.idx, idx),
 			),
-			orderBy: [asc(schema.chapters.number)],
-			columns: { id: true, number: true, title: true },
+			orderBy: [asc(schema.chapters.idx)],
+			columns: { id: true, idx: true, title: true },
 		}),
 	]);
 

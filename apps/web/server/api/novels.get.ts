@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 			.select()
 			.from(schema.novels)
 			.where(where)
-			.orderBy(desc(schema.novels.updatedAt))
+			.orderBy(desc(schema.novels.createdAt))
 			.limit(limit)
 			.offset(offset),
 		db

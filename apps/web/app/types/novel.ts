@@ -1,33 +1,29 @@
 export interface Novel {
-	id: string;
+	slug: string;
 	title: string;
 	author: string | null;
-	coverUrl: string | null;
-	synopsis: string | null;
 	status: string | null;
-	source: string | null;
-	sourceUrl: string | null;
-	genres: string | null;
-	rating: number | null;
+	genres: string | null; // JSON array as text
+	description: string | null;
+	coverUrl: string | null;
 	chapterCount: number | null;
 	createdAt: string | null;
-	updatedAt: string | null;
 }
 
 export interface Chapter {
-	id: string;
-	novelId: string;
-	number: number;
-	title: string | null;
-	content: string;
+	id: number;
+	novelSlug: string;
+	idx: number;
+	title: string;
+	url: string | null;
+	contentMd: string | null;
 	createdAt: string | null;
-	updatedAt: string | null;
 }
 
 export interface ChapterNavigation {
-	id: string;
-	number: number;
-	title: string | null;
+	id: number;
+	idx: number;
+	title: string;
 }
 
 export interface ChapterWithNav extends Chapter {

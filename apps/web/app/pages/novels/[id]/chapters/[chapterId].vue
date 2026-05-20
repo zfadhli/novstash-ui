@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const route = useRoute();
 const novelId = route.params.id as string;
-const chapterId = route.params.chapterId as string;
+const chapterIdx = Number(route.params.chapterId);
 
-const { chapter, pending, error } = useChapter(novelId, chapterId);
+const { chapter, pending, error } = useChapter(novelId, chapterIdx);
 const { settings, setFontSize, setFontFamily, setTheme, setLineHeight } =
 	useReaderSettings();
 
@@ -13,10 +13,10 @@ const showSettings = ref(false);
 function onKeydown(e: KeyboardEvent) {
 	if (!chapter.value) return;
 	if (e.key === "ArrowLeft" && chapter.value.prevChapter) {
-		navigateTo(`/novels/${novelId}/chapters/${chapter.value.prevChapter.id}`);
+		navigateTo(`/novels/${novelId}/chapters/${chapter.value.prevChapter.idx}`);
 	}
 	if (e.key === "ArrowRight" && chapter.value.nextChapter) {
-		navigateTo(`/novels/${novelId}/chapters/${chapter.value.nextChapter.id}`);
+		navigateTo(`/novels/${novelId}/chapters/${chapter.value.nextChapter.idx}`);
 	}
 }
 
@@ -95,10 +95,10 @@ const fontFamilyClass = computed(() => {
 						/>
 						<div class="hidden sm:block">
 							<p class="text-xs text-neutral-500 dark:text-neutral-400">
-								Chapter {{ chapter.number }}
+								Chapter {{ chapter.idx }}
 							</p>
 							<p class="text-sm font-medium leading-tight text-neutral-900 dark:text-neutral-100 line-clamp-1">
-								{{ chapter.title || `Chapter ${chapter.number}` }}
+								{{ chapter.title || `Chapter ${chapter.idx}` }}
 							</p>
 						</div>
 					</div>
@@ -108,7 +108,7 @@ const fontFamilyClass = computed(() => {
 							variant="ghost"
 							size="sm"
 							:disabled="!chapter.prevChapter"
-							:to="chapter.prevChapter ? `/novels/${novelId}/chapters/${chapter.prevChapter.id}` : undefined"
+							:to="chapter.prevChapter ? `/novels/${novelId}/chapters/${chapter.prevChapter.idx}` : undefined"
 							icon="lucide:chevron-left"
 						/>
 						<UButton
@@ -122,7 +122,7 @@ const fontFamilyClass = computed(() => {
 							variant="ghost"
 							size="sm"
 							:disabled="!chapter.nextChapter"
-							:to="chapter.nextChapter ? `/novels/${novelId}/chapters/${chapter.nextChapter.id}` : undefined"
+							:to="chapter.nextChapter ? `/novels/${novelId}/chapters/${chapter.nextChapter.idx}` : undefined"
 							icon="lucide:chevron-right"
 						/>
 					</div>
@@ -259,7 +259,7 @@ const fontFamilyClass = computed(() => {
 					<!-- Chapter heading -->
 					<header class="mb-10 text-center">
 						<p class="mb-2 text-sm uppercase tracking-widest opacity-50">
-							Chapter {{ chapter.number }}
+							Chapter {{ chapter.idx }}
 						</p>
 						<h1
 							v-if="chapter.title"
@@ -270,33 +270,31 @@ const fontFamilyClass = computed(() => {
 					</header>
 
 					<!-- Chapter content -->
-					<div
-						class="prose-custom whitespace-pre-wrap leading-relaxed"
-					>
-						{{ chapter.content }}
+					<div class="whitespace-pre-wrap leading-relaxed">
+						{{ chapter.contentMd }}
 					</div>
 
 					<!-- Chapter navigation footer -->
 					<nav class="mt-16 flex items-center justify-between border-t border-current/10 pt-8">
 						<UButton
 							v-if="chapter.prevChapter"
-							:to="`/novels/${novelId}/chapters/${chapter.prevChapter.id}`"
+							:to="`/novels/${novelId}/chapters/${chapter.prevChapter.idx}`"
 							variant="ghost"
 							class="flex-col items-start"
 						>
 							<span class="text-xs opacity-60">Previous</span>
-							<span class="text-sm font-medium">{{ chapter.prevChapter.title || `Chapter ${chapter.prevChapter.number}` }}</span>
+							<span class="text-sm font-medium">{{ chapter.prevChapter.title || `Chapter ${chapter.prevChapter.idx}` }}</span>
 						</UButton>
 						<div v-else />
 
 						<UButton
 							v-if="chapter.nextChapter"
-							:to="`/novels/${novelId}/chapters/${chapter.nextChapter.id}`"
+							:to="`/novels/${novelId}/chapters/${chapter.nextChapter.idx}`"
 							variant="ghost"
 							class="flex-col items-end"
 						>
 							<span class="text-xs opacity-60">Next</span>
-							<span class="text-sm font-medium">{{ chapter.nextChapter.title || `Chapter ${chapter.nextChapter.number}` }}</span>
+							<span class="text-sm font-medium">{{ chapter.nextChapter.title || `Chapter ${chapter.nextChapter.idx}` }}</span>
 						</UButton>
 						<div v-else />
 					</nav>

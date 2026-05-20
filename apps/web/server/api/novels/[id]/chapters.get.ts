@@ -12,20 +12,21 @@ export default defineEventHandler(async (event) => {
 		db
 			.select({
 				id: schema.chapters.id,
-				novelId: schema.chapters.novelId,
-				number: schema.chapters.number,
+				novelSlug: schema.chapters.novelSlug,
+				idx: schema.chapters.idx,
 				title: schema.chapters.title,
+				url: schema.chapters.url,
 				createdAt: schema.chapters.createdAt,
 			})
 			.from(schema.chapters)
-			.where(eq(schema.chapters.novelId, id))
-			.orderBy(asc(schema.chapters.number))
+			.where(eq(schema.chapters.novelSlug, id))
+			.orderBy(asc(schema.chapters.idx))
 			.limit(limit)
 			.offset(offset),
 		db
 			.select({ count: sql<number>`count(*)` })
 			.from(schema.chapters)
-			.where(eq(schema.chapters.novelId, id)),
+			.where(eq(schema.chapters.novelSlug, id)),
 	]);
 
 	const total = Number(totalResult[0]?.count) || 0;

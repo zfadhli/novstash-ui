@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import type { Novel } from "~/types/novel";
 
-const props = withDefaults(
-	defineProps<{
-		novel: Novel;
-		index?: number;
-	}>(),
-	{ index: 0 },
-);
+defineProps<{
+	novel: Novel;
+}>();
 
 const statusColors: Record<string, string> = {
 	ongoing: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
@@ -18,7 +14,7 @@ const statusColors: Record<string, string> = {
 
 <template>
 	<NuxtLink
-		:to="`/novels/${novel.id}`"
+		:to="`/novels/${novel.slug}`"
 		class="group relative flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 dark:border-neutral-800 dark:bg-neutral-900"
 	>
 		<!-- Cover image area -->
@@ -61,19 +57,12 @@ const statusColors: Record<string, string> = {
 				{{ novel.author }}
 			</p>
 
-			<div class="mt-auto flex items-center gap-2 pt-1.5">
+			<div class="mt-auto pt-1.5">
 				<span
 					v-if="novel.chapterCount"
 					class="text-xs text-neutral-400 dark:text-neutral-500"
 				>
-					{{ novel.chapterCount }} chapters
-				</span>
-				<span
-					v-if="novel.rating"
-					class="ml-auto flex items-center gap-1 text-xs text-amber-500"
-				>
-					<Icon name="lucide:star" class="size-3.5 fill-current" />
-					{{ novel.rating.toFixed(1) }}
+					{{ novel.chapterCount }} chapter{{ novel.chapterCount !== 1 ? "s" : "" }}
 				</span>
 			</div>
 		</div>

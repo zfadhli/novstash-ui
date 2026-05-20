@@ -1,29 +1,34 @@
-import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 
 export const novels = sqliteTable("novels", {
-	id: text("id").primaryKey(),
+	slug: text("slug").primaryKey(),
 	title: text("title").notNull(),
 	author: text("author"),
+	status: text("status"),
+	genres: text("genres"), // JSON array stored as TEXT
+	description: text("description"),
 	coverUrl: text("cover_url"),
-	synopsis: text("synopsis"),
-	status: text("status"), // ongoing, completed, hiatus
-	source: text("source"),
-	sourceUrl: text("source_url"),
-	genres: text("genres"), // comma-separated
-	rating: real("rating"),
 	chapterCount: integer("chapter_count"),
 	createdAt: text("created_at"),
-	updatedAt: text("updated_at"),
 });
 
-export const chapters = sqliteTable("chapters", {
-	id: text("id").primaryKey(),
-	novelId: text("novel_id")
-		.notNull()
-		.references(() => novels.id, { onDelete: "cascade" }),
-	number: integer("number").notNull(),
-	title: text("title"),
-	content: text("content").notNull(),
-	createdAt: text("created_at"),
-	updatedAt: text("updated_at"),
-});
+export const chapters = sqliteTable(
+	"chapters",
+	{
+		id: integer("id").primaryKey({ autoIncrement: true }),
+		novelSlug: text("novel_slug")
+			.notNull()
+			.references(() => novels.slug, { onDelete: "cascade" }),
+		idx: integer("idx").notNull(),
+		title: text("title").notNull(),
+		url: text("url"),
+		contentMd: text("content_md"),
+		createdAt: text("created_at"),
+	},
+	(table) => ({
+		novelIdxUnique: unique("uq_chapters_novel_idx").on(
+			table.novelSlug,
+			table.idx,
+		),
+	}),
+);

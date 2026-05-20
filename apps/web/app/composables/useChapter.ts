@@ -2,19 +2,19 @@ import type { ChapterWithNav } from "~/types/novel";
 
 export function useChapter(
 	novelId: MaybeRefOrGetter<string>,
-	chapterId: MaybeRefOrGetter<string>,
+	chapterIdx: MaybeRefOrGetter<number>,
 ) {
 	const nid = toRef(novelId);
-	const cid = toRef(chapterId);
+	const cidx = toRef(chapterIdx);
 
 	const { data, pending, error, refresh } = useAsyncData(
-		`chapter-${toValue(nid)}-${toValue(cid)}`,
+		`chapter-${toValue(nid)}-${toValue(cidx)}`,
 		async () => {
 			return $fetch<ChapterWithNav>(
-				`/api/novels/${toValue(nid)}/chapters/${toValue(cid)}`,
+				`/api/novels/${toValue(nid)}/chapters/${toValue(cidx)}`,
 			);
 		},
-		{ watch: [nid, cid] },
+		{ watch: [nid, cidx] },
 	);
 
 	const chapter = computed(() => data.value ?? null);

@@ -44,10 +44,9 @@ defineProps<{
 			class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
 		>
 			<NovelCard
-				v-for="(novel, index) in novels"
-				:key="novel.id"
+				v-for="novel in novels"
+				:key="novel.slug"
 				:novel="novel"
-				:index="index"
 			/>
 		</div>
 	</div>

@@ -3,7 +3,7 @@ import type { Chapter } from "~/types/novel";
 
 defineProps<{
 	chapters: Chapter[];
-	novelId: string;
+	novelSlug: string;
 	pending?: boolean;
 }>();
 </script>
@@ -39,15 +39,15 @@ defineProps<{
 			<NuxtLink
 				v-for="chapter in chapters"
 				:key="chapter.id"
-				:to="`/novels/${novelId}/chapters/${chapter.id}`"
+				:to="`/novels/${novelSlug}/chapters/${chapter.idx}`"
 				class="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
 			>
 				<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-xs font-medium text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">
-					{{ chapter.number }}
+					{{ chapter.idx }}
 				</span>
 				<div class="min-w-0 flex-1">
 					<p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-100">
-						{{ chapter.title || `Chapter ${chapter.number}` }}
+						{{ chapter.title || `Chapter ${chapter.idx}` }}
 					</p>
 					<p
 						v-if="chapter.createdAt"

@@ -105,21 +105,7 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 							class="flex items-center gap-1"
 						>
 							<Icon name="lucide:file-text" class="size-4" />
-							{{ novel.chapterCount }} chapters
-						</span>
-						<span
-							v-if="novel.rating"
-							class="flex items-center gap-1 text-amber-500"
-						>
-							<Icon name="lucide:star" class="size-4 fill-current" />
-							{{ novel.rating.toFixed(1) }}
-						</span>
-						<span
-							v-if="novel.source"
-							class="flex items-center gap-1"
-						>
-							<Icon name="lucide:globe" class="size-4" />
-							{{ novel.source }}
+							{{ novel.chapterCount }} chapter{{ novel.chapterCount !== 1 ? "s" : "" }}
 						</span>
 					</div>
 
@@ -129,24 +115,24 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 						class="flex flex-wrap gap-1.5"
 					>
 						<span
-							v-for="genre in novel.genres.split(',')"
+							v-for="genre in JSON.parse(novel.genres)"
 							:key="genre"
 							class="rounded-md bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
 						>
-							{{ genre.trim() }}
+							{{ genre }}
 						</span>
 					</div>
 
-					<!-- Synopsis -->
+					<!-- Description -->
 					<div
-						v-if="novel.synopsis"
+						v-if="novel.description"
 						class="mt-2"
 					>
 						<h3 class="mb-2 text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-							Synopsis
+							Description
 						</h3>
-						<p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-							{{ novel.synopsis }}
+						<p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 whitespace-pre-line">
+							{{ novel.description }}
 						</p>
 					</div>
 
@@ -154,7 +140,7 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 					<div class="mt-4">
 						<UButton
 							v-if="chapters.length > 0"
-							:to="`/novels/${novel.id}/chapters/${chapters[0].id}`"
+							:to="`/novels/${novel.slug}/chapters/${chapters[0].idx}`"
 							size="lg"
 						>
 							<Icon name="lucide:book-open" class="mr-2 size-5" />
@@ -171,7 +157,7 @@ const { novel, chapters, pending, error } = useNovel(novelId);
 				</h2>
 				<ChapterList
 					:chapters="chapters"
-					:novel-id="novel.id"
+					:novel-slug="novel.slug"
 				/>
 			</section>
 		</template>
