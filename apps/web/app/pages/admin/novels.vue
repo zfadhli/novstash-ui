@@ -96,12 +96,14 @@ async function confirmDelete() {
 	try {
 		await $fetch(`/api/admin/novels/${deletingSlug.value}`, {
 			method: "DELETE",
+			credentials: "same-origin",
 		});
 		toast.add({ title: "Novel deleted", color: "success" });
 		deleteModalOpen.value = false;
 		deletingSlug.value = null;
-		refresh();
+		await refresh();
 	} catch (err) {
+		deleteModalOpen.value = false;
 		toast.add({
 			title: "Failed to delete novel",
 			color: "error",
