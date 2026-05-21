@@ -1,8 +1,6 @@
-import { spawn } from "node:child_process";
 import { resolve } from "node:path";
 
-const CLI_DIR = resolve(process.cwd(), "../novstash-cli");
-const DB_PATH = resolve(process.cwd(), "../../local.db");
+const SIDECAR_URL = process.env.SCRAPE_SIDECAR_URL || "http://127.0.0.1:8765";
 
 export default defineEventHandler(async (event) => {
 	await ensureAdmin(event);
@@ -19,64 +17,15 @@ export default defineEventHandler(async (event) => {
 	}
 
 	try {
-		const result = await new Promise<string>(
-			(resolvePromise, rejectPromise) => {
-				const stdout: Buffer[] = [];
-				const stderr: Buffer[] = [];
-
-				const child = spawn(
-					"uv",
-					[
-						"run",
-						"--directory",
-						CLI_DIR,
-						"python",
-						"scripts/scrape_novel.py",
-						url,
-						"--db",
-						DB_PATH,
-					],
-					{
-						timeout: 600_000,
-						stdio: ["ignore", "pipe", "pipe"],
-					},
-				);
-
-				child.stdout.on("data", (data: Buffer) => {
-					stdout.push(data);
-				});
-
-				child.stderr.on("data", (data: Buffer) => {
-					stderr.push(data);
-				});
-
-				child.on("close", (code) => {
-					const stdoutStr = Buffer.concat(stdout).toString().trim();
-					const stderrStr = Buffer.concat(stderr).toString().trim();
-
-					if (code === 0 && stdoutStr) {
-						resolvePromise(stdoutStr);
-					} else if (code === 0 && !stdoutStr) {
-						rejectPromise(
-							new Error("Process exited with code 0 but produced no output"),
-						);
-					} else {
-						const msg = stderrStr
-							? `Process exited with code ${code}: ${stderrStr}`
-							: `Process exited with code ${code}`;
-						rejectPromise(new Error(msg));
-					}
-				});
-
-				child.on("error", (err) => {
-					rejectPromise(err);
-				});
-			},
-		);
-
-		return JSON.parse(result);
+		const result = await $fetch(`${SIDECAR_URL}/scrape`, {
+			method: "POST",
+			body: { url, db_path: resolve(process.cwd(), "../../local.db") },
+			timeout: 600_000,
+		});
+		return result;
 	} catch (err: any) {
-		console.error("[scrape]", err.message);
+		if (err.statusCode) throw err;
+		console.error("[scrape] Sidecar error:", err.message);
 		throw createError({
 			statusCode: 500,
 			statusMessage: `Scrape failed: ${err.message}`,

@@ -65,7 +65,7 @@
     "semantic_hash": "2379b8a9638b5dd2b0a952321fb54ab8"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/nuxt.config.ts": {
-    "mtime": 1779279103.7878098,
+    "mtime": 1779320359.6160228,
     "ast_hash": "1f8618f47f6e66c16d18f9d512f7907b",
     "semantic_hash": "1f8618f47f6e66c16d18f9d512f7907b"
   },
@@ -620,8 +620,8 @@
     "semantic_hash": "903f55085c413115ecd08035e64f6432"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/scrape.post.ts": {
-    "mtime": 1779301159.8203723,
-    "ast_hash": "00b3d7fc593354b279ee3466c31bd81b",
-    "semantic_hash": "00b3d7fc593354b279ee3466c31bd81b"
+    "mtime": 1779320363.5482032,
+    "ast_hash": "091c2366e6436d3d1c76c0aba83872ab",
+    "semantic_hash": "091c2366e6436d3d1c76c0aba83872ab"
   }
 }

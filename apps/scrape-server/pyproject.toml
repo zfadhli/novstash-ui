@@ -1,0 +1,16 @@
+[project]
+name = "scrape-server"
+version = "0.1.0"
+description = "FastAPI sidecar for running novel scrapes outside the Nuxt process"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

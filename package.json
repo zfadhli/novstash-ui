@@ -21,6 +21,8 @@
 		"build": "turbo build",
 		"check-types": "turbo check-types",
 		"dev:web": "turbo -F web dev",
+		"dev:sidecar": "cd apps/scrape-server && uv run uvicorn main:app --port 8765 --reload",
+		"dev:all": "concurrently \"bun run dev:web\" \"bun run dev:sidecar\"",
 		"db:push": "turbo -F @novstash-ui/db db:push",
 		"db:studio": "turbo -F @novstash-ui/db db:studio",
 		"db:generate": "turbo -F @novstash-ui/db db:generate",
