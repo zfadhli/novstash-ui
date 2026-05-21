@@ -1,8 +1,8 @@
 {
   "/home/envs4/workspaces/novstash-ui/package.json": {
-    "mtime": 1779293165.352302,
-    "ast_hash": "42f18e414500d9680795cf5f99feead7",
-    "semantic_hash": "42f18e414500d9680795cf5f99feead7"
+    "mtime": 1779322229.4767973,
+    "ast_hash": "0719550432fe9bb96327795ce06a589f",
+    "semantic_hash": "0719550432fe9bb96327795ce06a589f"
   },
   "/home/envs4/workspaces/novstash-ui/turbo.json": {
     "mtime": 1779251763.1094844,
@@ -620,8 +620,13 @@
     "semantic_hash": "903f55085c413115ecd08035e64f6432"
   },
   "/home/envs4/workspaces/novstash-ui/apps/web/server/api/admin/novels/scrape.post.ts": {
-    "mtime": 1779320363.5482032,
-    "ast_hash": "091c2366e6436d3d1c76c0aba83872ab",
-    "semantic_hash": "091c2366e6436d3d1c76c0aba83872ab"
+    "mtime": 1779322179.558659,
+    "ast_hash": "ec4aef83e692b4255f6179c9348b574d",
+    "semantic_hash": "ec4aef83e692b4255f6179c9348b574d"
+  },
+  "/home/envs4/workspaces/novstash-ui/apps/scrape-server/main.py": {
+    "mtime": 1779322177.317128,
+    "ast_hash": "cb6aa58fedb317762734c9dd40e7a43f",
+    "semantic_hash": "cb6aa58fedb317762734c9dd40e7a43f"
   }
 }
