@@ -46,6 +46,7 @@
 		"@biomejs/biome": "^2.2.0",
 		"@novstash-ui/config": "workspace:*",
 		"@types/node": "catalog:",
+		"concurrently": "^9.2.1",
 		"turbo": "^2.8.12",
 		"typescript": "catalog:"
 	},
